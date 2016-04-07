@@ -1,0 +1,2 @@
+class KarmasController < ApplicationController
+end
