@@ -14,7 +14,7 @@ smernick3@gmail.com
 Justin Curhan
 justin.curhan@gmail.com
 
-Technology Used
+#Technology Used
 - Ruby on Rails
 - JavaScript
 - JQuery 
@@ -24,4 +24,5 @@ Technology Used
 - Ajax 
 - TDD 
 - MVC Modeling 
-- Unique Pricing Algorithim
+- Unique Pricing Algorithm
+- Bootstrap
