@@ -6,7 +6,7 @@ Holly Peck
 holly.m.peck@gmail.com
 
 Liz Kalina 
-liz.kalina 
+liz.kalina@gmail.com
 
 Sammy Mernick
 smernick3@gmail.com
