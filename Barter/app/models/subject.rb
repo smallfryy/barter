@@ -9,4 +9,6 @@
 #
 
 class Subject < ActiveRecord::Base
+  has_many :textbook_subjects
+  has_many :textbooks, through: :textbook_subjects
 end

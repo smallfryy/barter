@@ -13,5 +13,10 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :user_books 
+  has_many :textbooks, through: :user_books
+  has_one :karma
+  belongs_to :college 
+  has_many :addresses, as: :addressable 
    
 end

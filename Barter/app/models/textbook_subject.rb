@@ -10,4 +10,6 @@
 #
 
 class TextbookSubject < ActiveRecord::Base
+  belongs_to :textbook 
+  belongs_to :subject 
 end

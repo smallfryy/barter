@@ -16,5 +16,6 @@
 #
 
 class Address < ActiveRecord::Base
+  belongs_to :addresses, polymorphic: true
   
 end
