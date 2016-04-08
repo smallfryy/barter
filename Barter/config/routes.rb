@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+
+  root "pages#home"
   devise_for :users
-  root "home#index"
+  get 'users/:id' => 'users#show', as: :user
+  get 'users/sign_in', to: 'devise/sessions#new', as: :sign_in
+  get 'users/sign_up' => 'devise/registrations#new', as: :sign_up
+  get 'users/sign_out' => 'devise/sessions#destroy', as: :sign_out
   resources :textbooks do
     resources :user_books, as: :book, :path => "book"
   end
