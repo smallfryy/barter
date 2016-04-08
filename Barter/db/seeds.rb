@@ -28,13 +28,18 @@ holly = User.create(first_name: "Holly", last_name: "Peck", email: "holly.m.peck
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "funfunfun")
 end
 
-User.all.each do |user|
+User.all.each_with_index do |user, i|
   Karma.create(user: user, balance: Faker::Number.between(0, 500))
+  if i.even?
+    user.addresses << Address.create(street: Faker::Address.street_address, apt_num: Faker::Address.secondary_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, country: "USA")
+  end
+  user.addresses << Address.create(street: Faker::Address.street_address, apt_num: Faker::Address.secondary_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, country: "USA")
 end
 
 
 10.times do
-  College.create(name: Faker::University.name)
+  college = College.create(name: Faker::University.name)
+  college.address = Address.create(street: Faker::Address.street_address, apt_num: Faker::Address.secondary_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, country: "USA")
 end
 
 subject1 = Subject.create(name: "Math")
@@ -45,7 +50,7 @@ subject5 = Subject.create(name: "Art")
 subject6 = Subject.create(name: "Architecture")
 
 20.times do
-  Textbook.create(title: Faker::Book.title, ISBN: Faker::Code.isbn)
+  Textbook.create(title: Faker::Book.title, isbn: Faker::Code.isbn)
 end
 
 40.times do

@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  title      :string
-#  ISBN       :string
+#  isbn       :string
 #  edition    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -15,4 +15,14 @@ class Textbook < ActiveRecord::Base
   has_many :users, through: :user_books
   has_many :textbook_subjects
   has_many :subjects, through: :textbook_subjects
+  # validates :title, :isbn, presence: true
+  validate :isbn_length
+
+
+  def isbn_length
+    isbn = self.isbn.gsub("-", "")
+    unless isbn.length == 10 || isbn.length == 13
+      errors.add(:isbn, "not a valid ISBN number")
+    end
+  end
 end
