@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :textbooks do
     resources :user_books, as: :book, :path => "book"
   end
+  resources :users
   resources :addresses
   resources :colleges
   resources :karmas

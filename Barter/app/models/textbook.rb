@@ -19,6 +19,7 @@ class Textbook < ActiveRecord::Base
   validate :isbn_length
 
 
+
   def isbn_length
     isbn = self.isbn.gsub("-", "")
     unless isbn.length == 10 || isbn.length == 13
