@@ -1,28 +1,28 @@
-== README
+# Barter
+A friendly platform for exchanging textbooks. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Collaborators 
+Holly Peck 
+holly.m.peck@gmail.com
 
-Things you may want to cover:
+Liz Kalina 
+liz.kalina@gmail.com
 
-* Ruby version
+Sammy Mernick
+smernick3@gmail.com
 
-* System dependencies
+Justin Curhan
+justin.curhan@gmail.com
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+#Technology Used
+- Ruby on Rails
+- JavaScript
+- JQuery 
+- Amazon API 
+- Factory Girl 
+- Faker Gem 
+- Ajax 
+- TDD 
+- MVC Modeling 
+- Unique Pricing Algorithm
+- Bootstrap
