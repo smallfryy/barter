@@ -1,0 +1,11 @@
+<%= @textbook.title %><br>
+<%= @textbook.isbn %>
+
+<ul>
+
+<% @textbook.user_books.each do |book| %>
+  <li>
+    <%= book.condition %>
+  </li>
+<% end %>
+</ul>

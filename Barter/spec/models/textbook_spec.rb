@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: textbooks
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  isbn       :string
+#  edition    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 require_relative "../spec_helper.rb"
 
 RSpec.describe Textbook, type: :model do

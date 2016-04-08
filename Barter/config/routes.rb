@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'users/sign_in', to: 'devise/sessions#new', as: :sign_in
   get 'users/sign_up' => 'devise/registrations#new', as: :sign_up
   get 'users/sign_out' => 'devise/sessions#destroy', as: :sign_out
+  get 'textbooks/search' => 'textbooks#search', as: :search
+
   resources :textbooks do
     resources :user_books, as: :book, :path => "book"
   end
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   resources :colleges
   resources :karmas
   resources :subjects
+
 
   # resources :users
   # The priority is based upon order of creation: first created -> highest priority.
