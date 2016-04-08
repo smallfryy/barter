@@ -15,7 +15,7 @@ class Textbook < ActiveRecord::Base
   has_many :users, through: :user_books
   has_many :textbook_subjects
   has_many :subjects, through: :textbook_subjects
-  # validates :title, :isbn, presence: true
+  validates :title, :isbn, presence: true
   validate :isbn_length
 
 
