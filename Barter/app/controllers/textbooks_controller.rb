@@ -13,7 +13,16 @@ class TextbooksController < ApplicationController
   def search
     search = params[:q]
     @textbook = Textbook.find_by(isbn: search)
-    redirect_to @textbook
+    # if @textbook
+    # else
+    #   render json: {isbn: search}
+    # end
+
+      if @textbook
+        redirect_to @textbook
+      else
+        render json: {isbn: search, success: false}
+      end
   end
 
 

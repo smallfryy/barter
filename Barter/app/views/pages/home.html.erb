@@ -13,5 +13,5 @@
   <%= form_tag(search_path, method: "get", action: 'search') do %>
     <%= label_tag(:q, "Search for:") %>
     <%= text_field_tag(:q) %>
-    <%= submit_tag("Search") %>
+    <%= submit_tag("Search", class: "search") %>
   <% end %>
