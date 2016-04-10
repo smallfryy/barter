@@ -4,8 +4,34 @@
 <ul>
 
 <% @textbook.user_books.each do |book| %>
-  <li>
-    <%= book.condition %>
+  <li id="<%=book.id%>" class="user_book">
+  <%= link_to book.condition, textbook_book_path(@textbook, book) %>
   </li>
 <% end %>
+
+
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Header
+  </div>
+  <div class="content">
+    <div class="left">
+
+      Some content to the left, usually an image or icon
+    </div>
+    <div class="right">
+      Some content to the right
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui button">
+      Cancel
+    </div>
+    <div class="ui button">
+      Okay
+    </div>
+  </div>
+</div>
+
 </ul>

@@ -7,7 +7,6 @@ class TextbooksController < ApplicationController
 
 
   def show
-    binding.pry
   end
 
 

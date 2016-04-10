@@ -13,3 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require app.js
+//= require controllers/textbook_controller.js
+//= require models/textbook.js
+//= require models/user.js
