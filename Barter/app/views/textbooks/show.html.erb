@@ -1,38 +1,71 @@
-<%= @textbook.title %><br>
-<%= @textbook.isbn %>
-
-<ul>
-
-<% @textbook.user_books.each do |book| %>
-  <li id="<%=book.id%>" class="user_book">
-  <%= link_to book.condition, textbook_book_path(@textbook, book) %>
-  </li>
-<% end %>
 
 
-<div class="ui modal">
+
+  <%= @textbook.title %><br>
+  <%= @textbook.isbn %>
+
+
+  <ul>
+
+  <% @textbook.user_books.each do |book| %>
+    <li id="<%=book.id%>" class="user_book">
+    <%= link_to book.condition, textbook_book_path(@textbook, book) %>
+    </li>
+  <% end %>
+  </ul>
+
+
+<div id="newUserBook" user="<%=current_user.id%>" class="ui top attached button">Add a book!</div>
+
+
+<div id ="showUserBook" class="ui basic modal">
   <i class="close icon"></i>
   <div class="header">
   </div>
-  <div class="content">
-    <div class="left">
-
-    Book Image
+  <div class="image content">
+    <div class="image">
+      <i class="archive icon"></i>
     </div>
-    <div class="right">
+    <div class="description">
       <ul>
-
       </ul>
     </div>
   </div>
   <div class="actions">
-    <div class="ui button" id="back">
-      Back
-    </div>
-    <div class="ui button">
-      Add To Cart
+    <div class="two fluid ui inverted buttons">
+      <div class="ui red basic inverted button">
+        <i class="remove icon"></i>
+        No
+      </div>
+      <div class="ui green basic inverted button">
+        <i class="checkmark icon"></i>
+        Yes
+      </div>
     </div>
   </div>
 </div>
 
-</ul>
+<div id="buildUserBook" class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+  </div>
+  <div class="image content">
+    <div class="ui medium image">
+      <img src="/images/avatar/large/chris.jpg">
+    </div>
+    <div class="description">
+      <div class="ui header">Please Select the following information.</div>
+      <p></p>
+      <p>Is it okay to use this photo?</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Nope
+    </div>
+    <div class="ui positive right labeled icon button">
+      Yep, that's me
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>
