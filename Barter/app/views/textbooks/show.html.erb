@@ -9,7 +9,7 @@
 
   <% @textbook.user_books.each do |book| %>
     <li id="<%=book.id%>" class="user_book">
-    <%= link_to book.condition, textbook_book_path(@textbook, book) %>
+    <%= link_to book.condition.name, textbook_book_path(@textbook, book) %>
     </li>
   <% end %>
   </ul>
@@ -26,6 +26,11 @@
     <div class="image">
       <i class="archive icon"></i>
     </div>
+    <select class="ui dropdown">
+  <option value="">Gender</option>
+  <option value="1">Male</option>
+  <option value="0">Female</option>
+</select>
     <div class="description">
       <ul>
       </ul>

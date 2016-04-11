@@ -14,5 +14,6 @@
 class UserBook < ActiveRecord::Base
   belongs_to :user
   belongs_to :textbook
+  belongs_to :condition
 
 end
