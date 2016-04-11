@@ -32,4 +32,24 @@ class User < ActiveRecord::Base
   has_many :addresses, as: :addressable
   validates :first_name, :last_name, :email, presence: true
 
+  def member_since
+    self.created_at.to_formatted_s(:long_ordinal)
+  end
+
+  def last_sign_in
+    self.last_sign_in_at
+  end
+
+  def books_for_sale
+    self.user_books.select{|book| !book.sold}
+  end
+
+  def books_sold
+    self.user_books.select(&:sold)
+  end
+
+  def num_books_sold
+    books_sold.count 
+  end
+
 end

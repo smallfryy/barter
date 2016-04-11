@@ -1,0 +1,20 @@
+<h1><%= @user.first_name %>  <%= @user.last_name %></h1>
+
+<% if @user == current_user %>
+  <h5>Karma Balance: <%= @user.karma.balance %></h5>
+<% end %>
+
+<h4>Member Since: <%= @user.member_since %></h4>
+<h4>Last Sign In: <%= @user.last_sign_in %></h4>
+<h4>College: <%= link_to(@user.college.name, college_path(@user.college_id)) %></h4>
+
+<h4>Books For Sale:</h4>
+<ul>
+  <% @user.books_for_sale.each do |book| %>
+    <li><%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %></li>
+  <% end %>
+</ul>
+
+<h4>Books Sold: <%= @user.num_books_sold %></h4>
+
+<h4> Books Purchased: this will be part of transaction (where user id is buyer) (count)</h4>
