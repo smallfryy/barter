@@ -2,6 +2,9 @@ class TextbooksController < ApplicationController
   before_action :set_textbook, only: [:show]
 
   def index
+    @search = params[:query]
+
+
 
   end
 
@@ -10,20 +13,14 @@ class TextbooksController < ApplicationController
   end
 
 
-  def search
-    search = params[:q]
-    @textbook = Textbook.find_by(isbn: search)
-    # if @textbook
-    # else
-    #   render json: {isbn: search}
-    # end
-
-      if @textbook
-        redirect_to @textbook
-      else
-        render json: {isbn: search, success: false}
-      end
-  end
+  # def search
+  #   # @textbook = Textbook.find_or_create_by(isbn: search)
+  #   # @textbooks = JSON.parse(params[:textbooks])
+  #   #
+  #   #
+  #   render search_path(search)
+  #
+  # end
 
 
 private

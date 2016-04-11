@@ -10,8 +10,8 @@
 <h1>HOMEPAGE</h1>
 
 
-  <%= form_tag(search_path, method: "get", action: 'search') do %>
-    <%= label_tag(:q, "Search for:") %>
-    <%= text_field_tag(:q) %>
+  <%= form_tag(textbooks_path, method: "get",) do %>
+    <%= label_tag(:query, "Search for:") %>
+    <%= text_field_tag(:query) %>
     <%= submit_tag("Search", class: "search") %>
   <% end %>

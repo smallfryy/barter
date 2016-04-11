@@ -1,55 +1,45 @@
 $(function() {
-  $('.user_book').click(app.textbook.controller.show)
-  $('.search').click(app.textbook.controller.create.initialize)
+  app.textbook.controller.create.initialize()
+
 })
 
 
+app.textbook.controller.create = {
+  initialize: function(){
+    var searchVal = $('#query').text();
 
-app.textbook.controller = {
-  show: function(event){
-    event.preventDefault()
-
-    var url = $(this).find('a').attr('href')
-    // $('.modal').modal('show')
     $.ajax({
-      url: url,
+      url: "https://www.googleapis.com/books/v1/volumes?q=" + searchVal + "&maxResults=5",
       method: 'GET'
     }).then(function(response){
-      var user = response.user
-      var textbook = response.textbook
-      var userBook = response.userBook
-      var newUser = new app.user.model.new(user.id, user.email, user.first_name, user.last_name, user.college_id)
-      var newTextbook = new app.textbook.model.new(textbook.id, textbook.title, textbook.edition, textbook.isbn)
-      var newUserBook = new app.userBook.model.new (userBook.id, newUser, newTextbook, userBook.condition, userBook.sold)
+      return _.map(response.items, function(item){
+        // debugger
+        var author = item.volumeInfo.authors[0]
+        var title = item.volumeInfo.title
+        // debugger
+        var edition = "1st"
+        var isbn = '123'
+        // for(var i = 0; i < item.volumeInfo.industryIdentifiers.type.length; i++){
+        //   if (item.volumeInfo.industryIdentifiers.type[i] === "ISBN_13"){
+        //     var isbn = isbn.identifier
+        //   }
+        //   debugger;
+        // }
 
-      app.textbook.controller.modal(newUserBook)
-
+        // var isbn = item.volumeInfo.title[0]
+        // var edition = item.volumeInfo.title[0]
+        return new app.textbook.model.new("no_id", title, author, edition, isbn)
+      })
+    }).then(function(textbooks){
+      _.each(textbooks, function(textbook){
+        app.textbook.controller.create.render(textbook)
+      })
     })
-  },
-    modal: function(userBook){
-      $('.modal .header').append(userBook.textbook.title)
-      $('.modal').modal('show')
-      $('.modal .right ul').append(userBook.condition)
-      // $('.modal .right ul').append(userBook.user.address.state)
-      $('.modal .right ul').append(userBook.user.email)
+    },
+  render: function(textbook){
+    $('.search_results ul').append('<li>' + textbook.title + '</li>')
+
 
   }
 
-}
-
-app.textbook.controller.create = {
-  initialize: function(event){
-    var isbn = $('#q').val()
-
-    $.ajax({
-      url:  '/textbooks/search',
-      method: 'GET',
-      data: {q: isbn}
-    }).then(function(response){
-      if(!response.success){
-      debugger;
-      }
-    })
-
   }
-}

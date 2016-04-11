@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'users/sign_in', to: 'devise/sessions#new', as: :sign_in
   get 'users/sign_up' => 'devise/registrations#new', as: :sign_up
   get 'users/sign_out' => 'devise/sessions#destroy', as: :sign_out
-  get 'textbooks/search' => 'textbooks#search', as: :search
+  post 'textbooks/search/:query' => 'textbooks#search', as: :search
 
   resources :textbooks do
     resources :user_books, as: :book, :path => "book"

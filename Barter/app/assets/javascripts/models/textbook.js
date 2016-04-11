@@ -1,9 +1,10 @@
 app.textbook.model = {
   all: [],
-  new: function Textbook(id, title, edition, isbn) {
+  new: function Textbook(id, title, author, edition, isbn) {
     var self = this;
     this.id = id;
     this.title = title;
+    this.author = author;
     this.edition = edition;
     this.isbn = isbn;
     this.userBooks = function(){

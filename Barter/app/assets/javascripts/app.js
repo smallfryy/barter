@@ -1,5 +1,5 @@
 var app = {
-  textbook: {},
+  textbook: {controller: {}},
   user: {},
   userBook: {}
 }
