@@ -9,6 +9,4 @@ class CollegesController < ApplicationController
   end 
 
 
-
-
 end
