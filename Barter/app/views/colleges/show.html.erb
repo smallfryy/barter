@@ -1,0 +1,9 @@
+<h1><%= @college.name %></h1>
+
+<ul>
+<% @college.user_books.each do |user_book| %>
+<li class="list-books"><%= user_book.textbook.title %></li>
+<% end %>
+</ul>
+
+
