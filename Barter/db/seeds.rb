@@ -16,12 +16,10 @@ UserBook.destroy_all
 User.destroy_all
 Karma.destroy_all
 
-
 sammy = User.create(first_name: "Sammy", last_name: "Mernick", email: "smernick3@gmail.com", password: "funfunfun")
 justin = User.create(first_name: "Justin", last_name: "Curhan", email: "justin.curhan@gmail.com", password: "funfunfun")
 liz = User.create(first_name: "Liz", last_name: "Kalina", email: "liz.kalina@gmail.com", password: "funfunfun")
 holly = User.create(first_name: "Holly", last_name: "Peck", email: "holly.m.peck@gmail.com", password: "funfunfun")
-
 
 
 10.times do
@@ -36,10 +34,14 @@ User.all.each_with_index do |user, i|
   user.addresses << Address.create(street: Faker::Address.street_address, apt_num: Faker::Address.secondary_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, country: "USA")
 end
 
-
 10.times do
   college = College.create(name: Faker::University.name)
   college.address = Address.create(street: Faker::Address.street_address, apt_num: Faker::Address.secondary_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, country: "USA")
+end
+
+User.all.each do |user|
+  user.college = College.all.sample
+  user.save
 end
 
 subject1 = Subject.create(name: "Math")

@@ -1,0 +1,13 @@
+<div class="ui grid">
+  <div class="four wide column"><h1>Colleges</h1>
+  <ul>
+    <% @colleges.each do |college| %>
+    <li class="list-college"><p><%= link_to college.name, college_path(college)  %></p></li><br>
+    <% end %>
+  </ul>
+  </div>
+</div>
+
+
+
+

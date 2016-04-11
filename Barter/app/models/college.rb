@@ -13,4 +13,8 @@ class College < ActiveRecord::Base
   has_many :user_books, through: :users
   has_one :address, as: :addressable
   validates :name, presence: true
+
+
+
+
 end
