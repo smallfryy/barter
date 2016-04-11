@@ -59,8 +59,14 @@ end
   TextbookSubject.create(textbook: Textbook.all.sample, subject: Subject.all.sample)
 end
 
-condition_array = ["Fresh", "Very Good", "Good", "Acceptable", "Trash"]
+
+Condition.create(name: "Fresh")
+Condition.create(name: "Very Good")
+Condition.create(name: "Good")
+Condition.create(name: "Acceptable")
+Condition.create(name: "Trash")
+
 
 100.times do
-  UserBook.create(textbook: Textbook.all.sample, user: User.all.sample, condition: condition_array.sample )
+  UserBook.create(textbook: Textbook.all.sample, user: User.all.sample, condition: Condition.all.sample )
 end

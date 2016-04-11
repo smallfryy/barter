@@ -1,8 +1,10 @@
 $(function() {
   $('.user_book').click(app.userBook.controller.show)
-  $('#back').click(function(){
+  $('.remove icon').click(function(){
     $('.modal').modal('hide')
 })
+$('#newUserBook').click(app.userBook.controller.new)
+
 })
 
 
@@ -28,13 +30,26 @@ app.userBook.controller = {
     })
   },
     modal: function(userBook){
-      $('.modal .header').append(userBook.textbook.title)
-      $('.modal .right ul').append(userBook.condition)
+      // $('.ui.basic.modal').html("")
+      $('.ui.basic.modal .header').empty()
+      $('.ui.basic.modal ul').empty()
+
+      $('.ui.basic.modal .header').append(userBook.textbook.title)
+      $('.ui.basic.modal ul').append('<li>'+ userBook.condition +'</li>')
       // $('.modal .right ul').append(userBook.user.address.state)
-      $('.modal .right ul').append(userBook.user.email)
-      $('.modal').modal('show')
+      $('.ui.basic.modal ul').append('<li>'+userBook.user.email+'</li>')
+
+      $('.ui.basic.modal').modal('show')
+
+
+
+  },
+  new: function(event){
+    event.preventDefault()
+    var user = $('#newUserBook').attr('user')
+    debugger;
+    $('#buildUserBook').modal('show')
 
 
   }
-
 }

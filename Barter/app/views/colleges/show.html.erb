@@ -2,7 +2,7 @@
 
 <ul>
 <% @college.user_books.each do |user_book| %>
-<li class="list-books"><%= user_book.textbook.title %></li>
+<li class="list-books"><%= link_to user_book.textbook.title, textbook_path(user_book.textbook) %></li>
 <% end %>
 </ul>
 
