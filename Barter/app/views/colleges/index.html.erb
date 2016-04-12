@@ -1,13 +1,18 @@
-<div class="ui grid">
-  <div class="four wide column"><h1>Colleges</h1>
-  <ul>
+<h1 class="ui center aligned header">Colleges</h1>
+
+<div class="ui celled grid">
+  <div class="row">
+    <div class="three wide column">
+      <img>
+      </div>
+      <div class="thirteen wide column">
     <% @colleges.each do |college| %>
-    <li class="list-college"><p><%= link_to college.name, college_path(college)  %></p></li><br>
+       <p><%= link_to college.name, college_path(college)  %></p><br>
     <% end %>
-  </ul>
+      </div>
+    </div>
   </div>
 </div>
-
 
 
 
