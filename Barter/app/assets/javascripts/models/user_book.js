@@ -1,17 +1,20 @@
 app.userBook.model = {
   all: [],
-  new: function UserBook(id, user, textbook, condition, sold) {
-    this.id = id;
-    this.user = user;
-    this.textbook = textbook;
-    this.condition = condition;
-    this.sold = sold;
-    var self = this;
-
-    (function initialize(){
-      app.userBook.model.all.push(self);
-    })()
-  },
+  new: (function(){
+      var counter = 0;
+      var userbook = function UserBook(user, textbook, condition, sold) {
+      this.user = user;
+      this.textbook = textbook;
+      this.condition = condition;
+      this.sold = sold;
+      var self = this;
+      (function initialize(){
+        self.id = ++counter;
+        app.userBook.model.all.push(self);
+      })()
+    }
+    return userbook;
+  }()),
   findBy: function findBy(attributeHash){
     var key = Object.keys(attributeHash)[0];
     var value = attributeHash[key];
