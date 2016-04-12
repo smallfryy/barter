@@ -18,8 +18,13 @@ class College < ActiveRecord::Base
     College.joins(:users).joins(:user_books).group("colleges.id").order("COUNT(user_books.id) desc").first
   end
 
-  def books_sold
-   College.joins(:users).joins(:user_books).group("colleges.id").order("COUNT(user_books.id) desc").all.select(&:sold).count
+  def self.number_of_books
+    College.joins(:users).joins(:user_books).group("colleges.id").order("COUNT(user_books.id) desc")
+  end
+
+  def user_books_sold
+   sold_books = College.joins(:users).joins(:user_books).where('user_books.sold = true').group("colleges.id").order("COUNT(user_books.id) desc")
+   sold_books.present? ? sold_books : 0 
   end
 
 end

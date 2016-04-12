@@ -46,11 +46,11 @@ class User < ActiveRecord::Base
   end
 
   def books_for_sale
-    UserBooks.where('sold = true AND user_id = ?' self.id)
+    UserBooks.where('sold = true AND user_id = ?')
   end
 
   def books_sold
-    UserBooks.where('sold = false AND user_id = ?' self.id)
+    UserBooks.where('sold = false AND user_id = ?')
   end
 
   def num_books_sold

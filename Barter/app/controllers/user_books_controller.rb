@@ -3,7 +3,6 @@ class UserBooksController < ApplicationController
   before_action :set_book, only: [:show]
 
 
-
   def show
     @textbook = @user_book.textbook
     @user = @user_book.user

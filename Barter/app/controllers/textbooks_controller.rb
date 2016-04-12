@@ -3,9 +3,6 @@ class TextbooksController < ApplicationController
 
   def index
     @search = params[:query]
-
-
-
   end
 
 
