@@ -46,15 +46,14 @@ class User < ActiveRecord::Base
   end
 
   def books_for_sale
-    self.user_books.select{|book| !book.sold}
+    UserBooks.where('sold = true AND user_id = ?' self.id)
   end
 
   def books_sold
-    self.user_books.select(&:sold)
+    UserBooks.where('sold = false AND user_id = ?' self.id)
   end
 
   def num_books_sold
-    binding.pry
     books_sold.count
   end
 
