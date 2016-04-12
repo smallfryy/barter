@@ -4,6 +4,8 @@ $(function() {
     $('.modal').modal('hide')
 })
 $('#newUserBook').click(app.userBook.controller.new)
+$('#newUserBook').click(app.userBook.controller.new)
+
 
 })
 

@@ -26,11 +26,7 @@
     <div class="image">
       <i class="archive icon"></i>
     </div>
-    <select class="ui dropdown">
-  <option value="">Gender</option>
-  <option value="1">Male</option>
-  <option value="0">Female</option>
-</select>
+
     <div class="description">
       <ul>
       </ul>
@@ -61,16 +57,25 @@
     <div class="description">
       <div class="ui header">Please Select the following information.</div>
       <p></p>
-      <p>Is it okay to use this photo?</p>
+
+      <form action="/textbooks/<%=@textbook.id%>/book" method="POST">
+        <div>
+          Condition of the book:
+         <%= collection_select :condition, :id, Condition.all, :id, :name %>
+       </div>
+
+
     </div>
   </div>
   <div class="actions">
     <div class="ui black deny button">
       Nope
     </div>
-    <div class="ui positive right labeled icon button">
-      Yep, that's me
+    <button id="new_user_book" type="submit" class="ui positive right labeled icon button">
+      Submit
       <i class="checkmark icon"></i>
-    </div>
+    </button>
   </div>
+</form>
+
 </div>
