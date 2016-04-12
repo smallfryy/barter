@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: textbooks
+#
+#  id         :integer          not null, primary key
+#  title      :string
+#  isbn       :string
+#  edition    :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  author     :string
+#
+
 class TextbooksController < ApplicationController
   before_action :set_textbook, only: [:show]
 
