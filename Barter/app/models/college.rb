@@ -14,7 +14,12 @@ class College < ActiveRecord::Base
   has_one :address, as: :addressable
   validates :name, presence: true
 
+  def self.most_popular_college
+    College.joins(:users).joins(:user_books).group("colleges.id").order("COUNT(user_books.id) desc").first
+  end
 
-
+  def books_sold
+   College.joins(:users).joins(:user_books).group("colleges.id").order("COUNT(user_books.id) desc").all.select(&:sold).count
+  end
 
 end
