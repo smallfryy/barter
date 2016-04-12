@@ -16,7 +16,7 @@ class TextbooksController < ApplicationController
 
   def index
     query = params[:query]
-    @books = Adapters::TextbookClient.find_by_name(query)
+    @textbooks = Adapters::TextbookClient.find_by_name(query).compact
   end
 
 
