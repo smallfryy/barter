@@ -1,10 +1,20 @@
 $(function() {
-  $('.user_book').click(app.userBook.controller.show)
+
+
+  $('body').on('click', '.user_book', app.userBook.controller.show)
+
+
+  // $('.user_book').click(app.userBook.controller.show)
   $('.remove icon').click(function(){
     $('.modal').modal('hide')
-})
-$('#newUserBook').click(app.userBook.controller.new)
-$('#newUserBook').click(app.userBook.controller.new)
+  })
+
+
+  $('#newUserBook').click(function(){
+    $('#buildUserBook').modal('show')
+  })
+
+  $('#userBookSubmit').click(app.userBook.controller.new)
 
 
 })
@@ -48,10 +58,25 @@ app.userBook.controller = {
   },
   new: function(event){
     event.preventDefault()
-    var user = $('#newUserBook').attr('user')
-    debugger;
-    $('#buildUserBook').modal('show')
+    var condition_id = $('#condition_id option:selected').val()
+    var url = $('form').attr('action')
 
+    $.ajax({
+      url: url,
+      method: 'POST',
+      data: {condition: condition_id}
+    }).then(function(response){
+      app.userBook.controller.render(response)
+
+    })
+
+
+  },
+  render: function(response){
+    var userBook = response.userBook
+    var condition = response.condition
+    var url = '/textbooks/' + userBook.textbook_id + '/book/' + userBook.id
+    $('ul').append('<li id="'+ response.userBook.id +'" class="user_book"><a href="'+ url +'">' + condition + '</a></li>')
 
   }
 }

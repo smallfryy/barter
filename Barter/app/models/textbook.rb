@@ -25,4 +25,8 @@ class Textbook < ActiveRecord::Base
       errors.add(:isbn, "not a valid ISBN number")
     end
   end
+
+
+
+
 end

@@ -13,12 +13,10 @@ class UserBooksController < ApplicationController
 
 
   def create
-    @user_book = UserBook.new(condition_id: params[:condition][:id], textbook_id: params[:textbook_id], user: current_user)
 
+    @user_book = UserBook.new(condition_id: params[:condition], textbook_id: params[:textbook_id], user: current_user)
     if @user_book.save
-      binding.pry
-
-
+      render json: {userBook: @user_book, condition: @user_book.condition.name}
     end
 
   end
