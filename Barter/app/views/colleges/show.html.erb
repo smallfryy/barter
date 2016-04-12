@@ -1,5 +1,17 @@
 <h1><%= @college.name %></h1>
 
+<!-- Google maps API embedded in College profile page -->
+<!-- Need to incorporate college address -->
+<div class="google-maps">
+<iframe
+  width="500"
+  height="350"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtN0Q7OpzJ2rlsh7oUygFm141Ho98E59g
+    &q=Space+Needle,Seattle+WA" allowfullscreen>
+</iframe>
+</div>
+
 <ul>
 <% @college.user_books.each do |user_book| %>
 <li class="list-books"><%= link_to user_book.textbook.title, textbook_path(user_book.textbook) %></li>
@@ -13,4 +25,6 @@
 <li class="list-students"><%= link_to user.first_name, user_path(user) %></li>
 <% end %>
 </ul>
+
+
 
