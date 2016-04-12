@@ -2,13 +2,13 @@
 #
 # Table name: user_books
 #
-#  id          :integer          not null, primary key
-#  textbook_id :integer
-#  user_id     :integer
-#  sold        :boolean          default("false")
-#  condition   :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id           :integer          not null, primary key
+#  textbook_id  :integer
+#  user_id      :integer
+#  sold         :boolean          default(FALSE)
+#  condition_id :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 require_relative "../spec_helper.rb"

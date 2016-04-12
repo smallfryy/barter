@@ -33,9 +33,9 @@ app.userBook.controller = {
       var user = response.user
       var textbook = response.textbook
       var userBook = response.userBook
-      var newUser = new app.user.model.new(user.id, user.email, user.first_name, user.last_name, user.college_id)
-      var newTextbook = new app.textbook.model.new(textbook.id, textbook.title, textbook.author, textbook.edition, textbook.isbn)
-      var newUserBook = new app.userBook.model.new (userBook.id, newUser, newTextbook, userBook.condition, userBook.sold)
+      var newUser = new app.user.model.new(user.email, user.first_name, user.last_name, user.college_id)
+      var newTextbook = new app.textbook.model.new(textbook.title, textbook.author, textbook.edition, textbook.isbn)
+      var newUserBook = new app.userBook.model.new (newUser, newTextbook, userBook.condition, userBook.sold)
 
       app.userBook.controller.modal(newUserBook)
 

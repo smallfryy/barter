@@ -28,7 +28,7 @@ app.textbook.controller.create = {
 
         // var isbn = item.volumeInfo.title[0]
         // var edition = item.volumeInfo.title[0]
-        return new app.textbook.model.new("no_id", title, author, edition, isbn)
+        return new app.textbook.model.new(title, author, edition, isbn)
       })
     }).then(function(textbooks){
       _.each(textbooks, function(textbook){

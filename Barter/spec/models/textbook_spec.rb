@@ -8,6 +8,7 @@
 #  edition    :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  author     :string
 #
 
 require_relative "../spec_helper.rb"

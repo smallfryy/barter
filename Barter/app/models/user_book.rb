@@ -2,13 +2,13 @@
 #
 # Table name: user_books
 #
-#  id          :integer          not null, primary key
-#  textbook_id :integer
-#  user_id     :integer
-#  sold        :boolean          default("false")
-#  condition   :string
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id           :integer          not null, primary key
+#  textbook_id  :integer
+#  user_id      :integer
+#  sold         :boolean          default(FALSE)
+#  condition_id :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 class UserBook < ActiveRecord::Base
@@ -17,7 +17,7 @@ class UserBook < ActiveRecord::Base
   belongs_to :condition
 
   def self.total_books_sold
-    self.all.select(&:sold).count
+    self.where(sold:true).count
   end
 
 end
