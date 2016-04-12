@@ -26,6 +26,12 @@ class Textbook < ActiveRecord::Base
     end
   end
 
+  def user_books_available
+    binding.pry
+    UserBook.all.where('sold = ? && textbook_id = ?', sold, self.id)
+
+  end
+
 
 
 

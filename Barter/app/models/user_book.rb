@@ -17,7 +17,13 @@ class UserBook < ActiveRecord::Base
   belongs_to :condition
 
   def self.total_books_sold
-    self.all.select(&:sold).count
+    self.where(sold:true).count
   end
+
+  def self.available
+    self.where(sold:false)
+  end
+
+
 
 end
