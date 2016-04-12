@@ -2,10 +2,8 @@ class TextbooksController < ApplicationController
   before_action :set_textbook, only: [:show]
 
   def index
-    @search = params[:query]
-
-
-
+    query = params[:query]
+    @books = Adapters::TextbookClient.find_by_name(query)
   end
 
 
