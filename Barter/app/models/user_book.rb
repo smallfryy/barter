@@ -16,9 +16,4 @@ class UserBook < ActiveRecord::Base
   belongs_to :textbook
   belongs_to :condition
 
-
-  def self.available?
-    binding.pry
-  end
-
 end

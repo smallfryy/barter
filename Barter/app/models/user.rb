@@ -33,11 +33,16 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :email, presence: true
 
   def member_since
-    self.created_at.to_formatted_s(:long_ordinal)
+    self.created_at.to_date.to_formatted_s(:long_ordinal)
   end
 
   def last_sign_in
-    self.last_sign_in_at
+    days = (Date.today - self.last_sign_in_at.to_date).to_i
+    if days == 0
+      return 'Today'
+    else
+      return "#{days} days ago"
+    end
   end
 
   def books_for_sale
@@ -49,7 +54,8 @@ class User < ActiveRecord::Base
   end
 
   def num_books_sold
-    books_sold.count 
+    binding.pry
+    books_sold.count
   end
 
 end
