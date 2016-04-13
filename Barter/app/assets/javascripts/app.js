@@ -1,5 +1,6 @@
 var app = {
   textbook: {controller: {}},
   user: {},
-  userBook: {}
+  userBook: {},
+  cart: {controller: {}}
 }

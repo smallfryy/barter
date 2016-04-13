@@ -25,6 +25,9 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  after_create :setup_cart
+
   has_many :user_books
   has_many :textbooks, through: :user_books
   has_one :karma
@@ -32,6 +35,14 @@ class User < ActiveRecord::Base
   has_many :addresses, as: :addressable
   has_many :carts
   validates :first_name, :last_name, :email, presence: true
+
+  def setup_cart
+    self.carts.build
+  end
+
+  def cart
+    Cart.joins(:user).where(user_id:self.id,active:true).first
+  end
 
   def member_since
     self.created_at.to_date.to_formatted_s(:long_ordinal)
