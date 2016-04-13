@@ -21,8 +21,7 @@ class LineItem < ActiveRecord::Base
   validate :book_not_in_user_cart_twice
 
   def book_not_in_user_cart_twice
-    binding.pry
-    if self.cart.include?(self.user_book)
+    if self.cart.user_books.include?(self.user_book)
       errors.add(:user_book, "This book already exists in cart.")
     end
   end

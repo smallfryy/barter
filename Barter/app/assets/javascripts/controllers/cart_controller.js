@@ -12,10 +12,9 @@ app.cart.controller = {
       url: '/line_items',
       method: 'POST',
       data: {userBookId: userBookId},
-      success: function(){
-        $('#addToCartMessage').append('<h2> Succesfully added to cart </h2>')
-
-      }
+      success: function(response){
+          $('#addToCartMessage').append('<h2> Succesfully added to cart </h2>')
+  
     })
 
 
