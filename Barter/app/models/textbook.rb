@@ -22,7 +22,7 @@ class Textbook < ActiveRecord::Base
 
   def isbn_length
     isbn = self.isbn.gsub("-", "")
-    unless isbn.length == 10 || isbn.length == 13
+    unless isbn.length == 10 || isbn.length == 13 || isbn.length == 8
       errors.add(:isbn, "not a valid ISBN number")
     end
   end

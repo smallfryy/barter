@@ -12,7 +12,9 @@ module Adapters
 
         author = item["volumeInfo"]["authors"].join(", ") if item["volumeInfo"]["authors"].present?
         title = item["volumeInfo"]["title"]
-        isbn = item["volumeInfo"]["industryIdentifiers"].select{|item| item["type"] == "ISBN_13"}.first["identifier"] if item["volumeInfo"]["industryIdentifiers"].present?
+        # isbn = item["volumeInfo"]["industryIdentifiers"].select{|item| item["type"] == "ISBN_13"}.first["identifier"] if item["volumeInfo"]["industryIdentifiers"].present?
+        # binding.pry
+        industry_identifier = connection.returns_industry_identifier(item)
         image_url = item["volumeInfo"]["imageLinks"]["thumbnail"]
         publisher = item["volumeInfo"]["publisher"]
         description = item["volumeInfo"]["description"]
@@ -20,15 +22,15 @@ module Adapters
         # retail_price = item["saleInfo"]["retailPrice"]["amount"]
         publisher_date = item["volumeInfo"]["publishedDate"]
 
-        if isbn.present?
-          textbook = Textbook.find_or_create_by(isbn: isbn)
-          textbook.update(title: title, isbn: isbn, author: author, edition: publisher_date)
+        if industry_identifier.present?
+          textbook = Textbook.find_or_create_by(isbn: industry_identifier)
+          textbook.update(title: title, isbn: industry_identifier, author: author, edition: publisher_date)
           # textbook.subjects << we need to build a find or a create for textbook
         end
-
         textbook
       end
-
     end
   end
+
+
 end
