@@ -9,33 +9,38 @@
 </head>
 
 <script type="text/javascript">
-  var mouse_position;
-  var animating = false;
-  //GET MOUSE POSITION
-  $(document).mousemove(function (e) {
+  // var mouse_position;
+  // var animating = false;
+  // //GET MOUSE POSITION
+  // $(document).mousemove(function (e) {
+  //
+  //     mouse_position = e.clientX;
+  //
+  //     if (mouse_position <= 100) {
+  //         //SLIDE IN MENU
+  //         $('.ui.labeled.icon.sidebar').sidebar('show');
+  //
+  //         console.log('menu shown');
+  //     } else if (mouse_position > 100) {
+  //       $('.ui.labeled.icon.sidebar').sidebar('hide');
+  //
+  //         console.log('menu hidden');
+  //     }
+  // });
+  // $('#click').click(function(){
+  //    $('.ui.labeled.icon.sidebar').sidebar('toggle')
+  //
+  // })
 
-      mouse_position = e.clientX;
-
-      if (mouse_position <= 100) {
-          //SLIDE IN MENU
-          $('.ui.labeled.icon.sidebar').sidebar('show');
-
-          console.log('menu shown');
-      } else if (mouse_position > 100) {
-        $('.ui.labeled.icon.sidebar').sidebar('hide');
-
-          console.log('menu hidden');
-      }
-  });
 </script>
 <body>
-  <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition">
+  <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition visible">
   <a class="item">
     <i class="home icon"></i>
     Home
   </a>
   <a class="item">
-    <i class="block layout icon"></i>
+    <i class="add to cart icon"></i>
     Topics
   </a>
   <a class="item">
@@ -43,6 +48,10 @@
     Friends
   </a>
 </div>
+
+
+
+
   <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
 
