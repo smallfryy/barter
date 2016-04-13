@@ -20,6 +20,10 @@ class TextbooksController < ApplicationController
   end
 
   def show
+    retail_price = Adapters::TextbookClient.find_retail_price(@textbook)
+    if retail_price
+      @textbook.calculate_condition_prices(retail_price)
+    end
   end
 
 
