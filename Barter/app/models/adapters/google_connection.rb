@@ -12,12 +12,12 @@ module Adapters
     end
 
     def query(query)
-      connection.get("https://www.googleapis.com/books/v1/volumes?q=#{query}&maxResults=5")
+      connection.get("https://www.googleapis.com/books/v1/volumes?q=#{query}&maxResults=10")
     end
 
     def returns_industry_identifier(item) #figure out where to put later
       unique_id = item["volumeInfo"]["industryIdentifiers"]
-
+      # validates presence of
       if unique_id
         if unique_id.select{|item| item["type"] == "ISBN_13"}.first.present?
           unique_id.select{|item| item["type"] == "ISBN_13"}.first["identifier"]
