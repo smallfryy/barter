@@ -10,4 +10,18 @@
 #
 
 class CartsController < ApplicationController
+
+  def index
+    @cart = current_user.cart
+    render 'show'
+  end
+
+  #
+  # def show
+  #
+  #
+  #
+  # end
+
+
 end

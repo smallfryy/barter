@@ -15,7 +15,6 @@ class TextbooksController < ApplicationController
   before_action :set_textbook, only: [:show]
 
   def index
-    binding.pry
     query = params[:query]
     @textbooks = Adapters::TextbookClient.find_textbooks(query)
   end

@@ -1,0 +1,9 @@
+<%=@cart.user.first_name%> Cart
+<ul>
+
+<%@cart.line_items.each do |item|%>
+<li>  <%=item.user_book.textbook.title%>
+</li>
+  <%end%>
+
+</ul>
