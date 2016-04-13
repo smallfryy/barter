@@ -9,24 +9,24 @@
 </head>
 
 <script type="text/javascript">
-  var mouse_position;
-  var animating = false;
-  //GET MOUSE POSITION
-  $(document).mousemove(function (e) {
+  // var mouse_position;
+  // var animating = false;
+  // //GET MOUSE POSITION
+  // $(document).mousemove(function (e) {
 
-      mouse_position = e.clientX;
+  //     mouse_position = e.clientX;
 
-      if (mouse_position <= 100) {
-          //SLIDE IN MENU
-          $('.ui.labeled.icon.sidebar').sidebar('show');
+  //     if (mouse_position <= 100) {
+  //         //SLIDE IN MENU
+  //         $('.ui.labeled.icon.sidebar').sidebar('show');
 
-          console.log('menu shown');
-      } else if (mouse_position > 100) {
-        $('.ui.labeled.icon.sidebar').sidebar('hide');
+  //         console.log('menu shown');
+  //     } else if (mouse_position > 100) {
+  //       $('.ui.labeled.icon.sidebar').sidebar('hide');
 
-          console.log('menu hidden');
-      }
-  });
+  //         console.log('menu hidden');
+  //     }
+  // });
 </script>
 <body>
   <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition">

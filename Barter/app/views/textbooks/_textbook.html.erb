@@ -1,3 +1,10 @@
-<div> <%= link_to textbook.title, textbook_path(textbook) %> </div>
-<div> <%= textbook.author %> </div>
-<div> <%= textbook.isbn %> </div>
+<div class="four wide column">
+<%= link_to image_tag(textbook.img_url), textbook_path(textbook) %></div>
+<div class="nine wide column">
+<p><%= link_to textbook.title, textbook_path(textbook) %></p>
+<p><%= textbook.author %></p>
+<p><%= textbook.isbn %></p>
+</div>
+<div class="three wide column">
+</div>
+
