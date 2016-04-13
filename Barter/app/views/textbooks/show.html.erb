@@ -1,9 +1,21 @@
 <h1 class="ui center aligned header">
     <%= @textbook.title %><br></h1>
-  <h3 class="ui center aligned header">
+  <h3 class="ui center aligned header" id="isbn-for-price">
   <%= @textbook.isbn %></h3>
   </div>
   <div class="ui medium image"> <%=image_tag(@textbook.img_url) %></div>
+
+<div class="pricing-info">
+  <% if @condition_prices %>
+    <h3>Fresh: $<%= @condition_prices[0] %><h3>
+    <h3>Very Good: $<%= @condition_prices[1] %><h3>
+    <h3>Good: $<%= @condition_prices[2] %><h3>
+    <h3>Acceptable: $<%= @condition_prices[3] %><h3>
+    <h3>Trash: $<%= @condition_prices[4] %><h3>
+  <% else %>
+    <h3> Please inquire with seller about pricing. <h3>
+  <% end %>
+</div>
 
 <div class="ui container">
   <ul>

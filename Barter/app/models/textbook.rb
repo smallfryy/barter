@@ -27,7 +27,27 @@ class Textbook < ActiveRecord::Base
     end
   end
 
+  def calculate_condition_prices(retail_price)
+    depreciation = 0
+    semester_in_months = 6
+    condition_hash = {fresh: retail_price, very_good: 0, good: 0, acceptable: 0, trash: 0}
+    conditions = condition_hash.keys
+    condition_hash.each_with_index do |(condition, price), index|
+      if index < 4
+        depreciation = ((price - depreciation)*2)/semester_in_months
+        condition_hash[conditions[index + 1]] = price - depreciation
+      end
+    end
+    final_condition_prices(condition_hash)
+  end
 
+  def final_condition_prices(condition_hash)
+    condition_hash.map do |condition, price|
+      price.round(2)
+    end
+  end
+   
 
+  # write a method for how many times a book has been exchanged
 
 end

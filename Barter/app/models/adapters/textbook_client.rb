@@ -36,7 +36,13 @@ module Adapters
         textbook
       end
     end
+
+    def self.find_retail_price(textbook)
+      price_information = connection.query(textbook.isbn)
+      retail_price = price_information["items"].first["saleInfo"]["retailPrice"]
+      if retail_price && retail_price["currencyCode"] == "USD"
+        retail_price["amount"]
+      end
+    end
   end
-
-
 end
