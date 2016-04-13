@@ -37,11 +37,11 @@ app.userBook.controller = {
       var newTextbook = new app.textbook.model.new(textbook.title, textbook.author, textbook.edition, textbook.isbn)
       var newUserBook = new app.userBook.model.new (newUser, newTextbook, userBook.condition, userBook.sold)
 
-      app.userBook.controller.modal(newUserBook)
+      app.userBook.controller.modal(newUserBook, response.userBook.id)
 
     })
   },
-    modal: function(userBook){
+    modal: function(userBook, userBookId){
       // $('.ui.basic.modal').html("")
       $('.ui.basic.modal .header').empty()
       $('.ui.basic.modal ul').empty()
@@ -52,6 +52,7 @@ app.userBook.controller = {
       $('.ui.basic.modal ul').append('<li>'+userBook.user.email+'</li>')
 
       $('.ui.basic.modal').modal('show')
+      $('#addToCart').attr('userBookId', userBookId)
 
 
 

@@ -15,4 +15,13 @@
 #
 
 class LineItemsController < ApplicationController
+
+  def create
+    @user_book = UserBook.find(params[:userBookId])
+    @line_item = LineItem.create(user_book: @user_book, buyer_id: current_user.id, cart: current_user.cart)
+
+    render json: {lineItem: @line_item}
+
+  end
+
 end

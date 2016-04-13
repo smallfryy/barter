@@ -15,16 +15,18 @@ module Adapters
       information["items"].collect do |item|
 
         author = item["volumeInfo"]["authors"].join(", ") if item["volumeInfo"]["authors"].present?
-        title = item["volumeInfo"]["title"]
+        title = item["volumeInfo"]["title"] if item["volumeInfo"]["title"].present?
         # isbn = item["volumeInfo"]["industryIdentifiers"].select{|item| item["type"] == "ISBN_13"}.first["identifier"] if item["volumeInfo"]["industryIdentifiers"].present?
         # binding.pry
         industry_identifier = connection.returns_industry_identifier(item)
-        img_url = item["volumeInfo"]["imageLinks"]["thumbnail"]
-        publisher = item["volumeInfo"]["publisher"]
-        description = item["volumeInfo"]["description"]
-        subject = item["volumeInfo"]["categories"]
+        img_url = item["volumeInfo"]["imageLinks"]["thumbnail"] if item["volumeInfo"]["imageLinks"].present?
+        publisher = item["volumeInfo"]["publisher"] if item["volumeInfo"]["publisher"].present?
+        description = item["volumeInfo"]["description"] if item["volumeInfo"]["description"].present?
+        subject = item["volumeInfo"]["categories"] if description = item["volumeInfo"]["categories"] if item["volumeInfo"]["description"].present?
+
         # retail_price = item["saleInfo"]["retailPrice"]["amount"]
-        published_date = item["volumeInfo"]["publishedDate"]
+        published_date = item["volumeInfo"]["publishedDate"] if item["volumeInfo"]["publishedDate"].present?
+
 
         if industry_identifier.present?
           textbook = Textbook.find_or_create_by(isbn: industry_identifier)
@@ -34,7 +36,13 @@ module Adapters
         textbook
       end
     end
+
+    def self.find_retail_price(textbook)
+      price_information = connection.query(textbook.isbn)
+      retail_price = price_information["items"].first["saleInfo"]["retailPrice"]
+      if retail_price && retail_price["currencyCode"] == "USD"
+        retail_price["amount"]
+      end
+    end
   end
-
-
 end
