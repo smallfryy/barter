@@ -18,17 +18,22 @@
 </div>
 
 <div class="ui container">
-  <ul>
-  <% @textbook.user_books.each do |book| %>
-    <li id="<%=book.id%>" class="user_book">
-    <%= link_to book.condition.name, textbook_book_path(@textbook, book) %>
-    </li>
-  <% end %>
-  </ul>
+  <% if !@textbook.user_books.empty? %>
+    <h3>There are <%=@textbook.user_books.count %> copies of <%= @textbook.title %> available for sale:<h3>
+    <ul>
+    <% @textbook.user_books.each do |book| %>
+      <li id="<%=book.id%>" class="user_book">
+      <%= link_to book.condition.name, textbook_book_path(@textbook, book) %> - listed by <%= book.user.first_name %> (<%= book.user.num_books_sold %> books sold), <%= book.listing_days_ago %>.
+      </li>
+    <% end %>
+    </ul>
+  <% else %>
+    <h3>Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h3><br>
+  <% end %> 
 </div>
 
 
-<div id="newUserBook" class="ui top attached button">Add a book!</div>
+<div id="newUserBook" class="ui top attached button">Sell a copy of this book!</div>
 
 
 

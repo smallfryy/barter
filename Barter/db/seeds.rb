@@ -16,11 +16,34 @@ UserBook.destroy_all
 User.destroy_all
 Karma.destroy_all
 
+
+# ADMIN SEEDS
+
 sammy = User.create(first_name: "Sammy", last_name: "Mernick", email: "smernick3@gmail.com", password: "funfunfun")
 justin = User.create(first_name: "Justin", last_name: "Curhan", email: "justin.curhan@gmail.com", password: "funfunfun")
 liz = User.create(first_name: "Liz", last_name: "Kalina", email: "liz.kalina@gmail.com", password: "funfunfun")
 holly = User.create(first_name: "Holly", last_name: "Peck", email: "holly.m.peck@gmail.com", password: "funfunfun")
 
+
+# DEMONSTRATION SEEDS
+
+justin.addresses << Address.create(street: "11 Broadway", apt_num: "Apt 1", city: "New York", state: "NY", zip: "10004", country: "USA")
+college = College.create(name: "University of Pennsylvania")
+college.address = Address.create(street: "1 College Hall", city: "Philadelphia", state: "PA", zip: "19104", country: "USA")
+psych_101 = Textbook.create(title: "Psych 101", isbn: "9781440543937")
+fresh = Condition.create(name: "Fresh")
+very_good = Condition.create(name: "Very Good")
+good = Condition.create(name: "Good")
+acceptable = Condition.create(name: "Acceptable")
+trash = Condition.create(name: "Trash")
+UserBook.create(textbook: psych_101, user: sammy, condition: fresh )
+UserBook.create(textbook: psych_101, user: liz, condition: very_good )
+UserBook.create(textbook: psych_101, user: holly, condition: good )
+UserBook.create(textbook: psych_101, user: sammy, condition: good )
+UserBook.create(textbook: psych_101, user: liz, condition: acceptable )
+UserBook.create(textbook: psych_101, user: holly, condition: trash )
+
+# FAKER DATA
 
 10.times do
   User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: "funfunfun")
