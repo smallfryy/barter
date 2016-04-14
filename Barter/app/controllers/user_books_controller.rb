@@ -25,9 +25,11 @@ class UserBooksController < ApplicationController
 
 
   def create
-
+    # with action mailer
+    @user = current_user
     @user_book = UserBook.new(condition_id: params[:condition], textbook_id: params[:textbook_id], user: current_user)
     if @user_book.save
+      UserMailer.add_user_book(@user).deliver_later
       render json: {userBook: @user_book, condition: @user_book.condition.name}
     end
 
