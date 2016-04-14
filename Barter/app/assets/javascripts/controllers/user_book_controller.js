@@ -45,7 +45,7 @@ app.userBook.controller = {
       // $('.ui.basic.modal').html("")
       $('.ui.basic.modal .header').empty()
       $('.ui.basic.modal ul').empty()
-
+      // $('#addToCartMessage').empty();
       $('.ui.basic.modal .header').append(userBook.textbook.title)
       $('.ui.basic.modal ul').append('<li>'+ userBook.condition +'</li>')
       // $('.modal .right ul').append(userBook.user.address.state)

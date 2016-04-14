@@ -20,4 +20,8 @@ class UserBook < ActiveRecord::Base
     self.where(sold:true).count
   end
 
+  def current_price
+    Adapters::TextbookClient.find_retail_price(self.textbook)
+  end
+  
 end
