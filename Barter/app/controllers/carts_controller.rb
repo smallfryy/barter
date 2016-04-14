@@ -17,13 +17,6 @@ class CartsController < ApplicationController
     render 'show'
   end
 
-  #
-  # def show
-  #
-  #
-  #
-  # end
-
   def update
     binding.pry
     # set item_karma per list item

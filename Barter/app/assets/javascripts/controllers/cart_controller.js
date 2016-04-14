@@ -1,5 +1,6 @@
 $(function(){
   $('#addToCart').click(app.cart.controller.createLineItem)
+  $('.remove-item').click(app.cart.controller.removeFromCart)
 })
 
 
@@ -15,8 +16,23 @@ app.cart.controller = {
       success: function(response){
           $('#addToCartMessage').empty();
         if (!_.isNull(response.lineItem.id)){
-          debugger
           $('#addToCartMessage').append('<h2> Succesfully added to cart </h2>')
+        }
+
+      }
+    })
+  },
+  removeFromCart: function(event){
+    event.preventDefault();
+    lineItemId = $(this).attr('line-item-id')
+      $.ajax({
+      url: '/line_items/' + lineItemId,
+      method: 'DELETE',
+      success: function(response){
+        if (!_.isNull(response.lineItemId)){
+          id = response.lineItemId
+          debugger
+          $('#cart-item-' + id).empty();
         }
 
       }

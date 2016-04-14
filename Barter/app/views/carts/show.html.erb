@@ -1,6 +1,8 @@
-<%=@cart.user.first_name%> Cart
+<h1><%=@cart.user.first_name%>'s Cart</h1>
 
-<%= render partial: "user_book", collection: @cart.user_books, as: :item %>
+<div class="ui grid">
+<%= render partial: "line_item", collection: @cart.line_items, as: :item %>
+</div>
 
 <%= form_tag(cart_path(@cart), method: :patch) do %>
   <%= submit_tag "Buy Books Now"%>
