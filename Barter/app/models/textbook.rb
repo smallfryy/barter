@@ -42,6 +42,7 @@ class Textbook < ActiveRecord::Base
   end
 
   def final_condition_prices(condition_hash)
+    binding.pry
     condition_hash.map do |condition, price|
       "%.2f" % price
     end

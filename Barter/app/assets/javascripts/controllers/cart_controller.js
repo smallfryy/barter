@@ -18,11 +18,11 @@ app.cart.controller = {
           debugger
           $('#addToCartMessage').append('<h2> Succesfully added to cart </h2>')
         }
-    }
 
 
-  })
+    })
+
+  }
 
 }
 
-}
