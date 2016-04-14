@@ -1,6 +1,5 @@
 module Adapters
   class TextbookClient
-    # activerecord for an API
 
     def self.connection
       @connection ||= Adapters::GoogleConnection.new()

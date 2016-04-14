@@ -20,4 +20,13 @@ class UserBook < ActiveRecord::Base
     self.where(sold:true).count
   end
 
+  def listing_days_ago
+    days = (Date.today - self.created_at.to_date).to_i
+    if days == 0
+      return 'Today'
+    else
+      return "#{days} days ago"
+    end
+  end
+
 end
