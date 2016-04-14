@@ -38,15 +38,17 @@ class Textbook < ActiveRecord::Base
         condition_hash[conditions[index + 1]] = price - depreciation
       end
     end
-    final_condition_prices(condition_hash)
+    # binding.pry
+    # final_condition_prices(condition_hash)
+    condition_hash
   end
 
-  def final_condition_prices(condition_hash)
-    condition_hash.map do |condition, price|
-      "%.2f" % price
-    end
-  end
-   
+  # def final_condition_prices(condition_hash)
+  #   condition_hash.map do |condition, price|
+  #     "%.2f" % price
+  #   end
+  # end
+
 
   # write a method for how many times a book has been exchanged
 

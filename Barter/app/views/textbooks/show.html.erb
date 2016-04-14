@@ -7,11 +7,11 @@
 
 <div class="pricing-info">
   <% if @condition_prices %>
-    <h3>Fresh: $<%= @condition_prices[0] %><h3>
-    <h3>Very Good: $<%= @condition_prices[1] %><h3>
-    <h3>Good: $<%= @condition_prices[2] %><h3>
-    <h3>Acceptable: $<%= @condition_prices[3] %><h3>
-    <h3>Trash: $<%= @condition_prices[4] %><h3>
+    <h3>Fresh: <%= number_to_currency(@condition_prices[:fresh]) %><h3>
+    <h3>Very Good: <%= number_to_currency(@condition_prices[:very_good]) %><h3>
+    <h3>Good: <%= number_to_currency(@condition_prices[:good]) %><h3>
+    <h3>Acceptable: <%= number_to_currency(@condition_prices[:acceptable]) %><h3>
+    <h3>Trash: <%= number_to_currency(@condition_prices[:trash]) %><h3>
   <% else %>
     <h3> Please inquire with seller about pricing. <h3>
   <% end %>
