@@ -77,6 +77,7 @@ app.userBook.controller = {
     var userBook = response.userBook
     var condition = response.condition
     var url = '/textbooks/' + userBook.textbook_id + '/book/' + userBook.id
+
     $('ul').append('<li id="'+ response.userBook.id +'" class="user_book"><a href="'+ url +'">' + condition + '</a></li>')
 
   }

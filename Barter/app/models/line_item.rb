@@ -26,4 +26,8 @@ class LineItem < ActiveRecord::Base
     end
   end
 
+  def seller
+    self.user_book.user
+  end
+
 end
