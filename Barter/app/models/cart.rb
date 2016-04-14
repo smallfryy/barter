@@ -23,4 +23,23 @@ class Cart < ActiveRecord::Base
     end
   end
 
+  # set item_karma per list item
+  # calculate total price of order
+  # convert total price to karma
+    # subtract karma from buyer
+    # add karma to seller
+  # deactive current cart
+  # create new cart for buyer
+  # set list item as purchased
+  # set user_book sold to true
+
+  def complete_transaction
+
+  end
+
+
+
+
+
+
 end

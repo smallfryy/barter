@@ -42,7 +42,7 @@ RSpec.describe Textbook, type: :model do
 
     it "has multilpe users, through user_books" do
       #  textbook.users will return all instances of users, even if a user is selling mutliple coppies of hte same book. that user will be counted for each time they sell book.
-    
+
       expect(textbook.users.uniq.count).to eq(2)
     end
 

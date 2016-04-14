@@ -16,7 +16,7 @@ app.textbook.model = {
         app.textbook.model.all.push(self);
       })()
      }
-     return textbook; 
+     return textbook;
   }()),
   findBy: function findBy(attributeHash){
     var key = Object.keys(attributeHash)[0];

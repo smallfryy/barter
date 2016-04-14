@@ -29,4 +29,7 @@ class UserBook < ActiveRecord::Base
     end
   end
 
+  def current_price
+    Adapters::TextbookClient.find_retail_price(self.textbook)
+  end
 end
