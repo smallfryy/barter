@@ -17,13 +17,6 @@ class CartsController < ApplicationController
     render 'show'
   end
 
-  #
-  # def show
-  #
-  #
-  #
-  # end
-
   def update
     # set item_karma per list item
     # calculate total price of order

@@ -1,3 +1,4 @@
+
 # == Schema Information
 #
 # Table name: users
@@ -40,6 +41,10 @@ class User < ActiveRecord::Base
     self.carts.build
   end
 
+  def name_w_initial
+    "#{first_name} #{last_name.first}."
+  end
+
   def cart
     Cart.where(user_id:self.id,active:true).first
   end
@@ -61,7 +66,7 @@ class User < ActiveRecord::Base
     UserBook.where('sold = true AND user_id = ?', self.id)
   end
 
-  def books_sold
+  def books_for_sale
     UserBook.where('sold = false AND user_id = ?', self.id)
   end
 

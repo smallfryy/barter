@@ -17,11 +17,11 @@
   <% end %>
 </div>
 
-<div class="ui container" id="noBook">
+<div class="ui container" id="book_div">
   <% if !@textbook.user_books.empty? %>
-    <h3>There are <%=@textbook.user_books.count %> copies of <%= @textbook.title %> available for sale:<h3>
+    <h3 id="book_info">There are <%=@textbook.user_books.count %> copies of <%= @textbook.title %> available for sale:<h3>
   <% else %>
-    <h3>Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h3><br>
+    <h3 id="book_info">Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h3><br>
   <% end %>
 </div>
 
@@ -32,6 +32,7 @@
   </li>
 <% end %>
 </ul>
+
 
 
 <div id="newUserBook" class="ui top attached button">Sell a copy of this book!</div>

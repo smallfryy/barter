@@ -17,6 +17,7 @@
 class LineItem < ActiveRecord::Base
   belongs_to :cart
   belongs_to :user_book
+  has_one :textbook, through: :user_book
   belongs_to :buyer, :foreign_key => :id, class_name: 'User'
   validate :book_not_in_user_cart_twice
 
@@ -28,6 +29,7 @@ class LineItem < ActiveRecord::Base
 
   def seller
     self.user_book.user
+
   end
 
 end
