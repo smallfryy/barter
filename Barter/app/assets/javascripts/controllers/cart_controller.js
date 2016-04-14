@@ -13,11 +13,12 @@ app.cart.controller = {
       method: 'POST',
       data: {userBookId: userBookId},
       success: function(response){
+        debugger;
           $('#addToCartMessage').append('<h2> Succesfully added to cart </h2>')
-  
-    })
+
+    }
 
 
-  }
-
+  })
+}
 }
