@@ -32,6 +32,7 @@ RSpec.describe Address, type: :model do
     it 'address can belong to a user' do
       binding.pry
     expect(user.addresses.first.addressable_type).to eq("User")
+
     end
   end
 

@@ -16,6 +16,8 @@ require_relative "../spec_helper.rb"
 
 
 RSpec.describe UserBook, type: :model do
+require 'rails_helper'
+
 
   textbook = Textbook.create(title: "Math 101", isbn: Faker::Code.isbn)
   user = User.create(first_name: "Holly", last_name: "Peck", email: "holly.m.peck@gmail.com", password: "funfunfun")

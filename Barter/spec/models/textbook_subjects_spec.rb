@@ -19,9 +19,6 @@ RSpec.describe TextbookSubject, type: :model do
       expect(text_sub1.subject.name).to eq("Math")
     end
 
-
-
-
   end
 
 
