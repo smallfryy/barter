@@ -24,4 +24,11 @@ class LineItemsController < ApplicationController
 
   end
 
+  def destroy
+    @line_item_id = params[:id]
+    LineItem.delete(@line_item_id)
+
+    render json: {lineItemId: @line_item_id}
+  end
+
 end

@@ -1,0 +1,13 @@
+<div id="cart-item-<%= item.id %>">
+  <div class="four wide column">
+  <%= link_to image_tag(item.textbook.img_url), textbook_path(item.textbook) %>
+  </div>
+  <div class="nine wide column">
+  <p class="remove-item" line-item-id="<%= item.id %>">delete</p>
+  <p>Seller: <%=item.seller %> </p>
+  <p>Condition: <%=item.user_book.condition.name%></p>
+  <p>Price: <%=item.user_book.current_price %></p>
+  </div>
+  <div class="three wide column">
+  </div>
+</div>
