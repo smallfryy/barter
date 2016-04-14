@@ -43,7 +43,7 @@ class Textbook < ActiveRecord::Base
 
   def final_condition_prices(condition_hash)
     condition_hash.map do |condition, price|
-      price.round(2)
+      "%.2f" % price
     end
   end
    

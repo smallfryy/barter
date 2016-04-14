@@ -15,10 +15,9 @@
 #  updated_at       :datetime         not null
 #
 
-require_relative "../spec_helper.rb"
+require 'rails_helper'
 
-RSpec.describe Address, type: :model do
-  DatabaseCleaner.clean
+describe Address do
 
 
   user = User.create(first_name: "Holly", last_name: "Peck", email: "holly.m.peck@gmail.com", password: "funfunfun")
