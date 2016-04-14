@@ -1,3 +1,4 @@
+
 # == Schema Information
 #
 # Table name: users
@@ -38,6 +39,10 @@ class User < ActiveRecord::Base
 
   def setup_cart
     self.carts.build
+  end
+
+  def name_w_initial
+    "#{first_name} #{last_name.first}."
   end
 
   def cart

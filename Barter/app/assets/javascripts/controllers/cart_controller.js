@@ -31,7 +31,6 @@ app.cart.controller = {
       success: function(response){
         if (!_.isNull(response.lineItemId)){
           id = response.lineItemId
-          debugger
           $('#cart-item-' + id).empty();
         }
 
