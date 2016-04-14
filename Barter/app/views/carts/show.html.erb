@@ -1,9 +1,7 @@
 <%=@cart.user.first_name%> Cart
-<ul>
 
-<%@cart.line_items.each do |item|%>
-<li>  <%=item.user_book.textbook.title%>
-</li>
-  <%end%>
+<%= render partial: "user_book", collection: @cart.user_books, as: :item %>
 
-</ul>
+<%= form_tag(cart_path(@cart), method: :patch) do %>
+  <%= submit_tag "Buy Books Now"%>
+<% end %>

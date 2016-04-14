@@ -20,4 +20,14 @@ class UserBook < ActiveRecord::Base
     self.where(sold:true).count
   end
 
+  def current_price
+    retail_price = Adapters::TextbookClient.find_retail_price(self.textbook)
+    if retail_price
+      @condition_prices = self.textbook.calculate_condition_prices(retail_price)
+      @condition_prices[self.condition.name.downcase.to_sym]
+      binding.pry
+    end
+  end
+
+
 end

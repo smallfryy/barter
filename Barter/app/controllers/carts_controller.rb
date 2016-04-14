@@ -11,8 +11,9 @@
 
 class CartsController < ApplicationController
 
+  before_action :set_cart
+
   def index
-    @cart = current_user.cart
     render 'show'
   end
 
@@ -23,5 +24,24 @@ class CartsController < ApplicationController
   #
   # end
 
+  def update
+    binding.pry
+    # set item_karma per list item
+    # calculate total price of order
+    # convert total price to karma
+      # subtract karma from buyer
+      # add karma to seller
+    # deactive current cart
+    # create new cart for buyer
+    # set list item as purchased
+    # set user_book sold to true
+    @cart.complete_transaction
+  end
+
+  private
+
+    def set_cart
+      @cart = current_user.cart
+    end
 
 end
