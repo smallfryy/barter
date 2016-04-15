@@ -18,7 +18,6 @@ class CartsController < ApplicationController
   end
 
   def update
-    binding.pry
     # set item_karma per list item
     # calculate total price of order
     # convert total price to karma
@@ -28,7 +27,8 @@ class CartsController < ApplicationController
     # create new cart for buyer
     # set list item as purchased
     # set user_book sold to true
-    @cart.complete_transaction
+    @cart.complete_transaction(current_user)
+    binding.pry
   end
 
   private
