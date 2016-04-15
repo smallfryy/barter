@@ -9,67 +9,73 @@
 </head>
 
 <script type="text/javascript">
-  // var mouse_position;
-  // var animating = false;
-  // //GET MOUSE POSITION
-  // $(document).mousemove(function (e) {
-  //
-  //     mouse_position = e.clientX;
-  //
-  //     if (mouse_position <= 100) {
-  //         //SLIDE IN MENU
-  //         $('.ui.labeled.icon.sidebar').sidebar('show');
-  //
-  //         console.log('menu shown');
-  //     } else if (mouse_position > 100) {
-  //       $('.ui.labeled.icon.sidebar').sidebar('hide');
-  //
-  //         console.log('menu hidden');
-  //     }
-  // });
-  // $('#click').click(function(){
-  //    $('.ui.labeled.icon.sidebar').sidebar('toggle')
-  //
-  // })
 
+$(function(){
+  $('#buttonPress').click(function(){
 
-  //     mouse_position = e.clientX;
+    $('.ui.labeled.icon.sidebar').sidebar('toggle');
+  })
+})
 
-  //     if (mouse_position <= 100) {
-  //         //SLIDE IN MENU
-  //         $('.ui.labeled.icon.sidebar').sidebar('show');
-
-  //         console.log('menu shown');
-  //     } else if (mouse_position > 100) {
-  //       $('.ui.labeled.icon.sidebar').sidebar('hide');
-
-  //         console.log('menu hidden');
-  //     }
-  // });
 </script>
-<!-- <body>
-  <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition visible">
-  <a class="item">
+
+<div class="ui fixed inverted main menu">
+    <a class="launch icon item">
+      <button id="buttonPress" class="content icon"></button>
+    </a>
+
+      <div class="item">
+        Sidebar
+      </div>
+
+    <div class="right menu">
+
+      <div class="vertically fitted borderless item">
+        <iframe class="github" src="http://ghbtns.com/github-btn.html?user=semantic-org&amp;repo=semantic-ui&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+      </div>
+    </div>
+</div>
+
+
+<body>
+  <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition ">
+  <a href="<%=root_path%>" class="item">
     <i class="home icon"></i>
     Home
   </a>
-  <a class="item">
+  <a href="<%=user_path(current_user)%>" class="item">
     <i class="add to cart icon"></i>
-    Topics
+    Profile
   </a>
-  <a class="item">
+  <a href="<%=cart_path(current_user.cart)%>"class="item">
     <i class="smile icon"></i>
-    Friends
+    Cart
   </a>
-</div> -->
+</div>
+
+
+<div class="ui page grid main">
+  <div class="row">
+    <div class="column padding-reset">
+      <div class="ui large message">
+
+
+
+          <p class="notice"><%= notice %></p>
+           <p class="alert"><%= alert %></p>
+
+        <%= yield %>
+
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
 
-  <p class="notice"><%= notice %></p>
-   <p class="alert"><%= alert %></p>
 
-<%= yield %>
 
 </body>
 </html>
