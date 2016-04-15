@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css"/>
+
 
 </head>
 
@@ -21,11 +23,11 @@ $(function(){
 
 <div class="ui fixed inverted main menu">
     <a class="launch icon item">
-      <button id="buttonPress" class="content icon"></button>
+      <i id="buttonPress" class="content icon"></i>
     </a>
 
       <div class="item">
-        Sidebar
+        Bibliotech
       </div>
 
     <div class="right menu">
@@ -44,11 +46,15 @@ $(function(){
     Home
   </a>
   <a href="<%=user_path(current_user)%>" class="item">
-    <i class="add to cart icon"></i>
+    <i class="student icon"></i>
     Profile
   </a>
+  <a href="<%=college_path(current_user.college)%>"class="item">
+    <i class="university icon"></i>
+    College
+  </a>
   <a href="<%=cart_path(current_user.cart)%>"class="item">
-    <i class="smile icon"></i>
+    <i class="add to cart icon"></i>
     Cart
   </a>
 </div>

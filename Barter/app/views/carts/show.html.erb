@@ -4,3 +4,7 @@
 <%= render partial: "line_item", collection: @cart.line_items, as: :item %>
 </div>
 
+<%= form_tag(cart_path(@cart), method: :patch) do %>
+    <%= collection_select :address, :id, @addresses, :id, :street %> 
+  <%= submit_tag "Buy Books Now"%>
+<% end %>
