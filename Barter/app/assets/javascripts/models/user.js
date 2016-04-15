@@ -2,8 +2,9 @@ app.user.model = {
   all: [],
   new: (function(){
     var counter = 0;
-    var user = function User(email, first_name, last_name, college_id) {
+    var user = function User(id, email, first_name, last_name, college_id) {
       var self = this;
+      this.id = id
       this.email = email;
       this.firstName = first_name;
       this.lastName = last_name;
@@ -12,7 +13,6 @@ app.user.model = {
       //   return app.userBook.model.findBy({user: self})
       // };
       (function initialize(){
-        self.id = ++counter;
         app.user.model.all.push(self);
       })()
     }

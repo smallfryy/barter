@@ -19,15 +19,14 @@ class UserBooksController < ApplicationController
   def show
     @textbook = @user_book.textbook
     @user = @user_book.user
-
-    render json: {userBook: @user_book, user: @user, textbook: @textbook}
+    render json: {userBook: @user_book, userBookCondition: @user_book.condition.name, user: @user, textbook: @textbook}
   end
 
 
   def create
     @user_book = UserBook.new(condition_id: params[:condition], textbook_id: params[:textbook_id], user: current_user)
     @textbook = @user_book.textbook
-    UserMailer.add_user_book(current_user).deliver_later
+    # UserMailer.add_user_book(@user).deliver_later
     if @user_book.save
       render json: {userBook: @user_book, bookName: @user_book.textbook.title, condition: @user_book.condition.name, userName: @user_book.user.first_name, userBooksSold: @user_book.user.num_books_sold, listingDaysAgo: @user_book.listing_days_ago, userBookCount: @textbook.user_books.count }
     end
