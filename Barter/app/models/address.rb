@@ -17,5 +17,6 @@
 
 class Address < ActiveRecord::Base
   belongs_to :addresses, polymorphic: true
+  has_many :line_items
 
 end

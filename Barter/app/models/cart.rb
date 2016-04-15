@@ -38,7 +38,9 @@ class Cart < ActiveRecord::Base
   def set_items_final_karma
     line_items.each do |line_item|
       price = line_item_price(line_item)
+      # address = params[:address]
       line_item.update(item_karma:price)
+      # line_item.address(address:)
       line_item.user_book.update(sold:true)
     end
   end
@@ -46,18 +48,17 @@ class Cart < ActiveRecord::Base
   def total_price
     self.line_items.inject(0) do |total_price, item|
       total_price += item.item_karma
-    end.round(2)
+    end.round(2) 
   end
 
   def subtract_karma_from_buyer
     user.karma.balance -= self.total_price
-    binding.pry
     user.karma.save
   end
 
   def add_karma_to_sellers
     line_items.each do |line_item|
-      price = line_item_price(line_item)
+      price = line_item_price(line_item) || 5
       line_item.seller.karma.balance += price
       line_item.seller.karma.save
     end
