@@ -13,28 +13,18 @@ class CartsController < ApplicationController
 
   before_action :set_cart
 
-  def index
-    render 'show'
+  def show
+    @addresses = Address.where(addressable_id:current_user.id,addressable_type:"User")
   end
 
   def update
-    # set item_karma per list item
-    # calculate total price of order
-    # convert total price to karma
-      # subtract karma from buyer
-      # add karma to seller
-    # deactive current cart
-    # create new cart for buyer
-    # set list item as purchased
-    # set user_book sold to true
-    @cart.complete_transaction(current_user)
-    binding.pry
+    @cart.complete_transaction
   end
 
   private
 
     def set_cart
-      @cart = current_user.cart
+      @cart = Cart.find(params[:id])
     end
 
 end

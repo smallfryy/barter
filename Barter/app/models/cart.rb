@@ -14,29 +14,33 @@ class Cart < ActiveRecord::Base
   has_many :line_items
   has_many :user_books, through: :line_items
   validates_presence_of :user_id
-  validate :one_active_cart
+  # validate :one_active_cart
 
   def one_active_cart
     active_carts = Cart.where(user_id:self.user_id,active:true)
-    if active_carts.count > 0
+    if active_carts.count > 1
       errors.add(:cart,"only one active cart allowed per user")
     end
   end
 
-  # set item_karma per list item - done
-  # calculate total price of order
-  # convert total price to karma
-    # subtract karma from buyer
-    # add karma to seller
-  # deactive current cart
-  # create new cart for buyer
-  # set list item as purchased
-  # set user_book sold to true
+  def complete_transaction
+    add_karma_to_sellers
+    set_items_final_karma
+    subtract_karma_from_buyer
+    self.update(active:false) #old card deactivated
+    user.setup_cart #new cart created
+  end
 
-  def complete_transaction(user)
-    assign_line_item_prices
-    subtract_karma_from_buyer(user)
-    binding.pry
+  def line_item_price(line_item)
+    price = line_item.user_book.current_price.round(2)
+  end
+
+  def set_items_final_karma
+    line_items.each do |line_item|
+      price = line_item_price(line_item)
+      line_item.update(item_karma:price)
+      line_item.user_book.update(sold:true)
+    end
   end
 
   def total_price
@@ -45,26 +49,18 @@ class Cart < ActiveRecord::Base
     end.round(2)
   end
 
-  def subtract_karma_from_buyer(user)
+  def subtract_karma_from_buyer
     user.karma.balance -= self.total_price
-    user.save
+    binding.pry
+    user.karma.save
   end
 
-  def add_karma_to_seller(line_item)
-    line_item.seller.karma.balance += line_item.usr_book.current_price.round(2)
-    line_item.seller.karma
-  end
-
-  def assign_line_item_prices
-    self.line_items.each do |line_item|
-      line_item.item_karma = line_item.user_book.current_price.round(2)
-      binding.pry
-      line_item.save
-      add_karma_to_seller(line_item)
-      binding.pry
+  def add_karma_to_sellers
+    line_items.each do |line_item|
+      price = line_item_price(line_item)
+      line_item.seller.karma.balance += price
+      line_item.seller.karma.save
     end
   end
-
-
 
 end

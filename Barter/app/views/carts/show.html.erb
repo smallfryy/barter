@@ -4,6 +4,3 @@
 <%= render partial: "line_item", collection: @cart.line_items, as: :item %>
 </div>
 
-<%= form_tag(cart_path(@cart), method: :patch) do %>
-  <%= submit_tag "Buy Books Now"%>
-<% end %>
