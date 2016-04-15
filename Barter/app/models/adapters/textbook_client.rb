@@ -41,7 +41,6 @@ module Adapters
           subject_array.each do |subject|
             new_subj = subject.capitalize
             subject_object = Subject.find_or_create_by(name: new_subj)
-            binding.pry
             textbook.subjects.clear
             textbook.subjects << subject_object
           end
