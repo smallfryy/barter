@@ -27,7 +27,7 @@
   <% end %>
 </div>
 
-<ul>
+<ul id="bookAppend">
 <% @textbook.user_books.each do |book| %>
   <li id="<%=book.id%>" class="user_book">
   <%= link_to book.condition.name, textbook_book_path(@textbook, book) %> - listed by <%= book.user.first_name %> (<%= book.user.num_books_sold %> books sold), <%= book.listing_days_ago %>.

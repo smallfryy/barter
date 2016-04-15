@@ -37,7 +37,7 @@ app.userBook.controller = {
       url: url,
       method: 'GET'
     }).then(function(response){
-      debugger;
+
       var user = response.user
       var textbook = response.textbook
       var userBook = response.userBook
@@ -77,13 +77,11 @@ app.userBook.controller = {
     event.preventDefault()
     var condition_id = $('#condition_id option:selected').val()
     var url = $('form').attr('action')
-
     $.ajax({
       url: url,
       method: 'POST',
       data: {condition: condition_id}
     }).then(function(response){
-      debugger
       app.userBook.controller.render(response)
 
     })
@@ -101,6 +99,6 @@ app.userBook.controller = {
     var url = '/textbooks/' + userBook.textbook_id + '/book/' + userBook.id
 
     $('#book_info').text('There are ' + userBookCount + ' copies of ' + bookName + ' available for sale:')
-    $('ul').append('<li id="'+ userBook.id +'" class="user_book"><a href="'+ url +'">' + condition + '</a>' + " - listed by " + userName + "(" + userBooksSold + " books sold), " + listingDaysAgo + '.</li>')
+    $('#bookAppend').append('<li id="'+ userBook.id +'" class="user_book"><a href="'+ url +'">' + condition + '</a>' + " - listed by " + userName + "(" + userBooksSold + " books sold), " + listingDaysAgo + '.</li>')
   }
 }
