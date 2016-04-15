@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
   after_create :setup_cart
 
-  has_many :user_books
+  has_many :user_books, dependent: :destroy
   has_many :textbooks, through: :user_books
   has_one :karma
   belongs_to :college

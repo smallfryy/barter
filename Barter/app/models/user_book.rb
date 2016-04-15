@@ -12,9 +12,12 @@
 #
 
 class UserBook < ActiveRecord::Base
+  has_many :line_items, dependent: :destroy
   belongs_to :user
   belongs_to :textbook
   belongs_to :condition
+
+  
 
   def self.total_books_sold
     self.where(sold:true).count

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :line_items
-  resources :carts, :path => "cart"
+  resources :carts
   root "pages#home"
   devise_for :users
   get 'users/:id' => 'users#show', as: :user
