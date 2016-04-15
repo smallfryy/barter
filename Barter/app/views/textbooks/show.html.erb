@@ -34,8 +34,13 @@
 </ul>
 
 
+<div id="newUserBook" class="ui top attached button">Sell a copy of this book!</div><br>
 
-<div id="newUserBook" class="ui top attached button">Sell a copy of this book!</div>
+<ul class="ui grid">
+  <% @textbook.subjects.each do |subject| %>
+    <li class="two wide column"> <%= subject.name %></li>
+    <%end%>
+</ul>
 
 
 

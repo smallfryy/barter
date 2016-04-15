@@ -26,16 +26,29 @@ module Adapters
         img_url = item["volumeInfo"]["imageLinks"]["thumbnail"] if item["volumeInfo"]["imageLinks"].present?
         publisher = item["volumeInfo"]["publisher"] if item["volumeInfo"]["publisher"].present?
         description = item["volumeInfo"]["description"] if item["volumeInfo"]["description"].present?
-        subject = item["volumeInfo"]["categories"] if description = item["volumeInfo"]["categories"] if item["volumeInfo"]["description"].present?
         published_date = item["volumeInfo"]["publishedDate"] if item["volumeInfo"]["publishedDate"].present?
 
         if industry_identifier.present?
           textbook = Textbook.find_or_create_by(isbn: industry_identifier)
           textbook.update(title: title, isbn: industry_identifier, author: author, published_date: published_date, img_url: img_url, description: description)
-          # textbook.subjects << we need to build a find or a create for textbook
         end
+
+        if item["volumeInfo"]["categories"].present? && industry_identifier.present?
+          # textbook.subjects << we need to build a find or a create for textbook
+
+          subjects_string = item["volumeInfo"]["categories"][0]
+          subject_array = subjects_string.gsub("&", '').split()
+
+          subject_array.each do |subject|
+            new_subj = subject.capitalize
+            subject_object = Subject.find_or_create_by(name: new_subj)
+            textbook.subjects << subject_object
+          end
+        end
+
         textbook
       end
+
     end
 
   end

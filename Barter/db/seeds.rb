@@ -26,7 +26,6 @@ holly = User.create(first_name: "Holly", last_name: "Peck", email: "holly.m.peck
 
 
 # DEMONSTRATION SEEDS
-
 justin.addresses << Address.create(street: "11 Broadway", apt_num: "Apt 1", city: "New York", state: "NY", zip: "10004", country: "USA")
 college = College.create(name: "University of Pennsylvania")
 college.address = Address.create(street: "1 College Hall", city: "Philadelphia", state: "PA", zip: "19104", country: "USA")
