@@ -24,6 +24,7 @@
     <h3 id="book_info">Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h3><br>
   <% end %>
 </div>
+
 <ul>
 <% @textbook.user_books.each do |book| %>
   <li id="<%=book.id%>" class="user_book">
@@ -31,6 +32,7 @@
   </li>
 <% end %>
 </ul>
+
 
 
 <div id="newUserBook" class="ui top attached button">Sell a copy of this book!</div>
