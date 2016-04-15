@@ -1,17 +1,18 @@
-  <% if user_signed_in? %>
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+  <div class="content"><h1>Welcome to Bibliotech</h1>
+   <% if user_signed_in? %>
     <li> <%= link_to "Hello, #{current_user.first_name}", user_path(current_user) %></li>
     <li id="addpaddingright"><%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %></li>
-  <% else %>
-    <li><%= link_to "Sign In", new_user_session_path %></li>
+    <% else %>
+    <button class="ui basic button"><%= link_to "Sign In", new_user_session_path %></button>
   <%end%>
-
-
-
-<h1>HOMEPAGE</h1>
-
-
-  <%= form_tag(textbooks_path, method: "get",) do %>
-    <%= label_tag(:query, "Search for:") %>
-    <%= text_field_tag(:query) %>
-    <%= submit_tag("Search", class: "search") %>
+<div class="field">
+ <%= form_tag(textbooks_path, method: "get",) do %>
+  <%= label_tag(:query, "Search for:") %>
+  <%= text_field_tag(:query) %>
+  <%= submit_tag("Search", class: "search" ) %></button>
+    </div>
   <% end %>
+  </div>
+</div>

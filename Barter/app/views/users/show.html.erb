@@ -6,7 +6,9 @@
 
 <h4>Member Since: <%= @user.member_since %></h4>
 <h4>Last Sign In: <%= @user.last_sign_in %></h4>
-<h4>College: <%= link_to(@user.college.name, college_path(@user.college_id)) %></h4>
+<% if @user.college %>
+  <h4>College: <%= link_to(@user.college.name, college_path(@user.college_id)) %></h4>
+<% end %>
 
 <h4>Books For Sale:</h4>
 <ul>
@@ -18,3 +20,5 @@
 <h4>Books Sold: <%= @user.num_books_sold %></h4>
 
 <h4> Books Purchased: this will be part of transaction (where user id is buyer) (count)</h4>
+
+<%= link_to("Back to Home", root_path) %>

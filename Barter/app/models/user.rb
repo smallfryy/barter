@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  after_create :setup_cart
+  after_create :setup_cart, :setup_karma
 
   has_many :user_books, dependent: :destroy
   has_many :textbooks, through: :user_books
@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
 
   def setup_cart
     self.carts.build
+  end
+
+  def setup_karma
+    self.karma = Karma.new
   end
 
   def name_w_initial
