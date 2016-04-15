@@ -55,6 +55,8 @@ app.userBook.controller = {
       var userShowUrl = "/users/" + userBook.user.id + ""
       $('.ui.basic.modal .header').empty()
       $('.ui.basic.modal ul').empty()
+      $('.ui.basic.modal .image.content .image').empty()
+
       // $('#addToCartMessage').empty();
       $('.ui.basic.modal .header').append(userBook.textbook.title)
       $('.ui.basic.modal .header').append("<h3>By " + userBook.textbook.author + "</h3>")
