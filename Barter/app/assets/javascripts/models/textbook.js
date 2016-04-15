@@ -2,11 +2,11 @@ app.textbook.model = {
   all: [],
   new: (function(){
     var counter = 0;
-    var textbook = function Textbook(title, author, edition, isbn) {
+    var textbook = function Textbook(title, author, published_date, isbn) {
       var self = this;
       this.title = title;
       this.author = author;
-      this.edition = edition;
+      this.publishedDate = published_date;
       this.isbn = isbn;
       // this.userBooks = function(){
       //   return app.userBook.model.findBy({textbook: self})

@@ -1,7 +1,9 @@
-<h1 class="ui center aligned header">
+<h1 class="ui text container">
     <%= @textbook.title %><br></h1>
+    <h3 class="ui center aligned header">
+      By <%= @textbook.author %><br><h3>
   <h3 class="ui center aligned header" id="isbn-for-price">
-  <%= @textbook.isbn %></h3>
+  ISBN: <%= @textbook.isbn %></h3>
   </div>
   <div class="ui medium image"> <%=image_tag(@textbook.img_url) %></div>
 
@@ -43,6 +45,9 @@
 </ul>
 
 
+</div>
+
+
 
 <div id ="showUserBook" class="ui basic modal">
   <i class="close icon"></i>
@@ -50,7 +55,6 @@
   </div>
   <div class="image content">
     <div class="image">
-      <i class="archive icon"></i>
     </div>
 
     <div class="description">
@@ -105,5 +109,7 @@
   </div>
 </form>
 
+</div>
+</div>
 </div>
 </div>
