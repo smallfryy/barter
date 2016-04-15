@@ -35,8 +35,12 @@
 <% end %>
 </ul>
 
+<% if user_signed_in? %>
+  <div id="newUserBook" class="ui top attached button">Sell a copy of this book!</div><br>
+<% else %>
+  <a href='/users/sign_in'><div id="mustSignUpToSellBook" class="ui top attached button 2">You must be signed in to sell a copy of this book!</div></a><br>
+<% end %>
 
-<div id="newUserBook" class="ui top attached button">Sell a copy of this book!</div><br>
 
 <ul class="ui grid">
   <% @textbook.subjects.each do |subject| %>
