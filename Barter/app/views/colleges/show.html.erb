@@ -3,29 +3,27 @@
 <!-- Google maps API embedded in College profile page -->
 <!-- Need to incorporate college address -->
 <div class="google-maps">
-<iframe
-  width="500"
-  height="350"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtN0Q7OpzJ2rlsh7oUygFm141Ho98E59g
-    &q=Space+Needle,Seattle+WA" allowfullscreen>
-</iframe>
+  <iframe
+    width="500"
+    height="350"
+    frameborder="0" style="border:0"
+    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtN0Q7OpzJ2rlsh7oUygFm141Ho98E59g
+      &q=Space+Needle,Seattle+WA" allowfullscreen>
+  </iframe>
 </div>
 
+<h3>Books Currently Available From Students at <%= @college.name %>:</h3>
 <ul>
-<% @college.user_books.each do |user_book| %>
-<li class="list-books"><%= link_to user_book.textbook.title, textbook_path(user_book.textbook) %></li>
-<% end %>
+  <% @college.user_books.each do |user_book| %>
+    <li class="list-books"><%= link_to user_book.textbook.title, textbook_path(user_book.textbook) %></li>
+  <% end %>
 </ul>
 
-<p>Number of Books Sold: <%= @college.user_books_sold %></p>
-
-<!-- link to student profiles associated with each college -->
-<h1><%= @college.name %> Students</h1>
+<h3><%= @college.name %> Students:</h3>
 <ul>
-<% @college.users.each do |user| %>
-<li class="list-students"><%= link_to user.first_name, user_path(user) %></li>
-<% end %>
+  <% @college.users.each do |user| %>
+    <li class="list-students"><%= link_to user.first_name, user_path(user) %> — (<%= user.num_books_for_sale %> books currently listed for sale)</li>
+  <% end %>
 </ul>
 
 

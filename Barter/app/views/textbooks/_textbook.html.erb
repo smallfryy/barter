@@ -1,23 +1,27 @@
 
 <div class="ui text container">
-<div class="ui items">
-  <div class="item">
-  <div class="image">
-  <%= link_to image_tag(textbook.img_url), textbook_path(textbook) %></div>
-  <div class="nine wide column">
-  </div>
-  <div class="content">
-  <a class="header"><%= link_to textbook.title, textbook_path(textbook) %></a>
-  <div class="meta"><span>
-  <p><%= textbook.author %></p>
-  <p><%= textbook.isbn %></p></span>
-  </div>
-  <div class="book information">
-  <p>This is a great description of this book. Try it out here. 
-  </p>
+  <div class="ui items">
+    <div class="item">
+      <div class="image">
+        <%= link_to image_tag(textbook.img_url), textbook_path(textbook) %></div>
+      <div class="nine wide column">
+      </div>
+      <div class="content">
+        <a class="header"><%= link_to textbook.title, textbook_path(textbook) %></a>
+          <div class="meta"><span>
+            <p><%= textbook.author %></p>
+            <p><%= textbook.isbn %></p></span>
+          </div>
+          <div class="book information">
+            <p><%= textbook.description %></p>
+            <% if textbook.user_books.present? %>
+              <p>There are currently <%= textbook.user_books.count %> copies available for sale.</p>
+            <% else %>
+              <p>There are currently no copies available. Add one for sale!</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  </div>
-  </div>
   </div>
 </div>

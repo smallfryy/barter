@@ -77,6 +77,7 @@ app.userBook.controller = {
   },
   new: function(event){
     event.preventDefault()
+
     var condition_id = $('#condition_id option:selected').val()
     var url = $('form').attr('action')
     $.ajax({

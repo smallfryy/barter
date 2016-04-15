@@ -81,14 +81,6 @@ end
   TextbookSubject.create(textbook: Textbook.all.sample, subject: Subject.all.sample)
 end
 
-
-Condition.create(name: "Fresh")
-Condition.create(name: "Very Good")
-Condition.create(name: "Good")
-Condition.create(name: "Acceptable")
-Condition.create(name: "Trash")
-
-
 100.times do
   UserBook.create(textbook: Textbook.all.sample, user: User.all.sample, condition: Condition.all.sample )
 end

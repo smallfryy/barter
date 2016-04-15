@@ -78,4 +78,8 @@ class User < ActiveRecord::Base
     books_sold.count
   end
 
+  def num_books_for_sale
+    books_for_sale.count
+  end
+
 end
