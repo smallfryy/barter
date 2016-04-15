@@ -67,6 +67,7 @@ app.userBook.controller = {
       method: 'POST',
       data: {condition: condition_id}
     }).then(function(response){
+      debugger
       app.userBook.controller.render(response)
 
     })
