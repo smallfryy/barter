@@ -14,7 +14,7 @@ class Cart < ActiveRecord::Base
   has_many :line_items
   has_many :user_books, through: :line_items
   validates_presence_of :user_id
-  # validate :one_active_cart
+  validate :one_active_cart
 
   def one_active_cart
     active_carts = Cart.where(user_id:self.user_id,active:true)

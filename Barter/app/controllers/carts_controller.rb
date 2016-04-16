@@ -19,6 +19,7 @@ class CartsController < ApplicationController
 
   def update
     @cart.complete_transaction
+    redirect_to @cart
   end
 
   private

@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :email, presence: true
 
   def setup_cart
-    self.carts.build
+    self.carts.create
   end
 
   def setup_karma
@@ -67,11 +67,15 @@ class User < ActiveRecord::Base
   end
 
   def books_sold
-    UserBook.where('sold = true AND user_id = ?', self.id)
+    UserBook.where(sold:true,user_id:self.id)
   end
 
   def books_for_sale
-    UserBook.where('sold = false AND user_id = ?', self.id)
+    UserBook.where(sold:true,user_id:self.id)
+  end
+
+  def books_purchased
+    UserBook.joins(:line_items).where('user_books.sold = true AND line_items.buyer_id = ?',self.id)
   end
 
   def num_books_sold

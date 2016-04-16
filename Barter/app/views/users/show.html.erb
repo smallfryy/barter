@@ -6,19 +6,36 @@
 
 <h4>Member Since: <%= @user.member_since %></h4>
 <h4>Last Sign In: <%= @user.last_sign_in %></h4>
+
+<h4>Books Sold: <%= @user.num_books_sold %></h4>
+<h4>Books For Sale: <%= @user.num_books_for_sale %></h4>
+
+
 <% if @user.college %>
   <h4>College: <%= link_to(@user.college.name, college_path(@user.college_id)) %></h4>
 <% end %>
 
-<h4>Books For Sale:</h4>
+<h4>Books Currently Listed:</h4>
 <ul>
   <% @user.books_for_sale.each do |book| %>
     <li><%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %></li>
   <% end %>
 </ul>
 
-<h4>Books Sold: <%= @user.num_books_sold %></h4>
+<h4> Books You've Purchased: </h4>
+<ul>
+  <% @user.books_purchased.each do |book| %>
+    <li><%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %></li>
+  <% end %>
+</ul>
 
-<h4> Books Purchased: this will be part of transaction (where user id is buyer) (count)</h4>
+<h4>Books You've Sold:</h4>
+<ul>
+  <% @user.books_sold.each do |book| %>
+    <li><%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %></li>
+  <% end %>
+</ul>
 
-<%= link_to("Back to Home", root_path) %>
+
+
+
