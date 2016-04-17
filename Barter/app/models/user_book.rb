@@ -40,8 +40,13 @@ class UserBook < ActiveRecord::Base
     retail_price = Adapters::TextbookClient.find_retail_price(self.textbook)
     if retail_price
       @condition_prices = self.textbook.calculate_condition_prices(retail_price)
-      @condition_prices[self.condition.name.downcase.to_sym]
+      price = @condition_prices[self.condition.name.downcase.to_sym]
+      "%.2f" % price
     end
+  end
+
+  def format_custom_price
+    "%.2f" % custom_price
   end
 
 end

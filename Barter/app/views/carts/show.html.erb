@@ -1,10 +1,7 @@
-<% if @cart.active %>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
-<% if @cart.errors.any? %>
- <% @users.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
+<% if @cart.active %>
 
 <h1><%=@cart.user.first_name%>'s Cart</h1>
 <%= render partial: "line_item_active", collection: @cart.line_items, as: :item %>

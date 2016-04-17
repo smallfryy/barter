@@ -19,11 +19,10 @@ class CartsController < ApplicationController
   end
 
   def update
-    if @cart
+    if @cart.buyer_has_enough_karma
       @cart.complete_transaction
-      # redirect_to @cart
-    # else
-    #   flash[:errors]
+    else
+      flash[:notice] = "You do not have enough karma to complete this transaction, bruh."
     end
     redirect_to @cart
   end
