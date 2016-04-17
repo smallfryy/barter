@@ -49,8 +49,12 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name.first}."
   end
 
-  def cart
+  def active_cart
     Cart.where(user_id:self.id,active:true).first
+  end
+
+  def inactive_carts
+    Cart.where(user_id:self.id,active:false)
   end
 
   def member_since
@@ -71,7 +75,7 @@ class User < ActiveRecord::Base
   end
 
   def books_for_sale
-    UserBook.where(sold:true,user_id:self.id)
+    UserBook.where(sold:false,user_id:self.id)
   end
 
   def books_purchased

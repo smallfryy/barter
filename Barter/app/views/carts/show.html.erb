@@ -8,7 +8,7 @@
 <% end %>
 
 <% else %>
-<h1>Order Placed on </h1>
+<h1>Order placed on <%= @cart.order_date.strftime("%a %b %e, %Y") %> </h1>
 <%= render partial: "line_item_inactive", collection: @cart.line_items, as: :item %>
 </div>
 <% end %>

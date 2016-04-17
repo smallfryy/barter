@@ -36,6 +36,13 @@
   <% end %>
 </ul>
 
+<h4>Previous Orders:</h4>
+<ul>
+  <% @user.inactive_carts.each do |cart| %>
+    <li><%= link_to("Order ##{cart.id}", cart_path(cart)) + " placed on #{cart.order_date.strftime("%a %b %e, %Y")}." %> </li>
+  <% end %>
+</ul>
+
 
 
 

@@ -7,6 +7,7 @@
 #  active     :boolean          default(TRUE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  order_date :datetime
 #
 
 class CartsController < ApplicationController
@@ -20,6 +21,10 @@ class CartsController < ApplicationController
   def update
     @cart.complete_transaction
     redirect_to @cart
+  end
+
+  def order_date
+    self.order_date.to_date.to_formatted_s(:long_ordinal)
   end
 
   private

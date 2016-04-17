@@ -7,6 +7,7 @@
 #  active     :boolean          default(TRUE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  order_date :datetime
 #
 
 class Cart < ActiveRecord::Base
@@ -27,12 +28,9 @@ class Cart < ActiveRecord::Base
     add_karma_to_sellers
     set_items_final_karma
     subtract_karma_from_buyer
+    self.order_date = Time.now
     self.update(active:false) #old card deactivated
     user.setup_cart #new cart created
-  end
-
-  def line_item_price(line_item)
-    price = line_item.user_book.current_price.round(2)
   end
 
   def set_items_final_karma
@@ -45,14 +43,18 @@ class Cart < ActiveRecord::Base
     end
   end
 
-  def total_price
+  def line_item_price(line_item)
+    price = line_item.user_book.current_price.round(2)
+  end
+
+  def cart_total_price
     self.line_items.inject(0) do |total_price, item|
       total_price += item.item_karma
     end.round(2) 
   end
 
   def subtract_karma_from_buyer
-    user.karma.balance -= self.total_price
+    user.karma.balance -= self.cart_total_price
     user.karma.save
   end
 
