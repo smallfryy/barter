@@ -20,7 +20,7 @@ class TextbooksController < ApplicationController
   def index
     query = params[:query]
     @textbooks = Adapters::TextbookClient.find_textbooks(query)
-    @textbooks = Textbook.paginate(:page => params[:page], :per_page => 5)
+    @textbooks = Textbook.paginate(:page => params[:page], :per_page => 3)
   end
 
   def show
