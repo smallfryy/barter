@@ -14,6 +14,4 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Order Placed - Bibliotech")
   end 
 
-
-
 end
