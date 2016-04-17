@@ -1,14 +1,20 @@
-<div class="ui inverted vertical masthead center aligned segment">
-  <div class="ui text container">
-     <h1 class="ui inverted header">Welcome to Bibliotech</h1><br>
+<div class="ui inverted vertical segment landpage-image">
+  <div class="ui page grid">
+    <div class="column">
+     <h1 class="ui title-header">Welcome to Bibliotech</h1><br>
+     <div class="centered grid slogan">
+     <div class="column">
 
   <div class="ui form">
   <p><%= form_tag(textbooks_path, method: "get",) do %>
   <i><%= label_tag(:query, "search for a textbook:") %></i>
   <%= text_field_tag(:query) %><p>
-  <%= submit_tag("Search", class: "ui huge primary button" ) %></p>
+  <%= submit_tag("Search", class: "ui huge primary button" ) %></p></p>
   <% end %>
   </div>
   </div>
+</div>
+</div>
+</div>
 </div>
 
