@@ -105,7 +105,13 @@
          <%= collection_select :condition, :id, Condition.all, :id, :name %>
        </div>
         <div>
-        <%= @textbook.current_price %>
+        <% if @condition_prices %>
+          <p><%= radio_button("user_book", "user_price") %> Marketplace Price</p>
+          <p>
+            <%= radio_button("user_book", "user_price") Set Price%></p> 
+        <% else %>
+          <p> Set your price: <%=  %> </p>
+        <% end %>
        </div>
 
     </div>
@@ -116,7 +122,6 @@
     </div>
     <button id="userBookSubmit" type="submit" class="ui positive right labeled icon button">
       Submit
-      <i class="checkmark icon"></i>
     </button>
   </div>
 </form>
