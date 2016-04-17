@@ -1,10 +1,14 @@
+<% if @cart.active %>
 <h1><%=@cart.user.first_name%>'s Cart</h1>
-
-<div class="ui grid">
-<%= render partial: "line_item", collection: @cart.line_items, as: :item %>
-</div>
+<%= render partial: "line_item_active", collection: @cart.line_items, as: :item %>
 
 <%= form_tag(cart_path(@cart), method: :patch) do %>
     <%= collection_select :address, :id, @addresses, :id, :street %> 
   <%= submit_tag "Buy Books Now"%>
+<% end %>
+
+<% else %>
+<h1>Order placed on <%= @cart.order_date.strftime("%a %b %e, %Y") %> </h1>
+<%= render partial: "line_item_inactive", collection: @cart.line_items, as: :item %>
+</div>
 <% end %>

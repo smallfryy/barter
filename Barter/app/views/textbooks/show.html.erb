@@ -12,13 +12,14 @@
 
 <div class="pricing-info">
   <% if @condition_prices %>
-    <h3>Fresh: <%= number_to_currency(@condition_prices[:fresh]) %><h3>
-    <h3>Very Good: <%= number_to_currency(@condition_prices[:very_good]) %><h3>
-    <h3>Good: <%= number_to_currency(@condition_prices[:good]) %><h3>
-    <h3>Acceptable: <%= number_to_currency(@condition_prices[:acceptable]) %><h3>
-    <h3>Trash: <%= number_to_currency(@condition_prices[:trash]) %><h3>
+  <h3>Marketplace Pricing</h3>
+    <p>Fresh: <%= number_to_currency(@condition_prices[:fresh]) %></p>
+    <p>Very Good: <%= number_to_currency(@condition_prices[:very_good]) %></p>
+    <p>Good: <%= number_to_currency(@condition_prices[:good]) %><p>
+    <p>Acceptable: <%= number_to_currency(@condition_prices[:acceptable]) %></p>
+    <p>Trash: <%= number_to_currency(@condition_prices[:trash]) %></p>
   <% else %>
-    <h3> Please inquire with seller about pricing. <h3>
+    <p> Please inquire with seller about pricing. </p>
   <% end %>
 </div>
 
@@ -58,7 +59,7 @@
 
 
 <!-- modal -->
-<div id ="showUserBook" class="ui basic modal">
+<div id ="showUserBook" class="ui basic small modal">
   <i class="close icon"></i>
   <div class="header">
   </div>
@@ -77,7 +78,7 @@
     <div class="two fluid ui inverted buttons">
       <div class="ui red basic inverted button">
         <i class="remove icon"></i>
-        No
+        Close
       </div>
       <button id="addToCart" class="ui green basic inverted button">
         <i class="checkmark icon"></i>
@@ -86,6 +87,7 @@
     </div>
   </div>
 </div>
+
 <!-- modal -->
 <div id="buildUserBook" class="ui modal">
   <i class="close icon"></i>
@@ -93,7 +95,6 @@
   </div>
   <div class="image content">
     <div class="ui medium image">
-      <img src="/images/avatar/large/chris.jpg">
     </div>
     <div class="description">
       <div class="ui header">Please Select the following information.</div>
@@ -104,6 +105,21 @@
           Condition of the book:
          <%= collection_select :condition, :id, Condition.all, :id, :name %>
        </div>
+        <div>
+        <% if @condition_prices %>
+        <div id="priceRadioButtons">
+          <p>
+            <%= radio_button_tag(:price, "marketplace") %>
+            <%= label_tag(:marketplace_price, "Use marketplace pricing") %>
+            <%= radio_button_tag(:price, "custom") %>
+            <%= label_tag(:custom_price, "Set your own price") %>
+            <%= text_field_tag('custom_price_value', nil, class: 'hidden') %> </p>
+        </div>
+        <% else %>
+        <%= label_tag(:custom_price, "Set your own price") %>
+          <p> <%= text_field_tag('custom_price_value', nil) %> </p>
+        <% end %>
+       </div>
 
     </div>
   </div>
@@ -113,7 +129,6 @@
     </div>
     <button id="userBookSubmit" type="submit" class="ui positive right labeled icon button">
       Submit
-      <i class="checkmark icon"></i>
     </button>
   </div>
 </form>
