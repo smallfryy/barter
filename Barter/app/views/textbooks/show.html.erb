@@ -25,8 +25,8 @@
 
 
 <div class="ui container" id="book_div">
-  <% if !@textbook.user_books.empty? %>
-    <h3 id="book_info">There are <%=@textbook.user_books.count %> copies of <%= @textbook.title %> available for sale:<h3>
+  <% if !@textbook.user_books.available.empty? %>
+    <h3 id="book_info">There are <%=@textbook.user_books.available.count %> copies of <%= @textbook.title %> available for sale:<h3>
   <% else %>
     <h3 id="book_info">Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h3><br>
   <% end %>
@@ -34,7 +34,7 @@
 
 
 <ul id="bookAppend">
-<% @textbook.user_books.each do |book| %>
+<% @textbook.user_books.available.each do |book| %>
   <li id="<%=book.id%>" class="user_book">
   <%= link_to book.condition.name, textbook_book_path(@textbook, book) %> - listed by <%= book.user.first_name %> (<%= book.user.num_books_sold %> books sold), <%= book.listing_days_ago %>.
   </li>

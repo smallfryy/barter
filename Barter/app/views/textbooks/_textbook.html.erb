@@ -14,8 +14,8 @@
           </div>
           <div class="book information">
             <p><%= textbook.description %></p>
-            <% if textbook.user_books.present? %>
-              <p>There are currently <%= textbook.user_books.count %> copies available for sale.</p>
+            <% if textbook.user_books.available.present? %>
+              <p>There are currently <%= textbook.user_books.available.count %> copies available for sale.</p>
             <% else %>
               <p>There are currently no copies available. Add one for sale!</p>
             <% end %>

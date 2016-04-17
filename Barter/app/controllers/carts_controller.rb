@@ -19,11 +19,11 @@ class CartsController < ApplicationController
   end
 
   def update
-    if @cart.enough_karma_for_purchase
+    if @cart
       @cart.complete_transaction
       # redirect_to @cart
-    else
-      flash[:errors]
+    # else
+    #   flash[:errors]
     end
     redirect_to @cart
   end
