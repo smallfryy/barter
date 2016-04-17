@@ -20,6 +20,9 @@ $(function() {
 
   $('#userBookSubmit').click(app.userBook.controller.new)
 
+  $('#showUserBook').click(function(){
+    $('.modal').modal('hide')
+  })
 
 })
 

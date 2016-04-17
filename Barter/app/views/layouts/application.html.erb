@@ -12,20 +12,27 @@
 
 <script type="text/javascript">
 
-
+$(function(){
+  $('#buttonPress').click(function(){
+    $('.ui.labeled.icon.sidebar').sidebar('toggle');
+  })
+})
 
 </script>
 
-<div class="ui fixed inverted main menu">
+<div class="ui fixed inverted main menu" id="buttonPress">
     <a class="launch icon item">
-      <i id="buttonPress" class="content icon"></i>
+      <i class="content icon"></i>
     </a>
 
       <div class="item">
-        Bibliotech
+        BiblioTech
       </div>
 
     <div class="right menu">
+      <div class="item">
+      Karma: <%= current_user.karma.balance if current_user%>
+      </div>
 
   <div class="vertically fitted borderless item">
    <% if user_signed_in? %>
@@ -39,8 +46,10 @@
     </div>
 </div>
 
+<div class="pusher">
 
 <body>
+
 
   <% if user_signed_in? %>
   <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition ">
@@ -82,11 +91,10 @@
 
 
 
-         <div class="pusher">
         <p class="notice"><%= notice %></p>
          <p class="alert"><%= alert %></p>
+
         <%= yield %>
-      </div>
 
 
       </div>
@@ -100,4 +108,8 @@
 
 
 </body>
+
+
+</div>
+
 </html>

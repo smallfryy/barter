@@ -45,7 +45,7 @@
 <% if user_signed_in? %>
   <div id="newUserBook" class="ui top attached button">Sell a copy of this book!</div><br>
 <% else %>
-  <a href='/users/sign_in'><div id="mustSignUpToSellBook" class="ui top attached button 2">Sell a copy of this book!</div></a><br>
+  <a href='/users/sign_in'><div id="mustSignUpToSellBook" class="ui top attached button 2">Sell a copy of this book!  </div></a><br>
 <% end %>
 
 
@@ -60,7 +60,7 @@
 
 
 <!-- modal -->
-<div id ="showUserBook" class="ui basic modal">
+<div id ="showUserBook" class="ui basic small modal">
   <i class="close icon"></i>
   <div class="header">
   </div>
@@ -79,7 +79,7 @@
     <div class="two fluid ui inverted buttons">
       <div class="ui red basic inverted button">
         <i class="remove icon"></i>
-        No
+        Close
       </div>
       <button id="addToCart" class="ui green basic inverted button">
         <i class="checkmark icon"></i>
@@ -134,7 +134,4 @@
   </div>
 </form>
 
-</div>
-</div>
-</div>
 </div>
