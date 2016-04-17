@@ -4,22 +4,18 @@ $(function() {
   $('body').on('click', '.user_book', app.userBook.controller.show)
 
 
-  // $('.user_book').click(app.userBook.controller.show)
   $('.remove icon').click(function(){
     $('.modal').modal('hide')
   })
-  // $('body').click('.ui red basic inverted button', function(){
-  //   $('.modal').modal('hide')
-  // })
 
-  // $('.ui red basic inverted button').click(function(){
-  //   $('.modal').modal('hide')
-  // })
+  $('#newUserBook').click(app.userBook.controller.showAddBookModal)
 
+  $('#price_custom').click(function(){
+    $('#custom_price_value').show();
+  })
 
-
-  $('#newUserBook').click(function(){
-    $('#buildUserBook').modal('show')
+  $('#price_marketplace').click(function(){
+    $('#custom_price_value').hide();
   })
 
   $('#userBookSubmit').click(app.userBook.controller.new)
@@ -32,7 +28,6 @@ app.userBook.controller = {
   show: function(event){
     event.preventDefault()
     var url = $(this).find('a').attr('href')
-    // $('.modal').modal('show')
     $.ajax({
       url: url,
       method: 'GET'
@@ -56,8 +51,7 @@ app.userBook.controller = {
       $('.ui.basic.modal .header').empty()
       $('.ui.basic.modal ul').empty()
       $('.ui.basic.modal .image.content .image').empty()
-
-      // $('#addToCartMessage').empty();
+      $('#addToCartMessage').empty();
       $('.ui.basic.modal .header').append(userBook.textbook.title)
       $('.ui.basic.modal .header').append("<h3>By " + userBook.textbook.author + "</h3>")
       if (userBook.textbook.publishedDate) {
@@ -77,13 +71,13 @@ app.userBook.controller = {
   },
   new: function(event){
     event.preventDefault()
-
     var condition_id = $('#condition_id option:selected').val()
-    var url = $('form').attr('action')
+    var custom_price = $('#custom_price_value').val();
+    var url = $('form').attr('action');
     $.ajax({
       url: url,
       method: 'POST',
-      data: {condition: condition_id}
+      data: {condition: condition_id, custom_price: custom_price}
     }).then(function(response){
       app.userBook.controller.render(response)
 
@@ -91,6 +85,12 @@ app.userBook.controller = {
 
 
   },
+  showAddBookModal: function(){
+    $('#custom_price_value').val('');
+    $('#price_marketplace').prop("checked",true);
+    $('#buildUserBook').modal('show');
+  },
+
   render: function(response){
     var userBook = response.userBook;
     var condition = response.condition;

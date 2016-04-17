@@ -44,7 +44,7 @@ class Cart < ActiveRecord::Base
   end
 
   def line_item_price(line_item)
-    price = line_item.user_book.current_price.round(2)
+    line_item.user_book.custom_price ? line_item.user_book.custom_price : line_item.user_book.current_price.round(2)
   end
 
   def cart_total_price
@@ -60,8 +60,8 @@ class Cart < ActiveRecord::Base
 
   def add_karma_to_sellers
     line_items.each do |line_item|
-      price = line_item_price(line_item) || 5
-      line_item.seller.karma.balance += price
+      line_price = line_item_price(line_item)
+      line_item.seller.karma.balance += line_price
       line_item.seller.karma.save
     end
   end
