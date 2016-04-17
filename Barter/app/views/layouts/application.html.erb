@@ -14,20 +14,18 @@
 
 $(function(){
   $('#buttonPress').click(function(){
-
     $('.ui.labeled.icon.sidebar').sidebar('toggle');
   })
 })
-
 </script>
 
-<div class="ui fixed inverted main menu">
+<div class="ui fixed inverted main menu" id="buttonPress">
     <a class="launch icon item">
-      <i id="buttonPress" class="content icon"></i>
+      <i class="content icon"></i>
     </a>
 
       <div class="item">
-        Bibliotech
+        BiblioTech
       </div>
 
     <div class="right menu">
@@ -38,8 +36,10 @@ $(function(){
     </div>
 </div>
 
+<div class="pusher">
 
 <body>
+
   <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition ">
   <a href="<%=root_path%>" class="item">
     <i class="home icon"></i>
@@ -69,10 +69,8 @@ $(function(){
 
         <p class="notice"><%= notice %></p>
          <p class="alert"><%= alert %></p>
-         <div class="pusher">
 
         <%= yield %>
-      </div>
 
 
       </div>
@@ -86,4 +84,8 @@ $(function(){
 
 
 </body>
+
+
+</div>
+
 </html>
