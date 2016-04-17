@@ -19,9 +19,18 @@ class CartsController < ApplicationController
   end
 
   def update
-    @cart.complete_transaction
+    if @cart.enough_karma_for_purchase
+      @cart.complete_transaction
+      # redirect_to @cart
+    else
+      flash[:errors]
+    end
     redirect_to @cart
   end
+
+
+
+
 
   def order_date
     self.order_date.to_date.to_formatted_s(:long_ordinal)

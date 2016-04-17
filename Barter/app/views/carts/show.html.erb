@@ -1,4 +1,11 @@
 <% if @cart.active %>
+
+<% if @cart.errors.any? %>
+ <% @users.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <h1><%=@cart.user.first_name%>'s Cart</h1>
 <%= render partial: "line_item_active", collection: @cart.line_items, as: :item %>
 
