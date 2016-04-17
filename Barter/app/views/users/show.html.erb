@@ -5,8 +5,9 @@
 <% end %>
 
 <h4>Member Since: <%= @user.member_since %></h4>
-<h4>Last Sign In: <%= @user.last_sign_in %></h4>
-
+<% if @user.last_sign_in %>
+  <h4>Last Sign In: <%= @user.last_sign_in %></h4>
+<% end %>
 <h4>Books Sold: <%= @user.num_books_sold %></h4>
 <h4>Books For Sale: <%= @user.num_books_for_sale %></h4>
 
@@ -21,6 +22,8 @@
     <li><%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %></li>
   <% end %>
 </ul>
+
+<% if current_user == @user %>
 
 <h4> Books You've Purchased: </h4>
 <ul>
@@ -44,5 +47,5 @@
 </ul>
 
 
-
+<% end %>
 

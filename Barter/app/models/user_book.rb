@@ -20,7 +20,11 @@ class UserBook < ActiveRecord::Base
   
 
   def self.total_books_sold
-    self.where(sold:true).count
+    where(sold:true).count
+  end
+
+  def self.available
+    where(sold:false)
   end
 
   def listing_days_ago

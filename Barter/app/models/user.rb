@@ -62,11 +62,9 @@ class User < ActiveRecord::Base
   end
 
   def last_sign_in
-    days = (Date.today - self.last_sign_in_at.to_date).to_i
-    if days == 0
-      return 'Today'
-    else
-      return "#{days} days ago"
+    if self.last_sign_in_at
+      days = (Date.today - self.last_sign_in_at.to_date).to_i
+      days == 0 ? 'Today' : "#{days} days ago"
     end
   end
 

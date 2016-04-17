@@ -24,6 +24,12 @@ class Cart < ActiveRecord::Base
     end
   end
 
+  # def enough_karma_for_purchase
+  #   if cart_total_price > self.user.karma.balance
+  #     errors.add(:cart,"you do not have enough karma to complete this transaction, bruh.")
+  #   end 
+  # end
+
   def complete_transaction
     add_karma_to_sellers
     set_items_final_karma
