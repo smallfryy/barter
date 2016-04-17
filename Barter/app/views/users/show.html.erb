@@ -1,5 +1,7 @@
-<h1><%= @user.first_name %>  <%= @user.last_name %></h1>
+<div class="ui large message">
 
+<h1><%= @user.first_name %>  <%= @user.last_name %></h1>
+  <img class="ui medium circular image" src="images/square-image.png">
 <% if @user == current_user %>
   <h5>Karma Balance: <%= @user.karma.balance %></h5>
 <% end %>
@@ -45,7 +47,6 @@
     <li><%= link_to("Order ##{cart.id}", cart_path(cart)) + " placed on #{cart.order_date.strftime("%a %b %e, %Y")}." %> </li>
   <% end %>
 </ul>
-
-
 <% end %>
+</div>
 

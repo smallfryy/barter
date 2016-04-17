@@ -27,4 +27,5 @@ class College < ActiveRecord::Base
    sold_books.present? ? sold_books : 0 
   end
 
+
 end

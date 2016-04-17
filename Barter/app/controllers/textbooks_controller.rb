@@ -20,6 +20,7 @@ class TextbooksController < ApplicationController
   def index
     query = params[:query]
     @textbooks = Adapters::TextbookClient.find_textbooks(query)
+    @textbooks = Textbook.paginate(:page => params[:page], :per_page => 5)
   end
 
   def show
@@ -28,17 +29,6 @@ class TextbooksController < ApplicationController
       @condition_prices = @textbook.calculate_condition_prices(retail_price)
     end
   end
-
-
-  # def search
-  #   # @textbook = Textbook.find_or_create_by(isbn: search)
-  #   # @textbooks = JSON.parse(params[:textbooks])
-  #   #
-  #   #
-  #   render search_path(search)
-  #
-  # end
-
 
 private
 
