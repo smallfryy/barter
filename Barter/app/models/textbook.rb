@@ -31,6 +31,7 @@ class Textbook < ActiveRecord::Base
   end
 
   def calculate_condition_prices(retail_price)
+    binding.pry
     depreciation = 0
     semester_in_months = 6
     condition_hash = {fresh: retail_price, very_good: 0, good: 0, acceptable: 0, trash: 0}
