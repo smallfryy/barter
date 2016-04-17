@@ -24,9 +24,16 @@ class Cart < ActiveRecord::Base
     end
   end
 
-  # def enough_karma_for_purchase
+  def buyer_has_enough_karma
+    cart_total_price < self.user.karma.balance
+  end
+
+  # def initiate_transaction
   #   if cart_total_price > self.user.karma.balance
-  #     errors.add(:cart,"you do not have enough karma to complete this transaction, bruh.")
+  #     # self.errors.add = "you do not have enough karma to complete this transaction, bruh."
+  #     # self.errors.add(:cart, "you do not have enough karma to complete this transaction, bruh.")
+  #   else
+  #     complete_transaction
   #   end 
   # end
 
@@ -50,12 +57,12 @@ class Cart < ActiveRecord::Base
   end
 
   def line_item_price(line_item)
-    line_item.user_book.custom_price ? line_item.user_book.custom_price : line_item.user_book.current_price.round(2)
+    line_item.user_book.custom_price ? line_item.user_book.custom_price : line_item.user_book.current_price
   end
 
   def cart_total_price
     self.line_items.inject(0) do |total_price, item|
-      total_price += item.item_karma
+      total_price += line_item_price(item).to_i
     end.round(2) 
   end
 

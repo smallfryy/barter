@@ -9,9 +9,9 @@
   <p>Seller: <%=item.seller.first_name %> </p>
   <p>Condition: <%=item.user_book.condition.name%></p>
   <% if item.user_book.custom_price %>
-    <p>Price: <%=item.user_book.custom_price %> karma points</p>
+    <p>Price: <%=item.user_book.format_custom_price %> karma points</p>
   <% else %>
-    <p>Price: <%=item.user_book.current_price.round(2) %> karma points</p>
+    <p>Price: <%=item.user_book.current_price %> karma points</p>
   <% end %>
   <p class="remove-item" line-item-id="<%= item.id %>">delete</p>
  <% end %>

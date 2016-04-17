@@ -25,7 +25,6 @@ class UserBooksController < ApplicationController
 
   def create
     @user = current_user
-    binding.pry
     params[:custom_price].present? ? custom_price = params[:custom_price].gsub(/[^0-9|\.]/,'') : custom_price = nil
     @user_book = UserBook.new(condition_id:params[:condition], textbook_id:params[:textbook_id], user:current_user, custom_price:custom_price)
     @textbook = @user_book.textbook
