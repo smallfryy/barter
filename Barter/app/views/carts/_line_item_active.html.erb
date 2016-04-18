@@ -1,6 +1,6 @@
 <div id="cart-item-<%= item.id %>">
   <%= link_to image_tag(item.textbook.img_url), textbook_path(item.textbook) %>
- <% if item.user_book.sold %> 
+ <% if item.user_book.sold %>
   <p>This item is no longer available.</p>
   <p>Seller: <%=item.seller.first_name %> </p>
   <p>Condition: <%=item.user_book.condition.name%></p>
@@ -13,6 +13,10 @@
   <% else %>
     <p>Price: <%=item.user_book.current_price %> karma points</p>
   <% end %>
-  <p class="remove-item" line-item-id="<%= item.id %>">delete</p>
+  <p class="remove-item" line-item-id="<%= item.id %>">
+    <i class="remove icon"></i>
+    Remove From Cart
+  </a>
+  </p>
  <% end %>
 </div>

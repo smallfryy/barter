@@ -74,7 +74,6 @@ class Cart < ActiveRecord::Base
 
   def add_karma_to_sellers
     line_items.each do |line_item|
-      binding.pry
       line_price = line_item_price(line_item)
       line_item.seller.karma.balance += line_price
       line_item.seller.karma.save
