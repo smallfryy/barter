@@ -57,6 +57,7 @@ class Cart < ActiveRecord::Base
   end
 
   def line_item_price(line_item)
+    binding.pry
     line_item.user_book.custom_price ? line_item.user_book.custom_price : line_item.user_book.current_price
   end
 
