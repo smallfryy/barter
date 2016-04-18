@@ -8,6 +8,10 @@ $(function() {
     $('.modal').modal('hide')
   })
 
+   $('#closeModal').click(function(){
+    $('.modal').modal('hide')
+  })
+
   $('#newUserBook').click(app.userBook.controller.showAddBookModal)
 
   $('#price_custom').click(function(){
@@ -20,9 +24,14 @@ $(function() {
 
   $('#userBookSubmit').click(app.userBook.controller.new)
 
-  $('#showUserBook').click(function(){
+  $('.user_book').click(function(){
     $('.modal').modal('hide')
   })
+
+
+  $('.userBookDelete').click(app.userBook.controller.deleteUserBook)
+
+
 
 })
 
@@ -39,15 +48,16 @@ app.userBook.controller = {
       var user = response.user
       var textbook = response.textbook
       var userBook = response.userBook
+      var price = response.price
       var userBookCondition = response.userBookCondition
       var newUser = new app.user.model.new(user.id, user.email, user.first_name, user.last_name, user.college_id)
       var newTextbook = new app.textbook.model.new(textbook.title, textbook.author, textbook.published_date, textbook.isbn)
       var newUserBook = new app.userBook.model.new (newUser, newTextbook, userBookCondition, userBook.sold)
-      app.userBook.controller.modal(newUserBook, userBook.id)
+      app.userBook.controller.modal(newUserBook, userBook.id, price)
 
     })
   },
-    modal: function(userBook, userBookId){
+    modal: function(userBook, userBookId, price){
       // $('.ui.basic.modal').html("")
       var $imageUrl = $('body').find('img').attr('src')
       var userShowUrl = "/users/" + userBook.user.id + ""
@@ -61,6 +71,7 @@ app.userBook.controller = {
         $('.ui.basic.modal .header').append("<h3>Published: " + userBook.textbook.publishedDate + "</h3>")
       }
       $('.ui.basic.modal .header').append("<h3>ISBN: " + userBook.textbook.isbn + "</h3>")
+      $('.ui.basic.modal ul').append('<li> Price: $'+ price +'</li>')
       $('.ui.basic.modal ul').append('<li> Condition: '+ userBook.condition +'</li>')
       // $('.modal .right ul').append(userBook.user.address.state)
       $('.ui.basic.modal ul').append('<li>Seller: ' + userBook.user.firstName + " " + userBook.user.lastName + '</li>')
@@ -105,6 +116,28 @@ app.userBook.controller = {
     var url = '/textbooks/' + userBook.textbook_id + '/book/' + userBook.id
 
     $('#book_info').text('There are ' + userBookCount + ' copies of ' + bookName + ' available for sale:')
-    $('#bookAppend').append('<li id="'+ userBook.id +'" class="user_book"><a href="'+ url +'">' + condition + '</a>' + " - listed by " + userName + "(" + userBooksSold + " books sold), " + listingDaysAgo + '.</li>')
+  $('#bookAppend').append('<div id="'+ userBook.id +'" class="item user_book"><i class="book icon"></i><div class="content"><a href="'+ url +'">' + condition + '</a>' + " - listed by " + userName + "(" + userBooksSold + " books sold), " + listingDaysAgo + '.</div></div>')
+  },
+  deleteUserBook: function(event){
+    event.preventDefault();
+    debugger;
+    userBookId = $(this).attr('userBook')
+    textbookId = $(this).attr('textbook')
+    url = "/textbooks/" + textbookId + "/book/" + userBookId
+
+      $.ajax({
+      url: url,
+      method: 'DELETE',
+      success: function(response){
+        // if (!_.isNull(response.lineItemId)){
+        //   id = response.lineItemId
+        //   $('#cart-item-' + id).empty();
+        // }
+        $('.userBookDelete[userbook=' + response.userBookId + ']').parent().remove()
+      }
+    })
   }
+
+
+
 }

@@ -1,14 +1,12 @@
 .pusher {
-    background: url(images/landpage.jpg) center center fixed;
-    background-repeat: repeat-y;
+    background: url(images/landpage.jpg) no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     height: 150%;
 }
 
 .pushable>.pusher.dimmed:after {
-    background: url(images/landpage.jpg) center center fixed;
-    background-repeat: repeat-y;
+    background: url(images/landpage.jpg) no-repeat center center fixed;
     background-size: cover;
     background-attachment: fixed;
     height: 150%; 

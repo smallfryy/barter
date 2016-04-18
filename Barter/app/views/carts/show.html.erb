@@ -1,16 +1,16 @@
 <div class="ui large message">
 
-<p class="notice"><%= notice %></p>
+<% if @cart.active && @cart.is_empty %>
+  <h1 class="ui center aligned header">Your Cart is Empty</h1>
 
-<% if @cart.active %>
+<% elsif @cart.active %>
 
-<h1 class="ui center aligned header"><%=@cart.user.first_name%>'s Cart</h1>
+<h1 class="ui center aligned header">Your Cart</h1>
 <%= render partial: "line_item_active", collection: @cart.line_items, as: :item %>
 
   <%= form_tag(cart_path(@cart), method: :patch) do %>
-    <%= collection_select :address, :id, @addresses, :id, :street %> 
   <%= submit_tag "Buy Books Now"%>
-<% end %>
+  <% end %>
 
 <% else %>
 <h1>Order placed on <%= @cart.order_date.strftime("%a %b %e, %Y") %> </h1>

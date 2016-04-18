@@ -1,33 +1,32 @@
 <script>
-$(function() {
-$('#submit').click(function(event){
-   if($('#query').val() == ''){
-    event.preventDefault();
-    $('#error_message').empty();
-      $('#error_message').text("Please enter a book.");
-   }
+  $(function() {
+    $('#submit').click(function(event){
+     if($('#query').val() == ''){
+      event.preventDefault();
+      $('#error_message').empty();
+      $('#error_message').text("Your input cannot be empty. Please enter a valid textbook.");
+    }
   })
-})
+  })
 </script>
 
 <div class="ui large message">
   <div class="ui page grid">
     <div class="column">
      <h1 class="ui title-header">Welcome to Bibliotech</h1><br>
-    <i><p id="error_message"> </p></i>
-
-    <div class="ui form">
-    <div class="field">
-      <p><%= form_tag(textbooks_path, method: "get") do %>
-      <i><%= label_tag(:query, "Please enter a book") %></i>
-      <%= text_field_tag(:query) %><p>
-      <%= submit_tag("Search", class: "ui teal basic button", id: 'submit') %>
-    </p></p>
-  <% end %>
+     <h4 class="ui red header"><i><p id="error_message"></p></i></h4>
+     <div class="ui form">
+      <div class="field">
+        <p><%= form_tag(textbooks_path, method: "get") do %>
+          <i><%= label_tag(:query, "Please enter a book") %></i>
+          <%= text_field_tag(:query) %><p>
+          <%= submit_tag("Search", class: "ui teal basic button", id: 'submit') %>
+        </p></p>
+        <% end %>
+      </div>
     </div>
-    </div>
-   </div>
   </div>
+</div>
 </div>
 
 
