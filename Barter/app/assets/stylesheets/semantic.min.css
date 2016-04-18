@@ -19,14 +19,6 @@ body>.pusher {
     height: 100%;
 }
 
-.ui.grid>.row {
-    background: url(images/landpage.jpg) no-repeat center center fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    height: 100%; 
-}
-
 .ui.title-header {
   font-size: 80px;
 }
