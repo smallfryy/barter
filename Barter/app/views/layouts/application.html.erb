@@ -33,20 +33,19 @@
       Karma: <%= current_user.karma.balance if current_user %>
     </div>
 
-    <div class="vertically fitted borderless item">
-      <% if user_signed_in? %>
-      <%= link_to "Hello, #{current_user.first_name}", user_path(current_user) %>
-      <%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %>
-      <% else %>
-      <div><%= link_to "Sign In", new_user_session_path %></div>
-      <%end%>
+  <div class="vertically fitted borderless item">
+   <% if user_signed_in? %>
+    <span><%= link_to "Hello, #{current_user.first_name}", user_path(current_user) %></span>&nbsp;&nbsp;&nbsp;
+   <span><%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %></span>
+    <% else %>
+    <span><%= link_to "Sign In", new_user_session_path %></span>
+  <%end%>
 
     </div>
   </div>
 </div>
 
 <div class="pusher">
-
   <body>
     <% if user_signed_in? %>
     <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition ">
@@ -72,6 +71,36 @@
         About
       </a>
     </div>
+<body>
+
+<% else %>
+
+ <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition ">
+  <a href="<%=root_path%>" class="item">
+    <i class="home icon"></i>
+    Home
+  </a>
+   <a href="<%=root_path%>"class="item">
+    <i class="empty heart icon"></i>
+    About
+  </a>
+
+</div>
+<% end %>
+
+<div class="ui page grid main">
+  <div class="row">
+    <div class="column padding-reset">
+      <div class="ui large message">
+
+
+
+
+        <p class="notice"><%= notice %></p>
+         <p class="alert"><%= alert %></p>
+
+        <%= yield %>
+
 
     <% else %>
 
