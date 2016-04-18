@@ -1,14 +1,14 @@
-<h1><%= @college.name %></h1>
+<div class="ui large message">
 
-<!-- Google maps API embedded in College profile page -->
-<!-- Need to incorporate college address -->
+<h1 class="ui center aligned header"><%= @college.name %></h1>
+
 <div class="google-maps">
   <iframe
     width="500"
     height="350"
     frameborder="0" style="border:0"
     src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCtN0Q7OpzJ2rlsh7oUygFm141Ho98E59g
-      &q=Space+Needle,Seattle+WA" allowfullscreen>
+      &q=<%=@college.name%>" allowfullscreen>
   </iframe>
 </div>
 
@@ -25,6 +25,7 @@
     <li class="list-students"><%= link_to user.first_name, user_path(user) %> — (<%= user.num_books_for_sale %> books currently listed for sale)</li>
   <% end %>
 </ul>
+</div>
 
 
 

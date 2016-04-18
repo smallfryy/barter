@@ -66,10 +66,15 @@ $(function(){
     <i class="university icon"></i>
     College
   </a>
+      <a href="<%=root_path%>"class="item">
+    <i class="empty heart icon"></i>
+    About
+  </a>
   <a href="<%=cart_path(current_user.active_cart)%>"class="item">
     <i class="add to cart icon"></i>
     Cart
   </a>
+
 </div>
 
 <% else %>
@@ -78,6 +83,10 @@ $(function(){
   <a href="<%=root_path%>" class="item">
     <i class="home icon"></i>
     Home
+  </a>
+   <a href="<%=root_path%>"class="item">
+    <i class="empty heart icon"></i>
+    About
   </a>
 
 </div>

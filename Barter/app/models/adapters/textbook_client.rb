@@ -23,10 +23,15 @@ module Adapters
         author = item["volumeInfo"]["authors"].join(", ") if item["volumeInfo"]["authors"].present?
         title = item["volumeInfo"]["title"] if item["volumeInfo"]["title"].present?
         industry_identifier = connection.returns_industry_identifier(item)
-        img_url = item["volumeInfo"]["imageLinks"]["thumbnail"] if item["volumeInfo"]["imageLinks"].present?
         publisher = item["volumeInfo"]["publisher"] if item["volumeInfo"]["publisher"].present?
         description = item["volumeInfo"]["description"] if item["volumeInfo"]["description"].present?
         published_date = item["volumeInfo"]["publishedDate"] if item["volumeInfo"]["publishedDate"].present?
+
+        if item["volumeInfo"]["imageLinks"].present?
+          img_url = item["volumeInfo"]["imageLinks"]["thumbnail"]
+        else
+          img_url = "http://cache2.asset-cache.net/xt/182372888.jpg?v=1&g=fs1%7C0%7CEPL%7C72%7C888&s=1"
+        end
 
         if industry_identifier.present?
           textbook = Textbook.find_or_create_by(isbn: industry_identifier)
