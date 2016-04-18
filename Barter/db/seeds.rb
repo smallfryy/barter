@@ -66,6 +66,17 @@ User.all.each do |user|
   user.save
 end
 
+college1 = College.create(name: "University of Pennsylvania")
+college2 = College.create(name: "Princeton University")
+college3 = College.create(name: "Yale University")
+college4 = College.create(name: "Columbia University")
+college5 = College.create(name: "Simon Fraser University")
+college6 = College.create(name: "University of British Columbia")
+college7 = College.create(name: "Texas State University")
+college8 = College.create(name: "George Washington University")
+college9 = College.create(name: "New York University")
+college10 = College.create(name: "Brown University")
+
 subject1 = Subject.create(name: "Math")
 subject2 = Subject.create(name: "English")
 subject3 = Subject.create(name: "Science")
