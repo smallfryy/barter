@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+
+<body>
+
+  <h1>Hello, <%= @user.first_name %></h1>
+  <p>
+    Thank you for purchasing the following:<br>
+  </p>
+
+  <ul>
+    <% @cart.line_items.each do |line_item|%>
+    <li><%= line_item.user_book.textbook.title %></li>
+    <% end %>
+  </ul>
+
+  <p> 
+  Your total price is <%= @cart.cart_total_price %>
+  </p>
+
+  <p>
+  Have a great day!
+  </p>
+
+  <p>
+  Thanks, 
+  </p>
+
+  <p> 
+    The Bibliotech Team
+  </p>
+  
+</body>
+</html>

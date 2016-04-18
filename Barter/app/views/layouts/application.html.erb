@@ -30,35 +30,35 @@
 
 
   <%if user_signed_in? %>
-    <div class="right menu">
-      <div class="item">
-        Karma: <%= number_to_currency(current_user.karma.balance)%>
-      </div>
+  <div class="right menu">
+    <div class="item">
+      Karma: <%= number_to_currency(current_user.karma.balance)%>
+    </div>
     <%end%>
 
 
-      <div class="vertically fitted borderless item right">
-       <% if user_signed_in? %>
-        <!-- <%= link_to "Hello , #{current_user.first_name}", user_path(current_user) %> -->
-        <%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %>
-        <% else %>
-        <div><%= link_to "Sign In", new_user_session_path %></div>
-      <%end%>
-
-    </div>
-  </div>
-</div>
-
-    <div class="vertically fitted borderless item">
+    <div class="vertically fitted borderless item right">
      <% if user_signed_in? %>
-     <span><%= link_to "Hello, #{current_user.first_name}", user_path(current_user) %></span>&nbsp;&nbsp;&nbsp;
-     <span><%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %></span>
+     <!-- <%= link_to "Hello , #{current_user.first_name}", user_path(current_user) %> -->
+     <%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %>
      <% else %>
-     <span><%= link_to "Sign In", new_user_session_path %></span>
+     <div><%= link_to "Sign In", new_user_session_path %></div>
      <%end%>
 
    </div>
  </div>
+</div>
+
+<div class="vertically fitted borderless item">
+ <% if user_signed_in? %>
+ <span><%= link_to "Hello, #{current_user.first_name}", user_path(current_user) %></span>&nbsp;&nbsp;&nbsp;
+ <span><%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %></span>
+ <% else %>
+ <span><%= link_to "Sign In", new_user_session_path %></span>
+ <%end%>
+
+</div>
+</div>
 </div>
 
 <body>

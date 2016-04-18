@@ -4,13 +4,14 @@
    <i> <h4 class='ui center aligned header'>
     Member Since: <%= @user.member_since %> |
     <% if @user.college %>
-  College: <%= link_to(@user.college.name, college_path(@user.college_id)) %> |
+  College: <%= link_to(@user.college.name, college_path(@user.college_id)) %>
     <% end %>
-    Karma Balance: <%= @user.karma.balance %></h4></i>
+
+  <% if @user == current_user %>
+    | Karma Balance: <%= @user.karma.balance %>
+  <% end %></h4></i>
   <img class="ui centered medium rounded image" src="http://silvalanguagearts.pbworks.com/f/1372781548/banner_books2.jpg">
-<% if @user == current_user %>
-  <p>Karma Balance: <%= @user.karma.balance if current_user == @user%></p>
-<% end %>
+
 <% if @user.last_sign_in %>
   <p>Last Sign In: <%= @user.last_sign_in %></p>
 <% end %>
@@ -42,6 +43,7 @@
   <% end %>
 </ul> -->
 
+<% if current_user == @user %>
 <h4>Books You've Sold:</h4>
 <ul>
   <% @user.books_sold.each do |book| %>
@@ -50,7 +52,6 @@
 </ul>
 
 <h4>Previous Orders:</h4>
-<% if current_user == @user %>
 
 <h4>
 <div class="ui relaxed divided list">
