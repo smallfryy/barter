@@ -27,8 +27,6 @@ holly = User.create(first_name: "Holly", last_name: "Peck", email: "holly.m.peck
 
 # DEMONSTRATION SEEDS
 justin.addresses << Address.create(street: "11 Broadway", apt_num: "Apt 1", city: "New York", state: "NY", zip: "10004", country: "USA")
-college = College.create(name: "University of Pennsylvania")
-college.address = Address.create(street: "1 College Hall", city: "Philadelphia", state: "PA", zip: "19104", country: "USA")
 psych_101 = Textbook.create(title: "Psych 101", isbn: "9781440543937")
 fresh = Condition.create(name: "Fresh")
 very_good = Condition.create(name: "Very Good")
@@ -53,17 +51,7 @@ User.all.each_with_index do |user, i|
   if i.even?
     user.addresses << Address.create(street: Faker::Address.street_address, apt_num: Faker::Address.secondary_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, country: "USA")
   end
-  user.addresses << Address.create(street: Faker::Address.street_address, apt_num: Faker::Address.secondary_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, country: "USA")
-end
-
-10.times do
-  college = College.create(name: Faker::University.name)
-  college.address = Address.create(street: Faker::Address.street_address, apt_num: Faker::Address.secondary_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, country: "USA")
-end
-
-User.all.each do |user|
-  user.college = College.all.sample
-  user.save
+    user.addresses << Address.create(street: Faker::Address.street_address, apt_num: Faker::Address.secondary_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, country: "USA")
 end
 
 college1 = College.create(name: "University of Pennsylvania")
@@ -76,6 +64,11 @@ college7 = College.create(name: "Texas State University")
 college8 = College.create(name: "George Washington University")
 college9 = College.create(name: "New York University")
 college10 = College.create(name: "Brown University")
+
+User.all.each do |user|
+  user.college = College.all.sample
+  user.save
+end
 
 subject1 = Subject.create(name: "Math")
 subject2 = Subject.create(name: "English")
