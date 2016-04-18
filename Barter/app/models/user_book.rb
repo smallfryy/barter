@@ -36,7 +36,7 @@ class UserBook < ActiveRecord::Base
       return "#{days} days ago"
     end
   end
-
+  
   def current_price
     retail_price = Adapters::TextbookClient.find_retail_price(self.textbook)
     if retail_price

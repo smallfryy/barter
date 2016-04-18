@@ -16,7 +16,8 @@ class CollegesController < ApplicationController
 
   def index 
   @colleges = College.all
-  end 
+  @colleges = College.paginate(:page => params[:page], :per_page => 5)
 
+  end 
 
 end

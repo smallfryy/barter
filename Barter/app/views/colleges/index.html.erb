@@ -8,6 +8,7 @@
       <div class="thirteen wide column">
     <% @colleges.each do |college| %>
        <p><%= link_to college.name, college_path(college)  %></p><br>
+  <%= will_paginate @colleges %>
     <% end %>
       </div>
     </div>
@@ -17,7 +18,6 @@
     </div>
   </div>
 </div>
-
 
 
 
