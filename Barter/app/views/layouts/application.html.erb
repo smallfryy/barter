@@ -26,24 +26,26 @@ $(function(){
     </a>
 
       <div class="item">
-        BiblioTech
+        Bibliotech
       </div>
 
+
+  <%if current_user %>
     <div class="right menu">
       <div class="item">
-      Karma: <%= current_user.karma.balance if current_user %>
-      </div>
-
-  <div class="vertically fitted borderless item">
-   <% if user_signed_in? %>
-    <%= link_to "Hello, #{current_user.first_name}", user_path(current_user) %>
-    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %>
-    <% else %>
-    <div><%= link_to "Sign In", new_user_session_path %></div>
+        Karma: <%= current_user.karma.balance%>
+    </div>
   <%end%>
 
-      </div>
+      <div class="vertically fitted borderless item right">
+       <% if user_signed_in? %>
+        <!-- <%= link_to "Hello , #{current_user.first_name}", user_path(current_user) %> -->
+        <%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %>
+        <% else %>
+        <div><%= link_to "Sign In", new_user_session_path %></div>
+      <%end%>
     </div>
+  </div>
 </div>
 
 <div class="pusher">
@@ -70,6 +72,10 @@ $(function(){
     <i class="add to cart icon"></i>
     Cart
   </a>
+    <a href="<%=root_path%>"class="item">
+    <i class="empty heart icon"></i>
+    About
+  </a>
 </div>
 
 <% else %>
@@ -78,6 +84,10 @@ $(function(){
   <a href="<%=root_path%>" class="item">
     <i class="home icon"></i>
     Home
+  </a>
+   <a href="<%=root_path%>"class="item">
+    <i class="empty heart icon"></i>
+    About
   </a>
 
 </div>
