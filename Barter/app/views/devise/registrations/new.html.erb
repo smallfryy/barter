@@ -14,6 +14,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :college %><br />
+    <%= f.collection_select(:college_id,College.all,:id,:name) %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>

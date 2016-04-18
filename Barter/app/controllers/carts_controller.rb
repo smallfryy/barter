@@ -21,6 +21,8 @@ class CartsController < ApplicationController
   def update
     if @cart.buyer_has_enough_karma
       @cart.complete_transaction
+    elsif @cart.is_empty
+      flash[:notice] = "Your cart is empty, dumdum."
     else
       flash[:notice] = "You do not have enough karma to complete this transaction, bruh."
     end
@@ -28,10 +30,7 @@ class CartsController < ApplicationController
   end
 
 
-
-
-
-  def order_date
+  def format_order_date
     self.order_date.to_date.to_formatted_s(:long_ordinal)
   end
 

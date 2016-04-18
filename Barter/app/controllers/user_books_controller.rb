@@ -9,6 +9,7 @@
 #  condition_id :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  custom_price :float
 #
 
 class UserBooksController < ApplicationController

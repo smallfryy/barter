@@ -3,11 +3,11 @@
 # Table name: karmas
 #
 #  id         :integer          not null, primary key
-#  balance    :integer          default(0)
+#  balance    :float            default(0.0)
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-
+#
 
 require_relative "../spec_helper.rb"
 

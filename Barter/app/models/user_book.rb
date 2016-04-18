@@ -9,6 +9,7 @@
 #  condition_id :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  custom_price :float
 #
 
 class UserBook < ActiveRecord::Base
@@ -41,7 +42,6 @@ class UserBook < ActiveRecord::Base
     if retail_price
       @condition_prices = self.textbook.calculate_condition_prices(retail_price)
       price = @condition_prices[self.condition.name.downcase.to_sym]
-      "%.2f" % price
     end
   end
 

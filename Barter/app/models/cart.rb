@@ -24,25 +24,25 @@ class Cart < ActiveRecord::Base
     end
   end
 
+  def is_empty
+    line_items.count.zero?
+  end
+
   def buyer_has_enough_karma
     cart_total_price < self.user.karma.balance
   end
 
-  # def initiate_transaction
-  #   if cart_total_price > self.user.karma.balance
-  #     # self.errors.add = "you do not have enough karma to complete this transaction, bruh."
-  #     # self.errors.add(:cart, "you do not have enough karma to complete this transaction, bruh.")
-  #   else
-  #     complete_transaction
-  #   end 
-  # end
-
   def complete_transaction
     add_karma_to_sellers
+    binding.pry
     set_items_final_karma
+    binding.pry
     subtract_karma_from_buyer
+    binding.pry
     self.order_date = Time.now
+    binding.pry
     self.update(active:false) #old card deactivated
+    binding.pry
     user.setup_cart #new cart created
   end
 
@@ -62,8 +62,9 @@ class Cart < ActiveRecord::Base
 
   def cart_total_price
     self.line_items.inject(0) do |total_price, item|
-      total_price += line_item_price(item).to_i
-    end.round(2) 
+      binding.pry
+      total_price += line_item_price(item)
+    end
   end
 
   def subtract_karma_from_buyer
@@ -73,6 +74,7 @@ class Cart < ActiveRecord::Base
 
   def add_karma_to_sellers
     line_items.each do |line_item|
+      binding.pry
       line_price = line_item_price(line_item)
       line_item.seller.karma.balance += line_price
       line_item.seller.karma.save
