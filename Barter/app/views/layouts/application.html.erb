@@ -29,10 +29,10 @@
   </div>
 
 
-  <%if current_user %>
+  <%if user_signed_in? %>
     <div class="right menu">
       <div class="item">
-        Karma: <%= current_user.karma.balance%>
+        Karma: <%= number_to_currency(current_user.karma.balance)%>
       </div>
     <%end%>
 
