@@ -20,7 +20,8 @@ class UserBooksController < ApplicationController
   def show
     @textbook = @user_book.textbook
     @user = @user_book.user
-    render json: {userBook: @user_book, userBookCondition: @user_book.condition.name, user: @user, textbook: @textbook}
+    @price = @user_book.custom_price.present? ? @user_book.custom_price : @user_book.current_price
+    render json: {userBook: @user_book, userBookCondition: @user_book.condition.name, user: @user, textbook: @textbook, price: @price}
   end
 
 
