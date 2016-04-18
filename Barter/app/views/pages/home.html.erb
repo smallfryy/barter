@@ -3,7 +3,8 @@ $(function() {
 $('#submit').click(function(event){
    if($('#query').val() == ''){
     event.preventDefault();
-      alert('Please enter a textbook!');
+    $('#error_message').empty();
+      $('#error_message').text("Please enter a book.");
    }
   })
 })
@@ -13,7 +14,8 @@ $('#submit').click(function(event){
   <div class="ui page grid">
     <div class="column">
      <h1 class="ui title-header">Welcome to Bibliotech</h1><br>
-  
+    <i><p id="error_message"> </p></i>
+
     <div class="ui form">
     <div class="field">
       <p><%= form_tag(textbooks_path, method: "get") do %>
