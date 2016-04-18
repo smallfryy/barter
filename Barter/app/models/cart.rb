@@ -15,14 +15,14 @@ class Cart < ActiveRecord::Base
   has_many :line_items
   has_many :user_books, through: :line_items
   validates_presence_of :user_id
-  validate :one_active_cart
+  # validate :one_active_cart
 
-  def one_active_cart
-    active_carts = Cart.where(user_id:self.user_id,active:true)
-    if active_carts.count > 1
-      errors.add(:cart,"only one active cart allowed per user")
-    end
-  end
+  # def one_active_cart
+  #   active_carts = Cart.where(user_id:self.user_id,active:true)
+  #   if active_carts.count > 1
+  #     errors.add(:cart,"only one active cart allowed per user")
+  #   end
+  # end
 
   def is_empty
     line_items.count.zero?
@@ -34,15 +34,10 @@ class Cart < ActiveRecord::Base
 
   def complete_transaction
     add_karma_to_sellers
-    binding.pry
     set_items_final_karma
-    binding.pry
     subtract_karma_from_buyer
-    binding.pry
     self.order_date = Time.now
-    binding.pry
     self.update(active:false) #old card deactivated
-    binding.pry
     user.setup_cart #new cart created
   end
 
@@ -57,7 +52,6 @@ class Cart < ActiveRecord::Base
   end
 
   def line_item_price(line_item)
-    binding.pry
     line_item.user_book.custom_price ? line_item.user_book.custom_price : line_item.user_book.current_price
   end
 
@@ -78,6 +72,7 @@ class Cart < ActiveRecord::Base
       line_price = line_item_price(line_item)
       line_item.seller.karma.balance += line_price
       line_item.seller.karma.save
+      line_item.seller.save
     end
   end
 

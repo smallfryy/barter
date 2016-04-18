@@ -21,21 +21,21 @@ class LineItem < ActiveRecord::Base
   belongs_to :address
   belongs_to :buyer, :foreign_key => :id, class_name: 'User'
 
-  validate :book_not_in_user_cart_twice, :book_buyer_is_not_seller
+  # validate :book_not_in_user_cart_twice, :book_buyer_is_not_seller
 
-  def book_not_in_user_cart_twice
-    buyer = User.find(buyer_id)
-    if buyer.active_cart.user_books.include?(self.user_book)
-      errors.add(:user_book, "This book already exists in cart.")
-    end
-  end
-
-  def book_buyer_is_not_seller
-    buyer = User.find(buyer_id)
-    if buyer == seller
-      errors.add(:user_book, "You cannot buy your own books.")
-    end
-  end
+  # def book_not_in_user_cart_twice
+  #   buyer = User.find(buyer_id)
+  #   if buyer.active_cart.user_books.include?(self.user_book)
+  #     errors.add(:user_book, "This book already exists in cart.")
+  #   end
+  # end
+  # 
+  # def book_buyer_is_not_seller
+  #   buyer = User.find(buyer_id)
+  #   if buyer == seller
+  #     errors.add(:user_book, "You cannot buy your own books.")
+  #   end
+  # end
 
   def seller
     self.user_book.user
