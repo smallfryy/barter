@@ -44,7 +44,6 @@ app.userBook.controller = {
       url: url,
       method: 'GET'
     }).then(function(response){
-
       var user = response.user
       var textbook = response.textbook
       var userBook = response.userBook

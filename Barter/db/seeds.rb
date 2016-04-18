@@ -66,9 +66,8 @@ trash = Condition.create(name: "Trash")
 
 # KARMA
 
-justin.karma.balance = 250.09
-justin.save 
 
+# justin = Karma.create(balance: 250.55, user_id: justin)
 # sammy_karma = Karma.create(balance: 220.50, user_id: sammy)
 # liz_karma = Karma.create(balance: 203.74, user_id: liz)
 # holly_karma = Karma.create(balance: 235.00, user_id: holly)
@@ -140,6 +139,41 @@ japanese = Textbook.create(title: "Traditional Japanese Music and Musical Instru
 art1 = Textbook.create(title: "Art History: A Very Short Introduction", isbn: "9780191577598", author: "Dana Arnold", img_url: "http://books.google.com/books/content?id=SrAhAuJ8KmQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", description: "This clear and concise new introduction examines all the major debates and issues using a wide range of well-known examples. It discusses the challenge of using verbal and written language to analyse a visual form. Dana Arnold also examines the many different ways of writing about art, and the changing boundaries of the subject of art history. Topics covered include the canon of Art History, the role of the gallery, 'blockbuster' exhibitions, the emergence of social histories of art (Feminist Art History or Queer Art History, for example), the impact of photography, and the development of Art History using artefacts such as the altarpiece, the portrait, or pornography, to explore social and cultural issues such as consumption, taste, religion, and politics. Importantly, this book explains how the traditional emphasis on periods and styles originates in western art production and can obscure other critical approaches, as well as art from non western cultures. ABOUT THE SERIES: The Very Short Introductions series from Oxford University Press contains hundreds of titles in almost every subject area. These pocket-sized books are the perfect way to get ahead in a new subject quickly. Our expert authors combine facts, analysis, perspective, new ideas, and enthusiasm to make interesting and challenging topics highly readable.", published_date: "2004-01-22")
 art2 = Textbook.create(title: "Is Art History Global?", isbn: "9781135867669", author: "James Elkins", img_url: "http://books.google.com/books/content?id=JQaOAQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", description: "This is the third volume in The Art Seminar, James Elkin's series of conversations on art and visual studies. Is Art History Global? stages an international conversation among art historians and critics on the subject of the practice and responsibility of global thinking within the discipline. Participants range from Keith Moxey of Columbia University to Cao Yiqiang, Ding Ning, Cuautemoc Medina, Oliver Debroise, Renato Gonzalez Mello, and other scholars.", published_date: "2013-10-18")
 art3 = Textbook.create(title: "Critical Terms for Art History, Second Edition", isbn: "9780226571690", author: "Robert S. Nelson, Richard Shiff", img_url: "http://books.google.com/books/content?id=ObqVXJgMhYgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", description: "\"Art\" has always been contested terrain, whether the object in question is a medieval tapestry or Duchamp's Fountain. But questions about the categories of \"art\" and \"art history\" acquired increased urgency during the 1970s, when new developments in critical theory and other intellectual projects dramatically transformed the discipline. The first edition of Critical Terms for Art History both mapped and contributed to those transformations, offering a spirited reassessment of the field's methods and terminology. Art history as a field has kept pace with debates over globalization and other social and political issues in recent years, making a second edition of this book not just timely, but crucial. Like its predecessor, this new edition consists of essays that cover a wide variety of \"loaded\" terms in the history of art, from sign to meaning, ritual to commodity. Each essay explains and comments on a single term, discussing the issues the term raises and putting the term into practice as an interpretive framework for a specific work of art. For example, Richard Shiff discusses \"Originality\" in Vija Celmins's To Fix the Image in Memory, a work made of eleven pairs of stones, each consisting of one \"original\" stone and one painted bronze replica. In addition to the twenty-two original essays, this edition includes nine new ones—performance, style, memory/monument, body, beauty, ugliness, identity, visual culture/visual studies, and social history of art—as well as new introductory material. All help expand the book's scope while retaining its central goal of stimulating discussion of theoretical issues in art history and making that discussion accessible to both beginning students and senior scholars. Contributors: Mark Antliff, Nina Athanassoglou-Kallmyer, Stephen Bann, Homi K. Bhabha, Suzanne Preston Blier, Michael Camille, David Carrier, Craig Clunas, Whitney Davis, Jas Elsner, Ivan Gaskell, Ann Gibson, Charles Harrison, James D. Herbert, Amelia Jones, Wolfgang Kemp, Joseph Leo Koerner, Patricia Leighten, Paul Mattick Jr., Richard Meyer, W. J. T. Mitchell, Robert S. Nelson, Margaret Olin, William Pietz, Alex Potts, Donald Preziosi, Lisbet Rausing, Richard Shiff, Terry Smith, Kristine Stiles, David Summers, Paul Wood, James E. Young", published_date: "2010-03-15")
+
+# SUBJECTS
+
+# english = Subject.create(name: "English")
+# psych = Subject.create(name: "Psychology")
+# programming = Subject.create(name: "Programming")
+# history = Subject.create(name: "History")
+# business = Subject.create(name: "Business")
+# math = Subject.create(name: "Math")
+# language = Subject.create(name: "Foreign Language")
+# art = Subject.create(name: "Art History")
+
+
+# TEXTBOOK_SUBJECTS
+
+# TextbookSubject.create(textbook: harry_potter , subject: english)
+# TextbookSubject.create(textbook: psych_101, subject: psych)
+# TextbookSubject.create(textbook: javascript, subject: programming)
+# TextbookSubject.create(textbook: javascript2, subject: programming)
+# TextbookSubject.create(textbook: javascript3, subject: programming)
+# TextbookSubject.create(textbook: american_history, subject: history)
+# TextbookSubject.create(textbook: american_history2, subject: history)
+# TextbookSubject.create(textbook: american_history3, subject: history)
+# TextbookSubject.create(textbook: finance1, subject: business)
+# TextbookSubject.create(textbook: finance2, subject: business)
+# TextbookSubject.create(textbook: calc1, subject: math)
+# TextbookSubject.create(textbook: calc2, subject: math)
+# TextbookSubject.create(textbook: spanish, subject: language)
+# TextbookSubject.create(textbook: french, subject: language)
+# TextbookSubject.create(textbook: chinese, subject: language)
+# TextbookSubject.create(textbook: japanese, subject: language)
+# TextbookSubject.create(textbook: art1, subject: art)
+# TextbookSubject.create(textbook: art2, subject: art)
+# TextbookSubject.create(textbook: art3, subject: art)
+
 
 # USER_BOOKS
 

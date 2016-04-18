@@ -44,6 +44,7 @@
   <% end %>
 </ul> -->
 
+<% if current_user == @user %>
 <h4>Books You've Sold:</h4>
 <ul>
   <% @user.books_sold.each do |book| %>
@@ -52,7 +53,6 @@
 </ul>
 
 <h4>Previous Orders:</h4>
-<% if current_user == @user %>
 
 <h4>
 <div class="ui relaxed divided list">
