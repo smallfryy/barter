@@ -10,11 +10,11 @@
       <p><%= textbook.isbn %></p></span>
     </div>
     <div class="book information">
-    <p><%= textbook.description %></p>
+    <p><%= truncate(textbook.description, length: 250, separator: ' ') %></p>
      <% if textbook.user_books.present? %>
-      <p>There are currently <%= textbook.user_books.count %> copies available for sale.</p>
+      <p><strong>There are currently <%= textbook.user_books.count %> copies available for sale.</strong></p>
       <% else %>
-       <p>There are currently no copies available. Add one for sale!</p>
+       <p><strong>There are currently no copies available. Add one for sale!</strong></p>
        <% end %>
       </div>
     </div>
