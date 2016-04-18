@@ -49,46 +49,60 @@
   </div>
 </div>
 
-<div class="pusher">
-<% if user_signed_in? %>
-  <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition ">
-  <a href="<%=root_path%>" class="item">
-    <i class="home icon"></i>
-    Home
-  </a>
+    <div class="vertically fitted borderless item">
+     <% if user_signed_in? %>
+     <span><%= link_to "Hello, #{current_user.first_name}", user_path(current_user) %></span>&nbsp;&nbsp;&nbsp;
+     <span><%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %></span>
+     <% else %>
+     <span><%= link_to "Sign In", new_user_session_path %></span>
+     <%end%>
 
-  <a href="<%=user_path(current_user)%>" class="item">
-    <i class="student icon"></i>
-    Profile
-  </a>
-  <a href="<%=college_path(current_user.college)%>"class="item">
-    <i class="university icon"></i>
-    College
-  </a>
-      <a href="<%=root_path%>"class="item">
-    <i class="empty heart icon"></i>
-    About
-  </a>
-  <a href="<%=cart_path(current_user.active_cart)%>"class="item">
-    <i class="add to cart icon"></i>
-    Cart
-  </a>
+   </div>
+ </div>
 </div>
 
-  <% else %>
+<body>
+  <div class="pusher">
 
- <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition ">
-  <a href="<%=root_path%>" class="item">
-    <i class="home icon"></i>
-    Home
-  </a>
-   <a href="<%=root_path%>"class="item">
-    <i class="empty heart icon"></i>
-    About
-  </a>
-  </div>
-<%end%>
+    <% if user_signed_in? %>
+    <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition ">
+      <a href="<%=root_path%>" class="item">
+        <i class="home icon"></i>
+        Home
+      </a>
 
+      <a href="<%=user_path(current_user)%>" class="item">
+        <i class="student icon"></i>
+        Profile
+      </a>
+      <a href="<%=college_path(current_user.college)%>"class="item">
+        <i class="university icon"></i>
+        College
+      </a>
+      <a href="<%=cart_path(current_user.active_cart)%>"class="item">
+        <i class="add to cart icon"></i>
+        Cart
+      </a>
+      <a href="<%=root_path%>"id="item">
+        <i class="empty heart icon"></i>
+        About
+      </a>
+    </div>
+
+    <% else %>
+
+    <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition ">
+      <a href="<%=root_path%>" class="item">
+        <i class="home icon"></i>
+        Home
+      </a>
+      <a href="<%=root_path%>"class="item">
+        <i class="empty heart icon"></i>
+        About
+      </a>
+
+    </div>
+    <% end %>
 
     <div class="ui page grid main">
       <div class="row">
@@ -101,7 +115,6 @@
         </div>
       </div>
     </div>
-
   </body>
 </div>
 </html>

@@ -20,7 +20,7 @@
 </div>
 <br>
   <% if @condition_prices %>
- <p><h3>Marketplace Pricing</h3>
+ <div class="ui list">Marketplace Pricing</div>
     <p>Fresh: <%= number_to_currency(@condition_prices[:fresh]) %> &nbsp&nbsp&nbsp
       Very Good: <%= number_to_currency(@condition_prices[:very_good]) %>&nbsp&nbsp&nbsp
       Good: <%= number_to_currency(@condition_prices[:good]) %>&nbsp&nbsp&nbsp
@@ -38,6 +38,13 @@
   </div>
 </div>
 
+<div class="ui container" id="book_div">
+   <% if !@textbook.user_books.available.empty? %>
+     <h4 id="book_info">There are <%=@textbook.user_books.available.count %> copies of <%= @textbook.title %> available for sale:<h3>
+   <% else %>
+    <i><h3 id="book_info">Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h3></i><br>
+   <% end %>
+ </div>
 
 <div class="ui list" id="bookAppend">
 <% @textbook.user_books.available.each do |book| %>
@@ -132,5 +139,5 @@
 <% if user_signed_in? %>
   <div id="newUserBook" class="ui top attached button">Sell a copy of this book!</div><br>
 <% else %>
-  <a href='/users/sign_in'><div id="mustSignUpToSellBook" class="ui top attached button 2">Sell a copy of this book!  </div></a><br>
+  <a href='/users/sign_in'><div id="mustSignUpToSellBook" class="ui button attached button">Sell a copy of this book!  </div></a><br>
 <% end %>
