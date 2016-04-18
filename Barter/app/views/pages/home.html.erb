@@ -1,10 +1,11 @@
 <script>
+
 $(function() {
 $('#submit').click(function(event){
    if($('#query').val() == ''){
     event.preventDefault();
     $('#error_message').empty();
-      $('#error_message').text("Please enter a book.");
+      $('#error_message').text("Your input cannot be empty. Please enter a valid textbook.");
    }
   })
 })
@@ -14,8 +15,7 @@ $('#submit').click(function(event){
   <div class="ui page grid">
     <div class="column">
      <h1 class="ui title-header">Welcome to Bibliotech</h1><br>
-    <i><p id="error_message"> </p></i>
-
+    <h4 class="ui red header"><i><p id="error_message"></p></i></h4>
     <div class="ui form">
     <div class="field">
       <p><%= form_tag(textbooks_path, method: "get") do %>
