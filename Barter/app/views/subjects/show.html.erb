@@ -1,13 +1,11 @@
 <div class="ui large message">
 
-<br><br><br><h1><%=@subject.name%></h1>
-
-
-
-<ul>
-  <%@subject.textbooks.each do |textbook| %>
+  <br><br><br><h1><%=@subject.name%></h1>
+  
+  <ul>
+    <%@subject.textbooks.each do |textbook| %>
     <li> <%= link_to textbook.title, textbook_path(textbook)%></li>
-  <%end%>
-</ul>
+    <%end%>
+  </ul>
 
 </div>

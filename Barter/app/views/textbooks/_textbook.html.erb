@@ -3,20 +3,20 @@
     <div class="image">
       <%= link_to image_tag(textbook.img_url), textbook_path(textbook) %>
     </div>
-   
+    
     <div class="content">
       <a class="header"><%= link_to textbook.title, textbook_path(textbook) %></a>
-    <div class="meta"><span>
-      <p><%= textbook.author %></p>
-      <p><%= textbook.isbn %></p></span>
-    </div>
-    <div class="book information">
-    <p><%= truncate(textbook.description, length: 250, separator: ' ') %></p>
-     <% if textbook.user_books.present? %>
-      <p><strong>There are currently <%= textbook.user_books.count %> copies available for sale.</strong></p>
-      <% else %>
-       <p><strong>There are currently no copies available. Add one for sale!</strong></p>
-       <% end %>
+      <div class="meta"><span>
+        <p><%= textbook.author %></p>
+        <p><%= textbook.isbn %></p></span>
+      </div>
+      <div class="book information">
+        <p><%= truncate(textbook.description, length: 250, separator: ' ') %></p>
+        <% if textbook.user_books.present? %>
+        <p><strong>There are currently <%= textbook.user_books.count %> copies available for sale.</strong></p>
+        <% else %>
+        <p><strong>There are currently no copies available. Add one for sale!</strong></p>
+        <% end %>
       </div>
     </div>
   </div>
