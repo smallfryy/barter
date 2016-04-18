@@ -44,7 +44,6 @@ app.userBook.controller = {
       url: url,
       method: 'GET'
     }).then(function(response){
-
       var user = response.user
       var textbook = response.textbook
       var userBook = response.userBook
@@ -65,6 +64,9 @@ app.userBook.controller = {
       $('.ui.basic.modal ul').empty()
       $('.ui.basic.modal .image.content .image').empty()
       $('#addToCartMessage').empty();
+
+
+
       $('.ui.basic.modal .header').append(userBook.textbook.title)
       $('.ui.basic.modal .header').append("<h3>By " + userBook.textbook.author + "</h3>")
       if (userBook.textbook.publishedDate) {

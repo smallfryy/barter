@@ -7,7 +7,7 @@
   College: <%= link_to(@user.college.name, college_path(@user.college_id)) %> |
     <% end %>
     Karma Balance: <%= @user.karma.balance %></h4></i>
-  <img class="ui centered medium rounded image" src="../assets/images/square-image.png">
+  <img class="ui centered medium rounded image" src="http://silvalanguagearts.pbworks.com/f/1372781548/banner_books2.jpg">
 <% if @user == current_user %>
   <p>Karma Balance: <%= @user.karma.balance if current_user == @user%></p>
 <% end %>

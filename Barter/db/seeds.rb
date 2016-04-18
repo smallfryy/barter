@@ -67,7 +67,7 @@ trash = Condition.create(name: "Trash")
 # KARMA
 
 justin.karma.balance = 250.09
-justin.save 
+justin.save
 
 # sammy_karma = Karma.create(balance: 220.50, user_id: sammy)
 # liz_karma = Karma.create(balance: 203.74, user_id: liz)
@@ -157,14 +157,14 @@ UserBook.create(textbook: harry_potter, user: justin, condition: good )
 UserBook.create(textbook: harry_potter, user: user23, condition: acceptable )
 UserBook.create(textbook: harry_potter, user: holly, condition: trash )
 
-UserBook.create(textbook: javascript, user: user12, condition: fresh )
-UserBook.create(textbook: javascript, user: user22, condition: very_good )
-UserBook.create(textbook: javascript, user: justin, condition: good )
-UserBook.create(textbook: javascript, user: user2, condition: good )
-UserBook.create(textbook: javascript, user: liz, condition: acceptable )
-UserBook.create(textbook: javascript, user: sammy, condition: trash )
-UserBook.create(textbook: javascript, user: user13, condition: fresh )
-UserBook.create(textbook: javascript, user: user18, condition: very_good )
+UserBook.create(textbook: javascript, user: user12, condition: fresh, custom_price: 4.0)
+UserBook.create(textbook: javascript, user: user22, condition: very_good, custom_price: 5.0)
+UserBook.create(textbook: javascript, user: justin, condition: good, custom_price: 5.0 )
+UserBook.create(textbook: javascript, user: user2, condition: good, custom_price: 5.0 )
+UserBook.create(textbook: javascript, user: liz, condition: acceptable, custom_price: 5.0 )
+UserBook.create(textbook: javascript, user: sammy, condition: trash, custom_price: 5.0 )
+UserBook.create(textbook: javascript, user: user13, condition: fresh, custom_price: 5.0 )
+UserBook.create(textbook: javascript, user: user18, condition: very_good, custom_price: 5.0 )
 
 UserBook.create(textbook: javascript2, user: holly, condition: good )
 UserBook.create(textbook: javascript2, user: user3, condition: good )
