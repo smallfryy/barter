@@ -6,23 +6,24 @@
   <h3 class="ui center aligned header" id="isbn-for-price">
     ISBN: <%= @textbook.isbn %></h3>
 
-<div class="ui segment">
-  <img class="ui centered medium image">
-    <%=image_tag(@textbook.img_url) %></div>
+<div class="ui row">
+    <%=image_tag(@textbook.img_url) %>
+    <p><%= @textbook.description %></p>
+    </div>
   <% if @condition_prices %>
  <p> <i><h3>Marketplace Pricing</h3></i>
-    <p>Fresh: <%= number_to_currency(@condition_prices[:fresh]) %></p> 
-    <p>Very Good: <%= number_to_currency(@condition_prices[:very_good]) %></p>
-    <p>Good: <%= number_to_currency(@condition_prices[:good]) %></p>
-    <p>Acceptable: <%= number_to_currency(@condition_prices[:acceptable]) %></p>
-    <p>Trash: <%= number_to_currency(@condition_prices[:trash]) %></p>
+    <p>Fresh: <%= number_to_currency(@condition_prices[:fresh]) %> &nbsp&nbsp&nbsp
+      Very Good: <%= number_to_currency(@condition_prices[:very_good]) %>&nbsp&nbsp&nbsp
+      Good: <%= number_to_currency(@condition_prices[:good]) %>&nbsp&nbsp&nbsp
+      Acceptable: <%= number_to_currency(@condition_prices[:acceptable]) %>&nbsp&nbsp&nbsp
+      Trash: <%= number_to_currency(@condition_prices[:trash]) %>
   <% else %>
     <i><p> Please inquire with seller about pricing. </p></i>
   <% end %>
   </div>
 <div class="ui container" id="book_div">
   <% if !@textbook.user_books.available.empty? %>
-    <h3 id="book_info">There are <%=@textbook.user_books.available.count %> copies of <%= @textbook.title %> available for sale:<h3>
+    <h4 id="book_info">There are <%=@textbook.user_books.available.count %> copies of <%= @textbook.title %> available for sale:<h3>
   <% else %>
    <i><h3 id="book_info">Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h3></i><br>
   <% end %>

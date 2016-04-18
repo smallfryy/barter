@@ -1,24 +1,24 @@
 <div class="ui large message">
-
-<h1><%= @user.first_name %>  <%= @user.last_name %></h1>
-  <img class="ui medium circular image" src="images/square-image.png">
-<% if @user == current_user %>
-  <h5>Karma Balance: <%= @user.karma.balance %></h5>
+  <h1 class="ui center aligned header">
+    <%= @user.first_name %>  <%= @user.last_name %></h1>
+  <img class="ui small image" src="../assets/images/square-image.png">
+  <% if @user == current_user %>
+  <p>Karma Balance: <%= @user.karma.balance %></p>
 <% end %>
 
-<h4>Member Since: <%= @user.member_since %></h4>
+<p>Member Since: <%= @user.member_since %></p>
 <% if @user.last_sign_in %>
-  <h4>Last Sign In: <%= @user.last_sign_in %></h4>
+  <p>Last Sign In: <%= @user.last_sign_in %></p>
 <% end %>
-<h4>Books Sold: <%= @user.num_books_sold %></h4>
-<h4>Books For Sale: <%= @user.num_books_for_sale %></h4>
+<p>Books Sold: <%= @user.num_books_sold %></p>
+<p>Books For Sale: <%= @user.num_books_for_sale %></p>
 
 
 <% if @user.college %>
-  <h4>College: <%= link_to(@user.college.name, college_path(@user.college_id)) %></h4>
+  <p>College: <%= link_to(@user.college.name, college_path(@user.college_id)) %></p>
 <% end %>
 
-<h4>Books Currently Listed:</h4>
+<p>Books Currently Listed:</p>
 <ul>
   <% @user.books_for_sale.each do |book| %>
     <li><%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %></li>
