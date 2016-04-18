@@ -1,5 +1,4 @@
 <script>
-
   $(function() {
     $('#submit').click(function(event){
      if($('#query').val() == ''){
@@ -22,6 +21,7 @@
           <i><%= label_tag(:query, "Please enter a book") %></i>
           <%= text_field_tag(:query, nil, placeholder: 'Psych 101 or 9781440543937') %><p>
           <%= submit_tag("Search", class: "ui teal basic button", id: 'submit') %>
+
         </p></p>
         <% end %>
       </div>

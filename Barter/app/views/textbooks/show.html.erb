@@ -1,6 +1,7 @@
 <div class="ui large message">
 
   <div>
+<<<<<<< HEAD
 <div class="ui grid">
   <div class="ui row">
   <div class="four wide column">
@@ -19,8 +20,9 @@
 </div>
 </div>
 <br>
+<div>
   <% if @condition_prices %>
- <div class="ui list">Marketplace Pricing</div>
+ <p><h3>Marketplace Pricing</h3>
     <p>Fresh: <%= number_to_currency(@condition_prices[:fresh]) %> &nbsp&nbsp&nbsp
       Very Good: <%= number_to_currency(@condition_prices[:very_good]) %>&nbsp&nbsp&nbsp
       Good: <%= number_to_currency(@condition_prices[:good]) %>&nbsp&nbsp&nbsp
@@ -33,111 +35,111 @@
   <div class="ui center aligned horizontal">
     <% @textbook.subjects.each do |subject| %>
       
-      <div class="item"> <i class="tag icon"></i><%=link_to subject.name, subject_path(subject)%></div>
+      <div class="item"> <i class="tag icon"></i><%=link_to subject.name, subject_path(subject)%>
+      </div>
       <%end%>
   </div>
+</div>
 </div>
 
 <div class="ui container" id="book_div">
    <% if !@textbook.user_books.available.empty? %>
-     <h4 id="book_info">There are <%=@textbook.user_books.available.count %> copies of <%= @textbook.title %> available for sale:<h3>
+     <h2 id="book_info">There are <%=@textbook.user_books.available.count %> copies of <%= @textbook.title %> available for sale:</h2>
    <% else %>
-    <i><h3 id="book_info">Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h3></i><br>
+    <i><h2 id="book_info">Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h2></i><br>
    <% end %>
  </div>
 
 <div class="ui list" id="bookAppend">
-<% @textbook.user_books.available.each do |book| %>
+<% @textbook.user_books.available.sort_by{ |book| book.condition }.each do |book| %>
   <div id="<%=book.id%>" class="item user_book">
   <i class="book icon"></i>
   <div class="content">
-  <%= link_to book.condition.name, textbook_book_path(@textbook, book) %> - listed by <%= book.user.first_name %> (<%= book.user.num_books_sold %> books sold), <%= book.listing_days_ago %>.
+  <%= link_to book.condition.name, textbook_book_path(@textbook, book) %> - listed by <%= book.user.name_w_initial %>
 </div>
   </div>
 <% end %>
 </div>
 
+          <!-- modal -->
+          <div id ="showUserBook" class="ui basic small modal">
+            <i class="close icon"></i>
+            <div class="header">
+            </div>
+            <div class="image content">
+              <div class="image">
+              </div>
 
+              <div class="description">
+                <ul>
+                </ul>
+              </div>
+            </div>
+            <div id="addToCartMessage">
+            </div>
+            <div class="actions">
+              <div class="two fluid ui inverted buttons">
+                <div id="closeModal" class="ui red basic inverted button">
+                  <i class="remove icon"></i>
+                  Close
+                </div>
+                <button id="addToCart" class="ui green basic inverted button">
+                  <i class="checkmark icon"></i>
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
 
-<!-- modal -->
-<div id ="showUserBook" class="ui basic small modal">
-  <i class="close icon"></i>
-  <div class="header">
-  </div>
-  <div class="image content">
-    <div class="image">
-    </div>
+          <!-- modal -->
+          <div id="buildUserBook" class="ui modal">
+            <i class="close icon"></i>
+            <div class="header">
+            </div>
+            <div class="image content">
+              <div class="ui medium image">
+              </div>
+              <div class="description">
+                <div class="ui header">Please Select the following information.</div>
+                <p></p>
 
-    <div class="description">
-      <ul>
-      </ul>
-    </div>
-  </div>
-  <div id="addToCartMessage">
-  </div>
-  <div class="actions">
-    <div class="two fluid ui inverted buttons">
-      <div id="closeModal" class="ui red basic inverted button">
-        <i class="remove icon"></i>
-        Close
-      </div>
-      <button id="addToCart" class="ui green basic inverted button">
-        <i class="checkmark icon"></i>
-        Add to Cart
-      </button>
-    </div>
-  </div>
-</div>
+                <form action="/textbooks/<%=@textbook.id%>/book" method="POST">
+                  <div>
+                    Condition of the book:
+                    <%= collection_select :condition, :id, Condition.all, :id, :name %>
+                  </div>
+                  <div>
+                    <% if @condition_prices %>
+                    <div id="priceRadioButtons">
+                      <p>
+                        <%= radio_button_tag(:price, "marketplace") %>
+                        <%= label_tag(:marketplace_price, "Use marketplace pricing") %>
+                        <%= radio_button_tag(:price, "custom") %>
+                        <%= label_tag(:custom_price, "Set your own price") %>
+                        <%= text_field_tag('custom_price_value', nil, class: 'hidden') %> </p>
+                      </div>
+                      <% else %>
+                      <%= label_tag(:custom_price, "Set your own price") %>
+                      <p> <%= text_field_tag('custom_price_value', nil) %> </p>
+                      <% end %>
+                    </div>
 
-<!-- modal -->
-<div id="buildUserBook" class="ui modal">
-  <i class="close icon"></i>
-  <div class="header">
-  </div>
-  <div class="image content">
-    <div class="ui medium image">
-    </div>
-    <div class="description">
-      <div class="ui header">Please Select the following information.</div>
-      <p></p>
-
-      <form action="/textbooks/<%=@textbook.id%>/book" method="POST">
-        <div>
-          Condition of the book:
-         <%= collection_select :condition, :id, Condition.all, :id, :name %>
-       </div>
-        <div>
-        <% if @condition_prices %>
-        <div id="priceRadioButtons">
-          <p>
-            <%= radio_button_tag(:price, "marketplace") %>
-            <%= label_tag(:marketplace_price, "Use marketplace pricing") %>
-            <%= radio_button_tag(:price, "custom") %>
-            <%= label_tag(:custom_price, "Set your own price") %>
-            <%= text_field_tag('custom_price_value', nil, class: 'hidden') %> </p>
-        </div>
-        <% else %>
-        <%= label_tag(:custom_price, "Set your own price") %>
-          <p> <%= text_field_tag('custom_price_value', nil) %> </p>
-        <% end %>
-       </div>
-
-    </div>
-  </div>
-  <div class="actions">
-    <div class="ui black deny button">
-      Nope
-    </div>
-    <button id="userBookSubmit" type="submit" class="ui positive right labeled icon button">
-      Submit
-    </button>
-  </div>
-</form>
-</div>
-</div>
+                  </div>
+                </div>
+                <div class="actions">
+                  <div class="ui black deny button">
+                    Nope
+                  </div>
+                  <button id="userBookSubmit" type="submit" class="ui positive right labeled icon button">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
 
 <% if user_signed_in? %>
-  <div id="newUserBook" class="ui top attached button">Sell a copy of this book!</div><br>
+  <div id="newUserBook" class="ui button attached teal massive">Sell a copy of this book!</div><br>
 <% else %>
-  <a href='/users/sign_in'><div id="mustSignUpToSellBook" class="ui button attached button">Sell a copy of this book!  </div></a><br>
+  <a href='/users/sign_in'><div id="mustSignUpToSellBook" class="ui button attached teal massive">Sell a copy of this book!  </div></a><br>
 <% end %>

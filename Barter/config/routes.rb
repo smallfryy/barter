@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :line_items
   resources :carts
   root "pages#home"
+  get 'pages/about' => "pages#about", as: :about
   devise_for :users
   get 'users/:id' => 'users#show', as: :user
   get 'users/sign_in', to: 'devise/sessions#new', as: :sign_in
