@@ -120,7 +120,6 @@ app.userBook.controller = {
   },
   deleteUserBook: function(event){
     event.preventDefault();
-    debugger;
     userBookId = $(this).attr('userBook')
     textbookId = $(this).attr('textbook')
     url = "/textbooks/" + textbookId + "/book/" + userBookId

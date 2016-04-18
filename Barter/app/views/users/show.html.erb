@@ -18,9 +18,7 @@
 <p>Books For Sale: <%= @user.num_books_for_sale %></p>
 
 
-<% if @user.college %>
-  <p>College: <%= link_to(@user.college.name, college_path(@user.college_id)) %></p>
-<% end %>
+<p>College: <%= link_to(@user.college.name, college_path(@user.college)) if @user.college%></p>
 
  <h4>Books Currently Listed:</h4>
 
@@ -30,7 +28,7 @@
     <div class="item">
       <i class="remove icon userBookDelete" textbook="<%=book.textbook.id%>" userBook="<%=book.id%>" ></i>
       <div class="content">
-        <%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %>
+        <%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %> - Condish <%=book.condition.name%>
       </div>
     </div>
   <% end %>
