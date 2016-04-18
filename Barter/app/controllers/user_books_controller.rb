@@ -20,7 +20,7 @@ class UserBooksController < ApplicationController
   def show
     @textbook = @user_book.textbook
     @user = @user_book.user
-    @price = @user_book.custom_price.present? ? @user_book.custom_price : @user_book.current_price
+    @price = @user_book.custom_price.present? ? @user_book.format_custom_price : @user_book.format_current_price
     render json: {userBook: @user_book, userBookCondition: @user_book.condition.name, user: @user, textbook: @textbook, price: @price}
   end
 
@@ -32,7 +32,6 @@ class UserBooksController < ApplicationController
     @textbook = @user_book.textbook
     if @user_book.save
     render json: {userBook: @user_book, bookName: @user_book.textbook.title, condition: @user_book.condition.name, userName: @user_book.user.first_name, userBooksSold: @user_book.user.num_books_sold, listingDaysAgo: @user_book.listing_days_ago, userBookCount: @textbook.user_books.available.count }
-    #  UserMailer.add_user_book(current_user).deliver
     end
   end
 

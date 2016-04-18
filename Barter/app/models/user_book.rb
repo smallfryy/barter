@@ -45,6 +45,10 @@ class UserBook < ActiveRecord::Base
     end
   end
 
+  def format_current_price
+    "%.2f" % current_price
+  end
+
   def format_custom_price
     "%.2f" % custom_price
   end
