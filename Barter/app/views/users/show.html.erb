@@ -3,7 +3,7 @@
     <%= @user.first_name %>  <%= @user.last_name %></h1>
   <img class="ui small image" src="../assets/images/square-image.png">
   <% if @user == current_user %>
-  <p>Karma Balance: <%= @user.karma.balance %></p>
+  <p>Karma Balance: <%= @user.karma.balance if current_user == @user%></p>
 <% end %>
 
 <p>Member Since: <%= @user.member_since %></p>
@@ -18,21 +18,27 @@
   <p>College: <%= link_to(@user.college.name, college_path(@user.college_id)) %></p>
 <% end %>
 
-<p>Books Currently Listed:</p>
-<ul>
+ <h4>Books Currently Listed:</h4>
+
+
+<div class="ui list">
   <% @user.books_for_sale.each do |book| %>
-    <li><%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %></li>
+    <div class="item">
+      <i class="remove icon userBookDelete" textbook="<%=book.textbook.id%>" userBook="<%=book.id%>" ></i>
+      <div class="content">
+        <%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
 
-<% if current_user == @user %>
 
-<h4> Books You've Purchased: </h4>
+<!-- <h4> Books You've Purchased: </h4>
 <ul>
   <% @user.books_purchased.each do |book| %>
     <li><%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %></li>
   <% end %>
-</ul>
+</ul> -->
 
 <h4>Books You've Sold:</h4>
 <ul>
@@ -42,11 +48,24 @@
 </ul>
 
 <h4>Previous Orders:</h4>
-<ul>
-  <% @user.inactive_carts.each do |cart| %>
-    <li><%= link_to("Order ##{cart.id}", cart_path(cart)) + " placed on #{cart.order_date.strftime("%a %b %e, %Y")}." %> </li>
-  <% end %>
-</ul>
-<% end %>
-</div>
+<% if current_user == @user %>
 
+<h4>
+<div class="ui relaxed divided list">
+  <% @user.inactive_carts.each do |cart| %>
+  <div class="item">
+    <i class="large cart middle aligned icon"></i>
+    <div class="content">
+      <p class="header"><%= link_to("Order ##{cart.id}", cart_path(cart)) + " placed on #{cart.order_date.strftime("%a %b %e, %Y")}" %></p>
+      <div class="description">Total Price: <%=cart.cart_total_price%></div>
+    </div>
+  </div>
+  <% end %>
+
+</div>
+</h4>
+<%end%>
+
+
+
+</div>

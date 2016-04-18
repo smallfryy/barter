@@ -35,6 +35,15 @@ class UserBooksController < ApplicationController
     end
   end
 
+
+  def destroy
+    @user_book = UserBook.find(params[:id])
+    @user_book.destroy
+
+    render json: {userBookId: params[:id]}
+
+  end
+
 private
 
  def set_book

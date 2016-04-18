@@ -24,6 +24,11 @@ $(function() {
     $('.modal').modal('hide')
   })
 
+
+  $('.userBookDelete').click(app.userBook.controller.deleteUserBook)
+
+
+
 })
 
 
@@ -106,5 +111,27 @@ app.userBook.controller = {
 
     $('#book_info').text('There are ' + userBookCount + ' copies of ' + bookName + ' available for sale:')
     $('#bookAppend').append('<li id="'+ userBook.id +'" class="user_book"><a href="'+ url +'">' + condition + '</a>' + " - listed by " + userName + "(" + userBooksSold + " books sold), " + listingDaysAgo + '.</li>')
+  },
+  deleteUserBook: function(event){
+    event.preventDefault();
+    debugger;
+    userBookId = $(this).attr('userBook')
+    textbookId = $(this).attr('textbook')
+    url = "/textbooks/" + textbookId + "/book/" + userBookId
+
+      $.ajax({
+      url: url,
+      method: 'DELETE',
+      success: function(response){
+        // if (!_.isNull(response.lineItemId)){
+        //   id = response.lineItemId
+        //   $('#cart-item-' + id).empty();
+        // }
+        $('.userBookDelete[userbook=' + response.userBookId + ']').parent().remove()
+      }
+    })
   }
+
+
+
 }

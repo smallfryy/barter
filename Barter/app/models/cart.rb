@@ -57,7 +57,6 @@ class Cart < ActiveRecord::Base
 
   def cart_total_price
     self.line_items.inject(0) do |total_price, item|
-      binding.pry
       total_price += line_item_price(item)
     end
   end
