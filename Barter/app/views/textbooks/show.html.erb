@@ -1,37 +1,33 @@
-<h1 class="ui center aligned header">
-    <%= @textbook.title %><br><br></h1>
-    <h3 class="ui center aligned header">
-      By <%= @textbook.author %><br><h3>
+<div class="ui large message">
+  <h1 class="ui center aligned header">
+    <%= @textbook.title %></h1>
+    <i><h3 class="ui center aligned header">
+      By <%= @textbook.author %><br></i>
   <h3 class="ui center aligned header" id="isbn-for-price">
     ISBN: <%= @textbook.isbn %></h3>
 
-<div class="ui medium image">
-  <%=image_tag(@textbook.img_url) %>
-</div>
-
-
-<div class="pricing-info">
+<div class="ui segment">
+  <img class="ui centered medium image">
+    <%=image_tag(@textbook.img_url) %></div>
   <% if @condition_prices %>
-  <h3>Marketplace Pricing</h3>
-    <p>Fresh: <%= number_to_currency(@condition_prices[:fresh]) %></p>
+ <p> <i><h3>Marketplace Pricing</h3></i>
+    <p>Fresh: <%= number_to_currency(@condition_prices[:fresh]) %></p> 
     <p>Very Good: <%= number_to_currency(@condition_prices[:very_good]) %></p>
-    <p>Good: <%= number_to_currency(@condition_prices[:good]) %><p>
+    <p>Good: <%= number_to_currency(@condition_prices[:good]) %></p>
     <p>Acceptable: <%= number_to_currency(@condition_prices[:acceptable]) %></p>
     <p>Trash: <%= number_to_currency(@condition_prices[:trash]) %></p>
   <% else %>
-    <p> Please inquire with seller about pricing. </p>
+    <i><p> Please inquire with seller about pricing. </p></i>
   <% end %>
-</div>
-
-
+  </div>
 <div class="ui container" id="book_div">
   <% if !@textbook.user_books.available.empty? %>
     <h3 id="book_info">There are <%=@textbook.user_books.available.count %> copies of <%= @textbook.title %> available for sale:<h3>
   <% else %>
-    <h3 id="book_info">Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h3><br>
+   <i><h3 id="book_info">Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h3></i><br>
   <% end %>
 </div>
-
+</div>
 
 <ul id="bookAppend">
 <% @textbook.user_books.available.each do |book| %>
@@ -46,8 +42,6 @@
 <% else %>
   <a href='/users/sign_in'><div id="mustSignUpToSellBook" class="ui top attached button 2">Sell a copy of this book!  </div></a><br>
 <% end %>
-
-
 
   <ul class="ui grid">
     <% @textbook.subjects.each do |subject| %>
@@ -130,3 +124,5 @@
     </button>
   </div>
 </form>
+</div>
+</div>
