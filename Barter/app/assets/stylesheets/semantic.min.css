@@ -20,11 +20,13 @@ body>.pusher {
 }
 
 .ui.grid>.row {
-    background: url(images/landpage.jpg) no-repeat center center fixed;
-    background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     height: 100%; 
+}
+
+.ui.page.grid.main {
+  background: url(images/landpage.jpg) no-repeat center center fixed;
 }
 
 .ui.title-header {
