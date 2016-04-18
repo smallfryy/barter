@@ -20,8 +20,8 @@ $(function(){
 
 </script>
 
-<div class="ui fixed inverted main menu" id="buttonPress">
-    <a class="launch icon item">
+<div class="ui fixed inverted main menu">
+    <a class="launch icon item"  id="buttonPress">
       <i class="content icon"></i>
     </a>
 
@@ -31,12 +31,12 @@ $(function(){
 
     <div class="right menu">
       <div class="item">
-      Karma: <%= current_user.karma.balance if current_user%>
+      Karma: <%= current_user.karma.balance if current_user %>
       </div>
 
   <div class="vertically fitted borderless item">
    <% if user_signed_in? %>
-    <%= link_to "Hello, #{current_user.first_name}", user_path(current_user) %><br>
+    <%= link_to "Hello, #{current_user.first_name}", user_path(current_user) %>
     <%= link_to "Sign Out", destroy_user_session_path, :method => :delete  %>
     <% else %>
     <div><%= link_to "Sign In", new_user_session_path %></div>
@@ -88,6 +88,11 @@ $(function(){
     <div class="column padding-reset">
       <div class="ui large message">
 
+
+
+
+        <p class="notice"><%= notice %></p>
+         <p class="alert"><%= alert %></p>
 
         <%= yield %>
 

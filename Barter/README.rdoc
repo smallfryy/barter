@@ -1,5 +1,5 @@
-# Barter
-A friendly platform for exchanging textbooks. 
+# Bibliotech
+A friendly platform for exchanging college textbooks. 
 
 #Collaborators 
 Holly Peck 
@@ -18,11 +18,11 @@ justin.curhan@gmail.com
 - Ruby on Rails
 - JavaScript
 - JQuery 
-- Amazon API 
-- Factory Girl 
+- Google Books API
 - Faker Gem 
 - Ajax 
 - TDD 
 - MVC Modeling 
-- Unique Pricing Algorithm
+- Deprecation Pricing Algorithm
 - Bootstrap
+- Semantic UI

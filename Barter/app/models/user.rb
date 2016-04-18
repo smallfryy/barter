@@ -42,7 +42,8 @@ class User < ActiveRecord::Base
   end
 
   def setup_karma
-    self.karma = Karma.new
+    self.build_karma
+    self.save
   end
 
   def name_w_initial

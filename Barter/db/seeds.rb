@@ -49,7 +49,7 @@ UserBook.create(textbook: psych_101, user: holly, condition: trash )
 end
 
 User.all.each_with_index do |user, i|
-  Karma.create(user: user, balance: Faker::Number.between(0, 500))
+    user.karma.update(balance:500.0)
   if i.even?
     user.addresses << Address.create(street: Faker::Address.street_address, apt_num: Faker::Address.secondary_address, city: Faker::Address.city, state: Faker::Address.state, zip: Faker::Address.zip, country: "USA")
   end

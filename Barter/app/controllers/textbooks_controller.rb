@@ -20,7 +20,7 @@ class TextbooksController < ApplicationController
   def index
     query = params[:query]
     @textbooks = Adapters::TextbookClient.find_textbooks(query)
-    @textbooks = Textbook.paginate(:page => params[:page], :per_page => 3)
+    @textbooks = Textbook.paginate_by_sql('SELECT * FROM textbooks ORDER BY created_at DESC', :page => params[:page], :per_page => 2, total_entries: 10)
   end
 
   def show

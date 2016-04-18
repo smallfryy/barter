@@ -1,17 +1,31 @@
+<script>
+$(function() {
+$('#submit').click(function(event){
+   if($('#query').val() == ''){
+    event.preventDefault();
+      alert('Please enter a textbook!');
+   }
+  })
+})
+</script>
+
 <div class="ui large message">
   <div class="ui page grid">
     <div class="column">
      <h1 class="ui title-header">Welcome to Bibliotech</h1><br>
-
-  <div class="ui form">
-  <p><%= form_tag(textbooks_path, method: "get",) do %>
-  <i><%= label_tag(:query, "search for a textbook:") %></i>
-  <%= text_field_tag(:query) %><p>
-  <%= submit_tag("Search", class: "ui teal basic button" ) %></p></p>
+  
+    <div class="ui form">
+    <div class="field">
+      <p><%= form_tag(textbooks_path, method: "get") do %>
+      <i><%= label_tag(:query, "Please enter a book") %></i>
+      <%= text_field_tag(:query) %><p>
+      <%= submit_tag("Search", class: "ui teal basic button", id: 'submit') %>
+    </p></p>
   <% end %>
+    </div>
+    </div>
+   </div>
   </div>
-  </div>
-</div>
 </div>
 
 
