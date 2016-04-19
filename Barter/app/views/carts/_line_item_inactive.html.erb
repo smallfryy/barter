@@ -1,10 +1,7 @@
-<div id="cart-item-<%= item.id %>">
-  <div class="four wide column">
+<div class="four wide column" id="cart-item-<%= item.id %>">
   <%= link_to image_tag(item.textbook.img_url), textbook_path(item.textbook) %>
-  </div>
-<div class="twelve wide column">
   <p>Seller: <%=item.seller.first_name %> </p>
   <p>Condition: <%=item.user_book.condition.name%></p>
-  <p>You paid <%=item.item_karma %> karma points</p>
-  </div>
+  <p>Paid: <%=number_to_currency(item.item_karma) %> karma points</p>
+ 
 </div>

@@ -21,6 +21,7 @@ class UserBooksController < ApplicationController
     @textbook = @user_book.textbook
     @user = @user_book.user
     @price = @user_book.custom_price.present? ? @user_book.format_custom_price : @user_book.format_current_price
+
     render json: {userBook: @user_book, userBookCondition: @user_book.condition.name, user: @user, textbook: @textbook, price: @price}
   end
 

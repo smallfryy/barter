@@ -1,5 +1,5 @@
 <div class="ui large message">
-
+<div class="ui grid">
 <% if @cart.active && @cart.is_empty %>
   <h1 class="ui center aligned header">Your Cart is Empty</h1>
 
@@ -7,13 +7,17 @@
 
 <h1 class="ui center aligned header">Your Cart</h1>
 <%= render partial: "line_item_active", collection: @cart.line_items, as: :item %>
-
+</div>
+<br>
   <%= form_tag(cart_path(@cart), method: :patch) do %>
-  <%= submit_tag "Buy Books Now"%>
-  <% end %>
+  <%= collection_select :address, :addressable_id, @addresses, :id, :street, {prompt: "Select a shipping address"}, {class: "ui fluid selection dropdown"} %>
+  <br>
+  <button type="submit" id="newUserBook" class="fluid ui button attached teal massive">Buy Books Now</button>
+<% end %>
 
 <% else %>
 <h1>Order placed on <%= @cart.order_date.strftime("%a %b %e, %Y") %> </h1>
 <%= render partial: "line_item_inactive", collection: @cart.line_items, as: :item %>
+</div>
 <% end %>
 </div>

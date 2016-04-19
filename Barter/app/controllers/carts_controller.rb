@@ -15,12 +15,12 @@ class CartsController < ApplicationController
   before_action :set_cart
 
   def show
+    @addresses = Address.where(addressable_id:current_user.id,addressable_type:"User")
   end
 
   def update
     if @cart.buyer_has_enough_karma
       @cart.complete_transaction
-      UserMailer.order_confirmation_buyer(@cart, current_user)
     elsif @cart.is_empty
       flash[:notice] = "Your cart is empty, dumdum."
     else
