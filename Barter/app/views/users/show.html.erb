@@ -1,24 +1,30 @@
 <div class="ui large message">
-  <h1 class="ui center aligned header">
+  <div class="ui grid">
+   <div class="eight wide column">
+  <h1 class="ui left aligned header">
     <%= @user.first_name %>  <%= @user.last_name %></h1>
-   <i> <h4 class='ui center aligned header'>
-    Member Since: <%= @user.member_since %> |
-    <% if @user.college %>
+   <h4 class='ui left header'>
+    Member Since: <%= @user.member_since %>
+  </h4>
+    <h4 class='ui left header'>
   College: <%= link_to(@user.college.name, college_path(@user.college_id)) %>
-    <% end %>
-
-  <% if @user == current_user %>
-    | Karma Balance: <%= number_to_currency(@user.karma.balance) %>
-  <% end %></h4></i>
-  <img class="ui centered medium rounded image" src="http://silvalanguagearts.pbworks.com/f/1372781548/banner_books2.jpg">
-
-<% if @user.last_sign_in %>
-  <p>Last Sign In: <%= @user.last_sign_in %></p>
+</h4>
+    <% if @user == current_user %>
+  <h4 class='ui left header'>Karma Balance: <%= number_to_currency(@user.karma.balance) %>   
+  </h4>
+  <% end %>
+  <% if @user.last_sign_in %>
+  <h4 class='ui left header'>Last Sign In: <%= @user.last_sign_in %></h4>
 <% end %>
-<p>Books Sold: <%= @user.num_books_sold %></p>
-<p>Books For Sale: <%= @user.num_books_for_sale %></p>
 
- <h4>Books Currently Listed:</h4>
+</div>
+  <div class="eight wide column">
+    <br>
+  <%= image_tag 'book-shelf.png', class: "ui centered medium rounded image" %>
+</div>
+</div>
+
+ <h3><%= @user.num_books_for_sale %> Books Currently Listed</h3>
 
 
 <div class="ui list">
@@ -35,14 +41,14 @@
 </div>
 
 <% if current_user == @user %>
-<h4>Books You've Sold:</h4>
+<h3><%= @user.num_books_sold %> Books You've Sold</h3>
 <ul>
   <% @user.books_sold.each do |book| %>
     <li><%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %></li>
   <% end %>
 </ul>
 
-<h4>Previous Orders:</h4>
+<h3>Previous Orders</h3>
 
 <h4>
 <div class="ui relaxed divided list">
