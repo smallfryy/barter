@@ -1,40 +1,24 @@
 $(function() {
-
-
   $('body').on('click', '.user_book', app.userBook.controller.show)
-
-
   $('.remove icon').click(function(){
     $('.modal').modal('hide')
   })
-
    $('#closeModal').click(function(){
     $('.modal').modal('hide')
   })
-
   $('#newUserBook').click(app.userBook.controller.showAddBookModal)
-
   $('#price_custom').click(function(){
     $('#custom_price_value').show();
   })
-
   $('#price_marketplace').click(function(){
     $('#custom_price_value').hide();
   })
-
   $('#userBookSubmit').click(app.userBook.controller.new)
-
   $('.user_book').click(function(){
     $('.modal').modal('hide')
   })
-
-
   $('.userBookDelete').click(app.userBook.controller.deleteUserBook)
-
-
-
 })
-
 
 app.userBook.controller = {
   show: function(event){
@@ -57,15 +41,12 @@ app.userBook.controller = {
     })
   },
     modal: function(userBook, userBookId, price){
-      // $('.ui.basic.modal').html("")
       var $imageUrl = $('body').find('img').attr('src')
       var userShowUrl = "/users/" + userBook.user.id + ""
       $('.ui.basic.modal .header').empty()
       $('.ui.basic.modal ul').empty()
       $('.ui.basic.modal .image.content .image').empty()
       $('#addToCartMessage').empty();
-
-
 
       $('.ui.basic.modal .header').append(userBook.textbook.title)
       $('.ui.basic.modal .header').append("<h3>By " + userBook.textbook.author + "</h3>")
@@ -82,8 +63,6 @@ app.userBook.controller = {
       $('.ui.basic.modal').modal('show')
       $('#addToCart').attr('userBookId', userBookId)
 
-
-
   },
   new: function(event){
     event.preventDefault()
@@ -96,9 +75,7 @@ app.userBook.controller = {
       data: {condition: condition_id, custom_price: custom_price}
     }).then(function(response){
       app.userBook.controller.render(response)
-
     })
-
 
   },
   showAddBookModal: function(){
@@ -130,15 +107,8 @@ app.userBook.controller = {
       url: url,
       method: 'DELETE',
       success: function(response){
-        // if (!_.isNull(response.lineItemId)){
-        //   id = response.lineItemId
-        //   $('#cart-item-' + id).empty();
-        // }
         $('.userBookDelete[userbook=' + response.userBookId + ']').parent().remove()
       }
     })
   }
-
-
-
 }
