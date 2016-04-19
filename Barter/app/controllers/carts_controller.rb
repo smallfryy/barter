@@ -15,6 +15,7 @@ class CartsController < ApplicationController
   before_action :set_cart
 
   def show
+    @addresses = Address.where(addressable_id:current_user.id,addressable_type:"User")
   end
 
   def update
