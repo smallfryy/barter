@@ -8,9 +8,11 @@
 <h1 class="ui center aligned header">Your Cart</h1>
 <%= render partial: "line_item_active", collection: @cart.line_items, as: :item %>
 </div>
+<br>
   <%= form_tag(cart_path(@cart), method: :patch) do %>
-  <%= collection_select :address, :addressable_id, @addresses, :id, :street %>
-  <button type="submit" id="newUserBook" class="ui button attached teal massive">Buy Books Now</button>
+  <%= collection_select :address, :addressable_id, @addresses, :id, :street, {prompt: "Select a shipping address"}, {class: "ui fluid selection dropdown"} %>
+  <br>
+  <button type="submit" id="newUserBook" class="fluid ui button attached teal massive">Buy Books Now</button>
 <% end %>
 
 <% else %>

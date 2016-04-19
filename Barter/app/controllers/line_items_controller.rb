@@ -19,17 +19,13 @@ class LineItemsController < ApplicationController
   def create
     @user_book = UserBook.find(params[:userBookId])
     @line_item = LineItem.create(user_book: @user_book, buyer_id: current_user.id, cart: current_user.active_cart)
-
     render json: {lineItem: @line_item}
-
   end
 
   def destroy
     @line_item_id = params[:id]
     LineItem.delete(@line_item_id)
-
     render json: {lineItemId: @line_item_id}
   end
-
 
 end

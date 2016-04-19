@@ -27,7 +27,6 @@ RSpec.describe Address, type: :model do
   user.addresses << address2
   user.save
 
-
   describe 'relationship' do
     it 'address can belong to a user' do
       binding.pry
@@ -35,5 +34,4 @@ RSpec.describe Address, type: :model do
 
     end
   end
-
 end
