@@ -8,7 +8,7 @@
     <% end %>
 
   <% if @user == current_user %>
-    | Karma Balance: <%= @user.karma.balance %>
+    | Karma Balance: <%= number_to_currency(@user.karma.balance) %>
   <% end %></h4></i>
   <img class="ui centered medium rounded image" src="http://silvalanguagearts.pbworks.com/f/1372781548/banner_books2.jpg">
 
@@ -24,7 +24,9 @@
 <div class="ui list">
   <% @user.books_for_sale.each do |book| %>
     <div class="item">
-      <i class="remove icon userBookDelete" textbook="<%=book.textbook.id%>" userBook="<%=book.id%>" ></i>
+      <% if current_user == @user %>
+        <i class="remove icon userBookDelete" textbook="<%=book.textbook.id%>" userBook="<%=book.id%>" ></i>
+      <% end %>
       <div class="content">
         <%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %> - Condish <%=book.condition.name%>
       </div>
