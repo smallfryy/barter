@@ -1,5 +1,5 @@
 <div class="ui large message">
-
+<div class="ui grid">
 <% if @cart.active && @cart.is_empty %>
   <h1 class="ui center aligned header">Your Cart is Empty</h1>
 
@@ -7,7 +7,7 @@
 
 <h1 class="ui center aligned header">Your Cart</h1>
 <%= render partial: "line_item_active", collection: @cart.line_items, as: :item %>
-
+</div>
   <%= form_tag(cart_path(@cart), method: :patch) do %>
   <%= submit_tag "Buy Books Now"%>
   <% end %>
@@ -15,5 +15,6 @@
 <% else %>
 <h1>Order placed on <%= @cart.order_date.strftime("%a %b %e, %Y") %> </h1>
 <%= render partial: "line_item_inactive", collection: @cart.line_items, as: :item %>
+</div>
 <% end %>
 </div>
