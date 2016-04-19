@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Barter</title>
+  <title>Bibliotech</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -25,7 +25,7 @@
   </a>
 
   <div class="item">
-    Bibliotech
+    <a href="<%=root_path%>"> Bibliotech</a>
   </div>
 
 
@@ -68,8 +68,8 @@
     <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition ">
       
       <a href="<%=root_path%>" class="item">
-        <i class="home icon"></i>
-        Home
+        <i class="search icon"></i>
+        Search
       </a>
 
       <a href="<%=user_path(current_user)%>" class="item">
@@ -98,8 +98,8 @@
 
     <div class="ui left demo vertical inverted sidebar labeled icon menu defaultTransition ">
       <a href="<%=root_path%>" class="item">
-        <i class="home icon"></i>
-        Home
+        <i class="search icon"></i>
+        Search
       </a>
 
       <a href="<%=about_path%>"class="item">

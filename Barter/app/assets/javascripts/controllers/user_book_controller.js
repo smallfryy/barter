@@ -40,6 +40,7 @@ app.userBook.controller = {
   show: function(event){
     event.preventDefault()
     var url = $(this).find('a').attr('href')
+    debugger;
     $.ajax({
       url: url,
       method: 'GET'

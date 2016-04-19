@@ -13,7 +13,19 @@
       By <%= @textbook.author %><br>
   <h3 class="ui center aligned header" id="isbn-for-price">
     ISBN: <%= @textbook.isbn %></h3>
-      <p><%= truncate(@textbook.description, length: 350) %></p>
+      
+   <div class='text_description'>
+     <div class='text_d_short'>
+       <%= truncate(@textbook.description, length: 500, separator: ' ') %>
+       <% if @textbook.description.length > 500 %>
+         <a id='see_more' href="#">Show more</a>
+       <% end %>
+     </div>  
+     <div class='text_d_long'>
+       <%= @textbook.description %><br>
+       <a id='see_less' href="#">Show less</a>
+      </div>
+   </div>
   </div>
 </div>
 </div>
