@@ -19,7 +19,6 @@
 </div>
 </div>
 <br>
-<div>
   <% if @condition_prices %>
  <p><h3>Marketplace Pricing</h3>
     <p>Fresh: <%= number_to_currency(@condition_prices[:fresh]) %> &nbsp&nbsp&nbsp
@@ -33,12 +32,11 @@
 
   <div class="ui center aligned horizontal">
     <% @textbook.subjects.each do |subject| %>
-      
+
       <div class="item"> <i class="tag icon"></i><%=link_to subject.name, subject_path(subject)%>
       </div>
       <%end%>
   </div>
-</div>
 </div>
 
 <div class="ui container" id="book_div">
@@ -82,7 +80,7 @@
                   <i class="remove icon"></i>
                   Close
                 </div>
-                <button id="addToCart" class="ui green basic inverted button">
+                <button id="addToCart" class="ui purple basic inverted button">
                   <i class="checkmark icon"></i>
                   Add to Cart
                 </button>

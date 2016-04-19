@@ -1,15 +1,17 @@
 class UserMailer < ApplicationMailer
 
-  def order_details_buyer(user, cart)
+  def buyer_order_details(cart, user)
+    binding.pry
     @user = user
     @cart = cart
     mail(to: @user.email, subject: "Order Placed - Bibliotech")
-  end 
+  end
 
-  def order_details_user(user, cart)
+  def order_details_user(cart, user)
+
     @user = user
     @cart = cart
-    mail(to: @user.email, subject: "Someone wants to buy your #{@book.name}")
-  end 
+    mail(to: @user.email, subject: "Someone wants to buy your")
+  end
 
 end

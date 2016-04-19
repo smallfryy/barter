@@ -26,7 +26,10 @@ justin = User.create(first_name: "Justin", last_name: "Curhan", email: "justin.c
 liz = User.create(first_name: "Liz", last_name: "Kalina", email: "liz.kalina@gmail.com", password: "funfunfun", college_id: college3.id)
 holly = User.create(first_name: "Holly", last_name: "Peck", email: "holly.m.peck@gmail.com", password: "funfunfun", college_id: college2.id)
 
-
+User.all.each do |user|
+  user.karma.update(balance: 500)
+  user.save
+end
 # DEMONSTRATION SEEDS
 
 # USERS
