@@ -9,7 +9,6 @@ app.user.model = {
       this.firstName = first_name;
       this.lastName = last_name;
       this.collegeId = college_id;
-
       (function initialize(){
         app.user.model.all.push(self);
       })()

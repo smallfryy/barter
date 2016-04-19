@@ -3,8 +3,6 @@ $(function(){
   $('.remove-item').click(app.cart.controller.removeFromCart)
 })
 
-
-
 app.cart.controller = {
   createLineItem: function(event){
     event.preventDefault();
