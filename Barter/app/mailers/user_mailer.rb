@@ -6,9 +6,10 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Order Placed - Bibliotech")
   end
 
-  def seller_order_details(cart)
+  def seller_order_details(cart, address)
     cart.line_items.each do |item|
       @item = item
+      @item.shipping_address = address
       @user = @item.seller
       @buyer = cart.user
       mail(to: @user.email, subject: "Your book has been purchased!")

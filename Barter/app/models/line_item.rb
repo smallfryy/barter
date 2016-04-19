@@ -18,7 +18,7 @@ class LineItem < ActiveRecord::Base
   belongs_to :cart
   belongs_to :user_book
   has_one :textbook, through: :user_book
-  belongs_to :address
+  belongs_to :shipping_address, :foreign_key => :id, class_name: 'Address'
   belongs_to :buyer, :foreign_key => :id, class_name: 'User'
 
   # validate :book_not_in_user_cart_twice, :book_buyer_is_not_seller
@@ -29,7 +29,7 @@ class LineItem < ActiveRecord::Base
   #     errors.add(:user_book, "This book already exists in cart.")
   #   end
   # end
-  # 
+  #
   # def book_buyer_is_not_seller
   #   buyer = User.find(buyer_id)
   #   if buyer == seller

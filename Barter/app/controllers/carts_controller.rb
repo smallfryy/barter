@@ -19,10 +19,11 @@ class CartsController < ApplicationController
   end
 
   def update
+    address = Address.find(params[:address][:addressable_id])
     if @cart.buyer_has_enough_karma
       @cart.complete_transaction
         UserMailer.buyer_order_details(@cart).deliver_now
-        UserMailer.seller_order_details(@cart).deliver_now
+        UserMailer.seller_order_details(@cart, address).deliver_now
     elsif @cart.is_empty
       flash[:notice] = "Your cart is empty, dumdum."
     else
