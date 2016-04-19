@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+
+<body>
+
+  <h1>Hello, <%= @user.first_name %></h1>
+  <p>
+    The following book has been purchased on Bibliotech:<% @item.textbook.title %>
+  </p>
+
+  <p>
+  <%= @buyer.first_name %> has paid for <%=@item.item_karma%> your book!
+  You can contact the buyer at <%=@buyer.email%>.
+  </p>
+
+  <p>
+    Please send it to the following adddress:
+
+
+
+
+  </p>
+
+  <p>
+  Have a great day!
+  </p>
+
+  <p>
+  Thanks,
+  </p>
+
+  <p>
+    The Bibliotech Team &hearts;
+  </p>
+
+</body>
+</html>
