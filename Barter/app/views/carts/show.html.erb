@@ -9,8 +9,9 @@
 <%= render partial: "line_item_active", collection: @cart.line_items, as: :item %>
 </div>
   <%= form_tag(cart_path(@cart), method: :patch) do %>
-  <%= submit_tag "Buy Books Now"%>
-  <% end %>
+  <%= collection_select :address, :addressable_id, @addresses, :id, :street %>
+  <button type="submit" id="newUserBook" class="ui button attached teal massive">Buy Books Now</button>
+<% end %>
 
 <% else %>
 <h1>Order placed on <%= @cart.order_date.strftime("%a %b %e, %Y") %> </h1>
