@@ -1,34 +1,24 @@
 $(function() {
   $('body').on('click', '.user_book', app.userBook.controller.show)
-
   $('.remove icon').click(function(){
     $('.modal').modal('hide')
   })
-
    $('#closeModal').click(function(){
     $('.modal').modal('hide')
   })
-
   $('#newUserBook').click(app.userBook.controller.showAddBookModal)
-
   $('#price_custom').click(function(){
     $('#custom_price_value').show();
   })
-
   $('#price_marketplace').click(function(){
     $('#custom_price_value').hide();
   })
-
   $('#userBookSubmit').click(app.userBook.controller.new)
-
   $('.user_book').click(function(){
     $('.modal').modal('hide')
   })
-
   $('.userBookDelete').click(app.userBook.controller.deleteUserBook)
-
 })
-
 
 app.userBook.controller = {
   show: function(event){
@@ -82,9 +72,7 @@ app.userBook.controller = {
       data: {condition: condition_id, custom_price: custom_price}
     }).then(function(response){
       app.userBook.controller.render(response)
-
     })
-
 
   },
   showAddBookModal: function(){
@@ -116,13 +104,9 @@ app.userBook.controller = {
       url: url,
       method: 'DELETE',
       success: function(response){
-        // if (!_.isNull(response.lineItemId)){
-        //   id = response.lineItemId
-        //   $('#cart-item-' + id).empty();
-        // }
         $('.userBookDelete[userbook=' + response.userBookId + ']').parent().remove()
       }
     })
   }
-
 }
+
