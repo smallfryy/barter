@@ -18,6 +18,8 @@ class UserBook < ActiveRecord::Base
   belongs_to :textbook
   belongs_to :condition
 
+  validates_presence_of :condition, :user, :textbook
+
   def self.total_books_sold
     where(sold:true).count
   end

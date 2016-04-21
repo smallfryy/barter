@@ -92,7 +92,7 @@ app.userBook.controller = {
     var url = '/textbooks/' + userBook.textbook_id + '/book/' + userBook.id
 
     $('#book_info').text('There are ' + userBookCount + ' copies of ' + bookName + ' available for sale:')
-    $('#bookAppend').append('<div id="'+ userBook.id +'" class="item user_book"><i class="book icon"></i><div class="content"><a href="'+ url +'">' + condition + '</a>' + " - listed by " + userName + "(" + userBooksSold + " books sold), " + listingDaysAgo + '.</div></div>')
+    $('#bookAppend').append('<div id="'+ userBook.id +'" class="item user_book"><i class="book icon"></i><div class="content"><a href="'+ url +'">' + condition + '</a>' + " - listed by " + userName + '.</div></div>')
   },
   deleteUserBook: function(event){
     event.preventDefault();

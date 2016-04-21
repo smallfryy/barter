@@ -56,6 +56,14 @@ user22 = User.create(first_name: "Eddy", last_name: "Chan", email: "eddychan@gma
 user23 = User.create(first_name: "Dan", last_name: "Lee", email: "danlee@gmail.com", password: "funfunfun", college_id: college6.id)
 user24 = User.create(first_name: "Michael", last_name: "Milano", email: "mikemp@gmail.com", password: "funfunfun", college_id: college6.id)
 
+
+User.all.each do |user|
+  user.karma.update(balance:500.00)
+  user.save
+end
+
+
+
 # CONDITIONS
 
 fresh = Condition.create(name: "Fresh")

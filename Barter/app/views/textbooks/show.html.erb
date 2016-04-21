@@ -53,13 +53,11 @@
 </div>
 </div>
 
-<div class="ui container" id="book_div">
    <% if !@textbook.user_books.available.empty? %>
-     <h2 id="book_info">There are <%=@textbook.user_books.available.count %> copies of <%= @textbook.title %> available for sale:</h2>
+     <h3 id="book_info"> <%=@textbook.user_books.available.count %> copies of <%= @textbook.title %> available for sale:</h3>
    <% else %>
-    <i><h2 id="book_info">Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h2></i><br>
+    <h3 id="book_info">Sorry, there are currently no copies of <%= @textbook.title %> available. <%= link_to "Click here to search", root_path %> for another book or click below to sell your copy.</h3><br>
    <% end %>
- </div>
 
 <div class="ui list" id="bookAppend">
 <% @textbook.user_books.available.sort_by{ |book| book.condition }.each do |book| %>
@@ -105,43 +103,45 @@
           <!-- modal -->
           <div id="buildUserBook" class="ui modal">
             <i class="close icon"></i>
-            <div class="header">
-            </div>
             <div class="image content">
-              <div class="ui medium image">
-              </div>
               <div class="description">
-                <div class="ui header">Please Select the following information.</div>
-                <p></p>
+                <div class="ui fluid header">Enter info about your copy of <%= @textbook.title %> </div>
+  
 
                 <form action="/textbooks/<%=@textbook.id%>/book" method="POST">
                   <div>
-                    Condition of the book:
-                    <%= collection_select :condition, :id, Condition.all, :id, :name %>
+                    <%= collection_select :condition, :id, Condition.all, :id, :name, {include_blank: 'Select a condition'}, {class: "ui fluid selection dropdown"} %>
                   </div>
-                  <div>
+                  <br>
+                   <div class="ui grid">           
                     <% if @condition_prices %>
-                    <div id="priceRadioButtons">
-                      <p>
+
+                    <div class="eight wide column" id="priceRadioButtons">
+  
                         <%= radio_button_tag(:price, "marketplace") %>
                         <%= label_tag(:marketplace_price, "Use marketplace pricing") %>
-                        <%= radio_button_tag(:price, "custom") %>
+                    </div>
+                        <div class="eight wide column">
+                        <%= radio_button_tag(:price, "custom", {class: 'ui radio checkbox'}) %>
                         <%= label_tag(:custom_price, "Set your own price") %>
-                        <%= text_field_tag('custom_price_value', nil, class: 'hidden') %> </p>
+                        <%= text_field_tag('custom_price_value', nil, class: 'ui input hidden') %>
                       </div>
+
                       <% else %>
+                      <div class="sixteen wide column">
+                       
                       <%= label_tag(:custom_price, "Set your own price") %>
-                      <p> <%= text_field_tag('custom_price_value', nil) %> </p>
+                       <%= text_field_tag('custom_price_value', nil) %>
+                     </div>
                       <% end %>
                     </div>
-
                   </div>
-                </div>
+                  </div>
                 <div class="actions">
                   <div class="ui black deny button">
                     Nope
                   </div>
-                  <button id="userBookSubmit" type="submit" class="ui positive right labeled icon button">
+                  <button id="userBookSubmit" type="submit" class="ui positive deny button">
                     Submit
                   </button>
                 </div>

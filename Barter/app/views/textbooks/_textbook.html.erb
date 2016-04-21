@@ -13,7 +13,7 @@
     <div class="book information">
     <p><%= truncate(textbook.description, length: 250, separator: ' ') %></p>
      <% if textbook.user_books.present? %>
-      <p><strong>Copies available for sale: <%= textbook.user_books.count %> </strong></p>
+      <p><strong><%= textbook.user_books.where(sold:false).count %> copies available for sale </strong></p>
       <% else %>
        <p><strong>There are currently no copies available. Add one for sale!</strong></p>
        <% end %>
