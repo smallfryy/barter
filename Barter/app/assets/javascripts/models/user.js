@@ -9,9 +9,6 @@ app.user.model = {
       this.firstName = first_name;
       this.lastName = last_name;
       this.collegeId = college_id;
-      // this.userBooks = function(){
-      //   return app.userBook.model.findBy({user: self})
-      // };
       (function initialize(){
         app.user.model.all.push(self);
       })()

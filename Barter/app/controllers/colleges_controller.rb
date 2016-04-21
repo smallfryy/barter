@@ -11,12 +11,14 @@
 class CollegesController < ApplicationController
 
   def show
-  @college = College.find(params[:id])
+    @college = College.find(params[:id])
+    @students = @college.users.sort_by{|user| user.num_books_for_sale}.reverse
+    @textbooks = Textbook.joins(:user_books).joins(:users).where('users.college_id = ?', @college.id).uniq.sort_by{|textbook| textbook.title}
+  
   end 
 
   def index 
-  @colleges = College.all
-  @colleges = College.paginate(:page => params[:page], :per_page => 5)
-  end 
+    @colleges = College.all
+  end
 
 end

@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @college_friends = User.where(college_id:@user.college_id).sort - [@user]
   end
 
 end

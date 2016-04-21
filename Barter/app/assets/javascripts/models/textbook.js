@@ -8,9 +8,6 @@ app.textbook.model = {
       this.author = author;
       this.publishedDate = published_date;
       this.isbn = isbn;
-      // this.userBooks = function(){
-      //   return app.userBook.model.findBy({textbook: self})
-      // };
       (function initialize(){
         self.id = ++counter;
         app.textbook.model.all.push(self);

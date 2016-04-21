@@ -31,7 +31,7 @@
 
   <%if user_signed_in? %>
   <div class="right menu">
-    <div class="item">
+    <div class="item" id="navKarma">
       Karma: <%= number_to_currency(current_user.karma.balance)%>
     </div>
     <%end%>

@@ -1,0 +1,12 @@
+class Blackjack
+  def initialize
+    # @deck = Deck.new
+    # @players = []
+    # ...
+  end
+end
+
+class Deck
+  def initialize
+  end
+end

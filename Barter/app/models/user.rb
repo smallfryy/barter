@@ -50,6 +50,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name.first}."
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def active_cart
     Cart.where(user_id:self.id,active:true).first
   end

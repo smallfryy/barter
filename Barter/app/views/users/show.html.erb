@@ -2,7 +2,7 @@
   <div class="ui grid">
    <div class="eight wide column">
   <h1 class="ui left aligned header">
-    <%= @user.first_name %>  <%= @user.last_name %></h1>
+    <%= @user.full_name %></h1>
    <h4 class='ui left header'>
     Member Since: <%= @user.member_since %>
   </h4>
@@ -10,17 +10,19 @@
   College: <%= link_to(@user.college.name, college_path(@user.college_id)) %>
 </h4>
     <% if @user == current_user %>
-  <h4 class='ui left header'>Karma Balance: <%= number_to_currency(@user.karma.balance) %>   
+    <h4 id="bodyKarma" class='ui left header'>Karma Balance: <%= number_to_currency(@user.karma.balance) %>   
   </h4>
   <% end %>
   <% if @user.last_sign_in %>
   <h4 class='ui left header'>Last Sign In: <%= @user.last_sign_in %></h4>
 <% end %>
+  <button id="giftKarma" class="ui teal small basic button">Gift Karma to a Friend</button>
 
 </div>
   <div class="eight wide column">
     <br>
   <%= image_tag 'book-shelf.png', class: "ui centered medium rounded image" %>
+
 </div>
 </div>
 
@@ -65,7 +67,26 @@
 </div>
 </h4>
 <%end%>
-
-
-
 </div>
+
+<!-- GIFT KARMA MODAL -->
+<div class="ui small modal">
+  <div class="content">
+  <div class="ui grid">
+    <div class="eight wide column">
+    <%= collection_select(:user, :id, @college_friends, :id, :full_name, {include_blank: 'Select a Friend'}, {class: "ui fluid selection dropdown", id:"karmaFriend"}) %>
+    <%= hidden_field_tag 'karmaId', current_user.karma.id %>
+  </div>
+  <div class="eight wide column">
+<div class="ui right labeled input fluid">
+  <div class="ui label">$</div>
+  <input id="karmaAmount" type="text" placeholder="Amount">
+  <div class="ui basic label">.00</div>
+</div>
+  </div>
+  <div id="karmaError" class="ui row">You don't have</div>
+      <button id="sendKarma" class="ui teal fluid basic button">Send Karma</button>
+    </div>
+  </div>
+</div>
+

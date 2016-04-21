@@ -1,8 +1,5 @@
 $(function() {
-
-
   $('body').on('click', '.user_book', app.userBook.controller.show)
-
 
   $('.remove icon').click(function(){
     $('.modal').modal('hide')
@@ -28,10 +25,7 @@ $(function() {
     $('.modal').modal('hide')
   })
 
-
   $('.userBookDelete').click(app.userBook.controller.deleteUserBook)
-
-
 
 })
 
@@ -57,16 +51,12 @@ app.userBook.controller = {
     })
   },
     modal: function(userBook, userBookId, price){
-      // $('.ui.basic.modal').html("")
       var $imageUrl = $('body').find('img').attr('src')
       var userShowUrl = "/users/" + userBook.user.id + ""
       $('.ui.basic.modal .header').empty()
       $('.ui.basic.modal ul').empty()
       $('.ui.basic.modal .image.content .image').empty()
       $('#addToCartMessage').empty();
-
-
-
       $('.ui.basic.modal .header').append(userBook.textbook.title)
       $('.ui.basic.modal .header').append("<h3>By " + userBook.textbook.author + "</h3>")
       if (userBook.textbook.publishedDate) {
@@ -75,15 +65,11 @@ app.userBook.controller = {
       $('.ui.basic.modal .header').append("<h3>ISBN: " + userBook.textbook.isbn + "</h3>")
       $('.ui.basic.modal ul').append('<li> Price: $'+ price +'</li>')
       $('.ui.basic.modal ul').append('<li> Condition: '+ userBook.condition +'</li>')
-      // $('.modal .right ul').append(userBook.user.address.state)
       $('.ui.basic.modal ul').append('<li>Seller: ' + userBook.user.firstName + " " + userBook.user.lastName + '</li>')
       $('.ui.basic.modal ul').append('<li><a href=' + userShowUrl + '>See more books available from ' + userBook.user.firstName + '</li>')
       $('.ui.basic.modal .image.content .image').append('<img src="' + $imageUrl + '">')
       $('.ui.basic.modal').modal('show')
       $('#addToCart').attr('userBookId', userBookId)
-
-
-
   },
   new: function(event){
     event.preventDefault()
@@ -118,7 +104,7 @@ app.userBook.controller = {
     var url = '/textbooks/' + userBook.textbook_id + '/book/' + userBook.id
 
     $('#book_info').text('There are ' + userBookCount + ' copies of ' + bookName + ' available for sale:')
-  $('#bookAppend').append('<div id="'+ userBook.id +'" class="item user_book"><i class="book icon"></i><div class="content"><a href="'+ url +'">' + condition + '</a>' + " - listed by " + userName + "(" + userBooksSold + " books sold), " + listingDaysAgo + '.</div></div>')
+    $('#bookAppend').append('<div id="'+ userBook.id +'" class="item user_book"><i class="book icon"></i><div class="content"><a href="'+ url +'">' + condition + '</a>' + " - listed by " + userName + "(" + userBooksSold + " books sold), " + listingDaysAgo + '.</div></div>')
   },
   deleteUserBook: function(event){
     event.preventDefault();
@@ -138,7 +124,5 @@ app.userBook.controller = {
       }
     })
   }
-
-
 
 }
