@@ -1,11 +1,3 @@
-.pusher {
-    background: image-url('landpage.jpg') no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    height: 150%;
-}
-
-
 .pushable>.pusher.dimmed:after {
     background: image-url('landpage.jpg') no-repeat center center fixed;
     background-size: cover;
@@ -15,11 +7,4 @@
 
 .ui.middle.aligned{
   padding-top: 10px;
-}
-
-.ui.page.grid.main {
-   background: image-url('landpage.jpg') no-repeat center center fixed;
-    background-size: cover;
-    background-attachment: fixed;
-    height: 150%;  
 }
