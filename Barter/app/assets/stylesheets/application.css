@@ -29,5 +29,9 @@
 
 .ui.grid>.column:only-child, .ui.grid>.row>.column:only-child, .ui[class*="one column"].grid>.column, .ui[class*="one column"].grid>.row>.column{
   margin-top: 70px;
+  background: image-url('landpage.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 150%;
 }
 
