@@ -19,10 +19,7 @@ justin.curhan@gmail.com
 - JavaScript
 - JQuery 
 - Google Books API
-- Faker Gem 
-- Ajax 
-- TDD 
-- MVC Modeling 
+- Ajax
+- MVC Pattern 
 - Deprecation Pricing Algorithm
-- Bootstrap
 - Semantic UI
