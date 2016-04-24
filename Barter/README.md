@@ -23,3 +23,6 @@ justin.curhan@gmail.com
 - MVC Pattern 
 - Deprecation Pricing Algorithm
 - Semantic UI
+
+##Search, sell and buy textbooks using karma-based currency
+![Bibliotech Search & Cart](http://g.recordit.co/o5nuIQpkid.gif)
