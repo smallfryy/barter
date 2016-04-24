@@ -29,7 +29,7 @@ app.users.controller = {
     })
   },
   updateKarma: function(karma){
-    var karmaAmount = karma.toFixed(2);
+    var karmaAmount = parseFloat(karma).toFixed(2);
     $('#navKarma').text('Karma: $' + karmaAmount );
     $('#bodyKarma').text('Karma Balance: $' + karmaAmount);
     $('.ui.modal').modal('hide');
