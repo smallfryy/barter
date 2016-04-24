@@ -29,8 +29,9 @@ app.users.controller = {
     })
   },
   updateKarma: function(karma){
-    $('#navKarma').text('Karma: $' + karma + '.00');
-    $('#bodyKarma').text('Karma Balance: $' + karma + '.00');
+    var karmaAmount = karma.toFixed(2);
+    $('#navKarma').text('Karma: $' + karmaAmount );
+    $('#bodyKarma').text('Karma Balance: $' + karmaAmount);
     $('.ui.modal').modal('hide');
   }
 }
