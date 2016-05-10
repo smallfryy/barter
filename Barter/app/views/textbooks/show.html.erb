@@ -16,13 +16,13 @@
       
    <div class='text_description'>
      <div class='text_d_short'>
+       <% if @textbook.description && @textbook.description.length > 500 %>
        <%= truncate(@textbook.description, length: 500, separator: ' ') %>
-       <% if @textbook.description.length > 500 %>
          <a id='see_more' href="#">Show more</a>
        <% end %>
      </div>  
      <div class='text_d_long'>
-       <%= @textbook.description %><br>
+       <%= @textbook.description if @textbook.description %><br>
        <a id='see_less' href="#">Show less</a>
       </div>
    </div>
