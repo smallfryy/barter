@@ -1,7 +1,10 @@
-# Bibliotech
+#Bibliotech
 A friendly platform for exchanging college textbooks. 
 
-#Collaborators 
+##Search, sell and buy textbooks using karma-based currency
+![Bibliotech Search & Cart](http://g.recordit.co/o5nuIQpkid.gif)
+
+##Collaborators 
 Holly Peck 
 holly.m.peck@gmail.com
 
@@ -14,15 +17,12 @@ smernick3@gmail.com
 Justin Curhan
 justin.curhan@gmail.com
 
-#Technology Used
+##Technology Used
 - Ruby on Rails
 - JavaScript
 - JQuery 
 - Google Books API
-- Faker Gem 
-- Ajax 
-- TDD 
-- MVC Modeling 
+- Ajax
+- MVC Pattern 
 - Deprecation Pricing Algorithm
-- Bootstrap
 - Semantic UI
