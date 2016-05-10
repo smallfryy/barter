@@ -40,13 +40,13 @@ module Adapters
 
         if item["volumeInfo"]["categories"].present? && industry_identifier.present?
           # textbook.subjects << we need to build a find or a create for textbook
+          textbook.subjects.clear
           subjects_string = item["volumeInfo"]["categories"][0]
-          subject_array = subjects_string.gsub(/[^A-Za-z]/, '').split()
+          subject_array = subjects_string.gsub(/[^A-Za-z ]/, '').split()
 
           subject_array.each do |subject|
             new_subj = subject.capitalize
             subject_object = Subject.find_or_create_by(name: new_subj)
-            textbook.subjects.clear
             textbook.subjects << subject_object
           end
         end
