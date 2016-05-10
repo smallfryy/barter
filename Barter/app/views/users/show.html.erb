@@ -36,7 +36,7 @@
         <i class="remove icon userBookDelete" textbook="<%=book.textbook.id%>" userBook="<%=book.id%>" ></i>
       <% end %>
       <div class="content">
-        <%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %> - Condish <%=book.condition.name%>
+        <%= link_to(book.textbook.title, textbook_path(book.textbook.id)) %> - <%=book.condition.name%>
       </div>
     </div>
   <% end %>
@@ -59,7 +59,7 @@
     <i class="large cart middle aligned icon"></i>
     <div class="content">
       <p class="header"><%= link_to("Order ##{cart.id}", cart_path(cart)) + " placed on #{cart.order_date.strftime("%a %b %e, %Y")}" %></p>
-      <div class="description">Total Price: <%=cart.cart_total_price%></div>
+      <div class="description">Total Price: <%=number_to_currency(cart.cart_total_price)%></div>
     </div>
   </div>
   <% end %>

@@ -36,9 +36,7 @@ class Cart < ActiveRecord::Base
   def set_items_final_karma
     line_items.each do |line_item|
       price = line_item_price(line_item)
-      # address = params[:address]
       line_item.update(item_karma:price)
-      # line_item.address(address:)
       line_item.user_book.update(sold:true)
     end
   end
